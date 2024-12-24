@@ -1,0 +1,44 @@
+@import "src/variables";
+.cta {
+  cursor: pointer;
+  position: relative;
+  min-height: 80px;
+  width: 360px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #D83634;
+  text-align: center;
+  @media only screen and (max-width: $largeDisplay) {
+    max-height: 65px;
+    min-height: 65px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    width: 280px;
+  }
+}
+
+.text {
+  position: absolute;
+  padding: 0 30px;
+  font-size: 20px;
+  width: 100%;
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 14px;
+  }
+}
+.mirror{
+  .text{
+    padding-left: 110px;
+    padding-right: 0;
+  }
+  &:after{
+    left: -10px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    width: 280px;
+  }
+}

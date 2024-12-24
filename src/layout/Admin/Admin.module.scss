@@ -1,0 +1,31 @@
+.modalInfo {
+  font-family: Arial;
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global {
+  .RaLayout-contentWithSidebar {
+    margin-top: 55px;
+  }
+
+  .RaDatagrid-headerCell {
+    background: #fafafb !important;
+  }
+
+  .css-sghohy-MuiButtonBase-root-MuiButton-root, .MuiButton-colorSecondary {
+    background: #12253d !important;
+  }
+
+  button.Mui-disabled {
+      background: rgba(0, 0, 0, 0.12) !important;
+    }
+}

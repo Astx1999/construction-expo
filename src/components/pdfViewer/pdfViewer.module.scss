@@ -1,0 +1,36 @@
+@import "src/variables";
+.modal{
+  background: #1C1C1C;
+  font-family: Arial;
+  padding: 10px 10px 0;
+  @media only screen and (max-width: $smallDisplay) {
+    padding: 20px 10px 0 10px
+  }
+  button{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
+.button{
+  margin-bottom: 10px;
+  svg{
+    fill: white!important;
+  }
+}
+:global{
+  .react-pdf__Page__textContent , .react-pdf__Page__annotations, .annotationLayer{
+    display: none!important;
+  }
+  .react-pdf__Page__canvas{
+    width: 100%!important;
+  }
+}
+.close{
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}

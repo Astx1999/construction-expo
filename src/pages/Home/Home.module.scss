@@ -1,0 +1,277 @@
+@import "src/variables";
+
+.root {
+  background-color: #232725;
+  width: 100%;
+  height: 100vh;
+  font-family: Lexend;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 70px;
+  width: 250px;
+  left: 140px;
+  @media only screen and (max-width: $mediumDisplay) {
+    left: 80px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    left: 30px;
+  }
+
+  svg {
+    width: 100%;
+  }
+
+  @media screen and (max-width: $smallDisplay) {
+    right: 0;
+    text-align: center;
+    svg {
+      width: 200px;
+    }
+  }
+}
+
+.comingsoonBlock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 30%;
+  z-index: 999;
+  color: white;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  padding: 0 140px 0;
+  @media only screen and (max-height: 749px) {
+    padding: 230px 140px 0;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    padding: 20px 80px 0;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    padding: 0px 30px 0;
+    top: 20%;
+  }
+
+}
+
+.comingSoon {
+  font-size: 65px;
+  text-transform: uppercase;
+  @media screen and (max-width: $smallDisplay) {
+    font-size: 45px;
+  }
+}
+
+.title {
+  font-size: 110px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  margin-left: -5px;
+  font-family: LexendLight;
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 85px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: #D83634;
+  }
+}
+
+.dates {
+  margin-bottom: 25px;
+  font-size: 45px;
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 25px;
+  }
+}
+
+.place {
+  margin-bottom: 40px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 18px;
+  }
+  span{
+    padding-left: 15px;
+  }
+}
+
+.timeLeft {
+  font-size: 18px;
+  color: #b3b3b3;
+  padding: 0;
+  text-transform: uppercase;
+  @media screen and (max-width: $smallDisplay) {
+    padding: 15px 0 10px;
+  }
+}
+
+.countdown {
+  display: flex;
+  @media screen and (max-width: $smallDisplay) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    grid-gap: 1.5rem;
+  }
+}
+
+.block {
+  height: 142px;
+  width: 137px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  border: 1px solid white;
+  position: relative;
+  margin-right: 50px;
+  border-top-right-radius: 80px;
+  margin-bottom: 50px;
+  font-family: LexendLight;
+  background-color: #232725;
+  @media screen and (max-width: $smallDisplay) {
+    height: 112px;
+    width: 100px;
+    font-size: 14px;
+    margin-right: 30px;
+  }
+}
+
+.number {
+  font-size: 57px;
+  @media screen and (max-width: $smallDisplay) {
+    font-size: 30px;
+  }
+}
+
+.unit {
+  position: absolute;
+  background-color: #232725;
+  border: 2px solid #FE5840;
+  width: 120px;
+  text-align: center;
+  font-size: 20px;
+  padding: 13px 15px;
+  bottom: -25px;
+  right: -25px;
+  z-index: 2;
+  @media screen and (max-width: $smallDisplay) {
+    font-size: 20px;
+    padding: 8px;
+    width: 90px;
+  }
+}
+
+.socials {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+
+  a {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.getSocial {
+  font-size: 20px;
+  position: relative;
+  width: 450px;
+  &:after {
+    content: " ";
+    display: block;
+    width: 290px;
+    height: 1px;
+    background-color: white;
+    top: 13px;
+    left: 140px;
+    position: absolute;
+  }
+}
+
+
+.detail {
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  animation: smallToBig 0.5s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+  scale: 0;
+  transform: rotate(-75deg)
+}
+
+@keyframes smallToBig {
+  from {
+    opacity: 0;
+    scale: 0;
+    transform: rotate(-75deg)
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.title,
+.line1,
+.line2,
+.line3,
+.line4 {
+  opacity: 0;
+}
+
+.title {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.line1 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1s;
+}
+
+.line2 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.line3 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2s;
+}
+
+.line4 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2.5s;
+}

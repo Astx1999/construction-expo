@@ -1,0 +1,74 @@
+.root{
+  position: relative;
+}
+.label{
+  margin-bottom: 10px;
+  display: block;
+}
+.selectedOptions{
+  height: 60px;
+  background: #262626;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid #313131;
+  cursor: pointer;
+}
+.error{
+  .selectedOptions{
+    border: 1px solid #D83634;
+  }
+}
+.open{
+  .arrow{
+    transform: rotate(180deg);
+  }
+}
+.errorText{
+  color: #D83634;
+}
+.secondSpan{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.option{
+  cursor: pointer;
+  &:hover{
+    color: #D83634;
+  }
+}
+.selectedOption{
+}
+.selected{
+  color: #D83634;
+}
+.dropdownOptions{
+  background: #262626;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+  top: 95px;
+  border: 1px solid #313131;
+  z-index: 1;
+  max-height: 260px;
+  overflow: auto;
+}
+.empty{
+  text-align: center;
+  color: #b3b3b3;
+}
+.option{
+  margin-bottom: 5px;
+}
+.arrow{
+  position: absolute;
+  top: 53px;
+  right: 15px;
+  pointer-events: none;
+}

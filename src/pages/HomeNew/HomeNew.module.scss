@@ -1,0 +1,270 @@
+@import "src/variables";
+
+.root {
+  height: 100vh;
+  color: white;
+  padding: 50px 140px 0;
+  font-family: ArmguardU, Arial, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  @media only screen and (max-height: 749px) {
+    padding: 230px 140px 0;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    padding: 20px 80px 0;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    padding: 0px 30px 0;
+    align-items: flex-end;
+  }
+}
+
+.videoContainer {
+  width: 100%; /* Adjust the width of the container as needed */
+  height: 100%;
+  background: #111010;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -999;
+  filter: brightness(0.5);
+
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #111010;
+  @media screen and (max-width: $smallDisplay) {
+    //object-position: right;
+    object-position: 80% 0;
+    background: #111010;
+  }
+
+
+}
+
+.title {
+  font-size: 60px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 54px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 35px;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: #D83634;
+  }
+}
+
+.dates {
+  font-size: 50px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 44px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  @media only screen and (max-width: $extraExtraSmallDisplay) {
+    font-size: 21px;
+  }
+
+  .dot {
+    position: relative;
+    width: 19px;
+    height: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: #D83634;
+    transform: skewX(-36deg);
+    margin: 0 15px 0 5px;
+
+    @media only screen and (max-width: $smallDisplay) {
+      width: 7px;
+      height: 5px;
+      margin: 0 10px 0 3px;
+    }
+
+    &:nth-child(2) {
+      margin: 0 15px;
+      @media only screen and (max-width: $smallDisplay) {
+        margin: 0 10px;
+      }
+    }
+  }
+
+}
+
+.desc {
+  font-size: 20px;
+  margin: 20px 0 40px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  width: 600px;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 14px;
+    flex-direction: revert;
+    justify-content: flex-end;
+    width: auto;
+    margin: 10px 0 15px;
+  }
+
+  svg {
+    width: 200px;
+    margin-right: 20px;
+    @media only screen and (max-width: $smallDisplay) {
+      width: 100px;
+      order: 2;
+      margin-right: 0;
+    }
+  }
+
+  span {
+    opacity: 0.7;
+    @media only screen and (max-width: $smallDisplay) {
+      text-align: right;
+      margin-right: 10px;
+      font-size: 11px;
+    }
+  }
+}
+
+.exhibitors {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 0 20px;
+
+  .exhibitorsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: $smallDisplay) {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    .exhibitorsContainer {
+      width: unset;
+      display: block;
+      padding: 5px;
+      white-space: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+
+      svg {
+        width: 150px;
+        padding-right: 38px;
+        display: inline-block; /* Display as inline-block */
+        vertical-align: middle; /* Vertically align to middle */
+      }
+    }
+  }
+}
+
+.carousel {
+  position: relative;
+  padding: 0 0 0px;
+  max-width: 100%;
+  bottom: -100px;
+  @media only screen and (max-height: 749px) {
+    padding: 0 0 200px;
+    bottom: -70px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    bottom: -120px;
+  }
+  svg{
+    height: 70px;
+    width: 90px;
+    @media only screen and (max-width: $extraSmallDisplay) {
+      width: 65px;
+      height: 70px;
+    }
+
+  }
+}
+
+.swiperContainer {
+  position: absolute;
+  width: 100vw;
+  right: -140px;
+  opacity: 0.6;
+  @media only screen and (max-width: $mediumDisplay) {
+    right: -80px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    right: -30px;
+  }
+}
+
+.partner{
+  text-align: center;
+}
+
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.title,
+.line1,
+.line2,
+.line3,
+.line4{
+  opacity: 0;
+}
+.title {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.line1 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1s;
+}
+
+.line2 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.line3 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2s;
+}
+
+.line4 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2.5s;
+}

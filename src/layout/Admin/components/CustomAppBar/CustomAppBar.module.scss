@@ -1,0 +1,20 @@
+.logoWrapper{
+
+}
+.logo{
+  width: 150px;
+  svg{
+    width: 100%;
+  }
+}
+.title{
+  width: 80vw;
+  text-align: center;
+  font-size: 1.3rem!important;
+  @media only screen and (max-width: 1600px) {
+    width: 75vw;
+  }
+  @media only screen and (max-width: 1340px) {
+    width: 72vw;
+  }
+}

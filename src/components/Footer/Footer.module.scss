@@ -1,0 +1,159 @@
+@import "src/variables";
+
+.root {
+  padding: 120px 100px 0;
+  background: linear-gradient(#262626, #111010);
+  color: white;
+  @media only screen and (max-width: $mediumDisplay) {
+    padding: 80px 30px 0;
+  }
+}
+
+.title {
+  font-size: 74px;
+  letter-spacing: 1px;
+  margin-bottom: 120px;
+
+  span {
+    color: #D83634;
+  }
+
+  @media only screen and (max-width: $mediumDisplay) {
+    font-size: 54px;
+    margin-bottom: 90px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+}
+.content {
+  display: grid;
+  grid-gap: 35px;
+  grid-template-rows: repeat(3, 1fr); /* Three rows */
+
+  & > div:nth-child(3n+1) {
+    grid-row: 1; /* Every third item starting from 1 goes to the first row */
+  }
+
+  & > div:nth-child(3n+2) {
+    grid-row: 2; /* Every third item starting from 2 goes to the second row */
+  }
+
+  & > div:nth-child(3n) {
+    grid-row: 3; /* Every third item starting from 3 goes to the third row */
+  }
+
+  @media only screen and (max-width: $mediumDisplay) {
+    grid-template-rows: 1fr; /* Single row layout for small screens */
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+    text-align: center;
+
+    & > div {
+      grid-row: unset!important; /* Reset grid row span */
+    }
+  }
+}
+
+.followUs{
+  margin-top: -60px;
+  @media only screen and (max-width: $mediumDisplay) {
+    margin-top: 0;
+  }
+}
+
+.address,
+.openingHours,
+.callUs,
+.email,
+.followUs {
+  color: #CCCCCC;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-family: Arial;
+  a {
+    color: #CCCCCC;
+    text-decoration: none;
+
+    &:visited, &:hover, &:focus-within, &:focus {
+      color: #CCCCCC;
+    }
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 12px;
+  }
+}
+
+.subTitle {
+  color: white;
+  letter-spacing: 1px;
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-family: ArmguardU;
+  span {
+    color: #D83634;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 20px;
+  }
+}
+
+.followUs {
+  a {
+    margin-right: 20px;
+    display: inline-block;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+    @media only screen and (max-width: $largeDisplay) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
+.openingLine{
+  padding-bottom: 10px;
+}
+.heart{
+  text-align: center;
+  padding: 95px 0 40px;
+  font-weight: 100;
+  color: #CCCCCC;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: block;
+  @media only screen and (max-width: $mediumDisplay) {
+    padding: 80px 30px 30px
+  }
+}
+.organizers{
+  .promExpo{
+      margin-right: 25px;
+  }
+  img{
+    max-height: 55px;
+    width: auto;
+  }
+}
+.sponsor{
+  @media only screen and (max-width: $mediumDisplay) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.evoca{
+  margin-top: 10px;
+  display: block;
+  width: 120px;
+  height: 30px;
+  svg{
+    height: 100%;
+    width: 100%;
+  }
+}

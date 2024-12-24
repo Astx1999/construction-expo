@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arm Auto Show</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            line-height: 1.6;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: auto;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .header {
+            display: block;
+            text-align: end;
+            background-color: #2A3549;
+            padding: 20px 53px;
+        }
+
+        .header img {
+            max-width: 200px;
+            height: 50px;
+        }
+
+        .content {
+            margin: 60px 30px 40px;
+            text-align: center;
+        }
+
+        a {
+            color: #1F3487;
+        }
+
+        .footer {
+            background-color: #E6E8EE;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #000;
+            padding: 30px 47px;
+        }
+
+        .socials {
+
+        }
+
+        .socials a {
+            padding-left: 15px;
+        }
+
+        .facebook{
+            width: 15px;
+            height: 24px;
+        }
+        .instagram{
+            width: 22px;
+            height: 22px;
+        }
+        .youtube{
+            width: 33px;
+            height: 22px;
+        }
+        .code{
+            display: inline-block;
+            text-align: center;
+            padding: 13px 20px;
+            /*margin: 20px 0;*/
+            border: 2px solid #e6e8ef;
+        }
+        @media only screen and (max-width: 700px) {
+            .container {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .content {
+                margin: 50px 25px 40px;
+            }
+
+            .content p {
+                font-size: 0.9em;
+            }
+
+            .footer {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://api.armenianautoshow.com/static_files/logo.png" alt="">
+    </div>
+    <div class="content">
+        <p>Հարգելի {{ first_name }} {{ last_name }}, <br> Շնորհակալություն Armenian Auto Show 2024 միջոցառմանը, որպես այցելու գրանցվելու համար։</p>
+        <br>
+        <p>Ներկայացրեք այս նամակը հունիսի 21-ից 23-ը Մարզահամերգային Համալիրի մուտքի մոտ գտնվող գրանցման կետ և ստացեք միջոցառմանը մուտք գործելու Ձեր բեյջը և խաղարկության կտրոնը:</p>
+        <br>
+        <!--QR here-->
+        <img src="https://api.armenianautoshow.com/api/qrcode/{{ id }}"/>
+        <!--QR here-->
+        <br>
+        <span class="code" style="display: inline-block; text-align: center;">
+            {{ short_code }}
+        </span>
+        <br>
+
+        <p>Հարցերի դեպքում կարող եք զանգահարել <a href="tel:+37415678678">015678678</a> համարով կամ գրել մեր
+            էլեկտրոնային հասցեյին <a href="mailto:visitor@armenianautoshow.com">visitor@armenianautoshow.com</a>:</p>
+        <br>
+        <p>Սիրով կսպասենք Ձեզ Հունիսի 21-ից 23-ը Կարեն Դեմիրճյանի անվան մարզահամերգային համալիրում։</p>
+    </div>
+    <div class="footer" style="width: 100%; text-align: center; padding: 20px;">
+        <table align="center" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
+            <tr>
+                <td style="padding: 0 10px;">
+                    <a href="https://www.facebook.com/profile.php?id=61556471212717" target="_blank" rel="noopener noreferrer">
+                        <img src="https://staging.armenianautoshow.com/uploads/email_icons/facebookEmail.png" alt="facebook" style="width: 16px; height: 24px;">
+                    </a>
+                </td>
+                <td style="padding: 0 10px;">
+                    <a href="https://www.instagram.com/armenianautoshow/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://staging.armenianautoshow.com/uploads/email_icons/instaEmail.png" alt="instagram" style="width: 24px; height: 24px;">
+                    </a>
+                </td>
+                <td style="padding: 0 10px;">
+                    <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank" rel="noopener noreferrer">
+                        <img src="https://staging.armenianautoshow.com/uploads/email_icons/youtubeEmail.png" alt="youtube" style="width: 33px; height: 24px;">
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

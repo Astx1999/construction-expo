@@ -1,0 +1,33 @@
+@import "src/variables";
+
+.navButton {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media only screen and (max-width: $mediumDisplay) {
+    width: 70px;
+    height: 70px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.navButtonHidden {
+  visibility: hidden;
+  @media only screen and (max-width: $mediumDisplay) {
+    width: 70px;
+    height: 70px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    width: 55px;
+    height: 55px;
+  }
+}
