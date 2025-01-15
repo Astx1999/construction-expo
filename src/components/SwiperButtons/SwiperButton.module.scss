@@ -1,9 +1,11 @@
 @import "src/variables";
 
 .navButton {
-  width: 90px;
-  height: 90px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
 
   svg {
     width: 100%;
@@ -11,8 +13,8 @@
   }
 
   @media only screen and (max-width: $mediumDisplay) {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 55px;
@@ -21,10 +23,12 @@
 }
 
 .navButtonHidden {
-  visibility: hidden;
+  //visibility: hidden;
+  display: none;
+
   @media only screen and (max-width: $mediumDisplay) {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 55px;

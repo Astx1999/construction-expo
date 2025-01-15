@@ -20,7 +20,7 @@
 }
 .error{
   .selectedOptions{
-    border: 1px solid #D83634;
+    border: 1px solid #FE5840;
   }
 }
 .open{
@@ -29,7 +29,7 @@
   }
 }
 .errorText{
-  color: #D83634;
+  color: #FE5840;
 }
 .secondSpan{
   white-space: nowrap;
@@ -40,13 +40,13 @@
 .option{
   cursor: pointer;
   &:hover{
-    color: #D83634;
+    color: #FE5840;
   }
 }
 .selectedOption{
 }
 .selected{
-  color: #D83634;
+  color: #FE5840;
 }
 .dropdownOptions{
   background: #262626;

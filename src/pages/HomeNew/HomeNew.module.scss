@@ -1,17 +1,17 @@
 @import "src/variables";
 
 .root {
-  height: 100vh;
+  min-height: 100vh;
   color: white;
-  padding: 50px 140px 0;
-  font-family: ArmguardU, Arial, serif;
+  padding: 50px 50px 0;
+  font-family: Lexend;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   position: relative;
+  background: #232725;
   overflow: hidden;
   @media only screen and (max-height: 749px) {
-    padding: 230px 140px 0;
+    padding: 230px 50px 0;
   }
   @media only screen and (max-width: $mediumDisplay) {
     padding: 20px 80px 0;
@@ -22,57 +22,47 @@
   }
 }
 
-.videoContainer {
-  width: 100%; /* Adjust the width of the container as needed */
-  height: 100%;
-  background: #111010;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -999;
-  filter: brightness(0.5);
+.animation {
+  width: 40%;
 
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #111010;
-  @media screen and (max-width: $smallDisplay) {
-    //object-position: right;
-    object-position: 80% 0;
-    background: #111010;
+  svg {
+    width: 100%;
   }
-
-
 }
+
+.content {
+  padding-top: 120px;
+  width: calc(60% - 0px);
+  padding-left: 80px;
+}
+
 
 .title {
-  font-size: 60px;
+  font-family: LexendLight;
+  font-size: 80px;
   letter-spacing: 1px;
   margin-bottom: 30px;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 54px;
+    font-size: 65px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 35px;
+    font-size: 40px;
     text-align: right;
     margin-bottom: 10px;
   }
 
   span {
-    color: #D83634;
+    color: #FE5840;
   }
 }
 
 .dates {
-  font-size: 50px;
+  font-size: 36px;
   letter-spacing: 1px;
   display: flex;
   align-items: center;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 44px;
+    font-size: 30px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 24px;
@@ -80,31 +70,6 @@
   }
   @media only screen and (max-width: $extraExtraSmallDisplay) {
     font-size: 21px;
-  }
-
-  .dot {
-    position: relative;
-    width: 19px;
-    height: 15px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    background-color: #D83634;
-    transform: skewX(-36deg);
-    margin: 0 15px 0 5px;
-
-    @media only screen and (max-width: $smallDisplay) {
-      width: 7px;
-      height: 5px;
-      margin: 0 10px 0 3px;
-    }
-
-    &:nth-child(2) {
-      margin: 0 15px;
-      @media only screen and (max-width: $smallDisplay) {
-        margin: 0 10px;
-      }
-    }
   }
 
 }
@@ -116,7 +81,8 @@
   display: flex;
   align-items: center;
   width: 600px;
-
+  font-family: LexendLight;
+  line-height: 1.5;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 16px;
   }
@@ -148,123 +114,77 @@
   }
 }
 
-.exhibitors {
-  width: 100%;
+.cta {
+  margin: 50px 0;
+}
+
+.location {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 100px 0 20px;
-
-  .exhibitorsContainer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  @media only screen and (max-width: $smallDisplay) {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-
-    .exhibitorsContainer {
-      width: unset;
-      display: block;
-      padding: 5px;
-      white-space: nowrap;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-
-      svg {
-        width: 150px;
-        padding-right: 38px;
-        display: inline-block; /* Display as inline-block */
-        vertical-align: middle; /* Vertically align to middle */
-      }
-    }
+  span {
+    padding-left: 30px;
   }
 }
 
-.carousel {
-  position: relative;
-  padding: 0 0 0px;
-  max-width: 100%;
-  bottom: -100px;
-  @media only screen and (max-height: 749px) {
-    padding: 0 0 200px;
-    bottom: -70px;
-  }
-  @media only screen and (max-width: $smallDisplay) {
-    bottom: -120px;
-  }
-  svg{
-    height: 70px;
-    width: 90px;
-    @media only screen and (max-width: $extraSmallDisplay) {
-      width: 65px;
-      height: 70px;
-    }
+//@keyframes slideInFromRight {
+//  from {
+//    opacity: 0;
+//    transform: translateX(100%);
+//  }
+//  to {
+//    opacity: 1;
+//    transform: translateX(0);
+//  }
+//}
+//
+//.title,
+//.line1,
+//.line2,
+//.line3,
+//.line4 {
+//  opacity: 0;
+//}
+//
+//.title {
+//  animation: slideInFromRight 0.5s ease forwards;
+//  animation-delay: 0.5s;
+//}
+//
+//.line1 {
+//  animation: slideInFromRight 0.5s ease forwards;
+//  animation-delay: 1s;
+//}
+//
+//.line2 {
+//  animation: slideInFromRight 0.5s ease forwards;
+//  animation-delay: 1.5s;
+//  margin-left: -80px;
+//}
+//
+//.line3 {
+//  animation: slideInFromRight 0.5s ease forwards;
+//  animation-delay: 2s;
+//}
+//
+//.line4 {
+//  animation: slideInFromRight 0.5s ease forwards;
+//  animation-delay: 2.5s;
+//}
 
-  }
-}
-
-.swiperContainer {
-  position: absolute;
-  width: 100vw;
-  right: -140px;
-  opacity: 0.6;
-  @media only screen and (max-width: $mediumDisplay) {
-    right: -80px;
-  }
-  @media only screen and (max-width: $smallDisplay) {
-    right: -30px;
-  }
-}
-
-.partner{
-  text-align: center;
-}
-
-
-@keyframes slideInFromRight {
+@keyframes drawStroke {
   from {
-    opacity: 0;
-    transform: translateX(100%);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
   }
 }
-.title,
-.line1,
-.line2,
-.line3,
-.line4{
-  opacity: 0;
-}
-.title {
-  animation: slideInFromRight 0.5s ease forwards;
-  animation-delay: 0.5s;
-}
 
-.line1 {
-  animation: slideInFromRight 0.5s ease forwards;
-  animation-delay: 1s;
-}
-
-.line2 {
-  animation: slideInFromRight 0.5s ease forwards;
-  animation-delay: 1.5s;
-}
-
-.line3 {
-  animation: slideInFromRight 0.5s ease forwards;
-  animation-delay: 2s;
-}
-
-.line4 {
-  animation: slideInFromRight 0.5s ease forwards;
-  animation-delay: 2.5s;
+.animatedStroke {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawStroke 3s ease-out forwards;
+  stroke-width: 3;
 }

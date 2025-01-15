@@ -17,24 +17,24 @@
     src: url("fonts/ArmguardU.ttf") format("truetype");
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 10px;
-    background-color: #272727;
+    background-color: #414141;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #4E4F50;
+    background: #696969;
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #3E3F3F;
+    background: #797979;
 }
 * {
     margin: 0;

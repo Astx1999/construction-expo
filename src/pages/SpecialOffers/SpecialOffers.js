@@ -1,10 +1,11 @@
 import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination} from 'swiper/modules';
-import Offer4 from "../../images/efes.png"
-import Offer1 from "../../images/ferrari.png"
-import Offer2 from "../../images/Foton sale.png"
-import Offer3 from "../../images/Nakoil.png"
+
+import Offer1 from "../../images/offer1.png"
+import Offer2 from "../../images/offer2.png"
+import Offer3 from "../../images/offer1.png"
+import Offer4 from "../../images/offer2.png"
 import styles from './SpecialOffers.module.scss'
 
 // Import Swiper styles
@@ -26,14 +27,14 @@ const offers = [
         desc: "special_text1"
     },
     {
-        img: Offer3,
-        title: "special_title3",
-        desc: "special_text3"
-    },
-    {
         img: Offer2,
         title: "special_title2",
         desc: "special_text2"
+    },
+    {
+        img: Offer3,
+        title: "special_title3",
+        desc: "special_text3"
     },
     {
         img: Offer4,
@@ -49,20 +50,22 @@ const SpecialOffers = () => {
     return (
         <div className={styles.root}>
 
-            <div className={styles.pageTitle}>{t("special_offers")}<span>.</span></div>
+            <div className={styles.pageTitle}>{t("special_offers")}</div>
 
             <Swiper
                 // install Swiper modules
-                modules={[Pagination]}
+                // modules={[Pagination]}
                 spaceBetween={width <= 1023 ? 30 : 70}
                 slidesPerView={width <= 767 ? 1.5 : 2.5}
-                // initialSlide={1}
+                initialSlide={0}
                 pagination={{clickable: true}}
-                centeredSlides={true}
+                // centeredSlides={true}
                 loop={true}
             >
                 <div className={styles.navigation}>
-                    <SwiperButtonPrev><Prev/></SwiperButtonPrev>
+                    <div className={styles.arrow}>
+                        <SwiperButtonPrev><Prev/></SwiperButtonPrev>
+                    </div>
                     <SwiperButtonNext><Next/></SwiperButtonNext>
                 </div>
                 {offers.map((offer, index) => {
@@ -70,8 +73,6 @@ const SpecialOffers = () => {
                         <SwiperSlide key={index}>
                             <div className={styles.offer}>
                                 <img src={offer.img} alt={offer.title}/>
-                                <p className={styles.title}>{t(offer.title)}</p>
-                                <p className={styles.desc}>{t(offer.desc)}</p>
                             </div>
                         </SwiperSlide>
                     )

@@ -5,6 +5,7 @@
   min-height: 100vh;
   padding: 120px 100px 20px;
   color: white;
+  font-family: Lexend;
 
   :global {
     .swiper-pagination-bullet {
@@ -15,13 +16,13 @@
     }
 
     .swiper-pagination-bullet-active {
-      background: #D83634;
+      background: #FE5840;
 
     }
   }
 
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 100px 80px 40px;
+    padding: 100px 80px 20px;
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 60px 30px 40px;
@@ -35,6 +36,7 @@
   margin-bottom: 70px;
   @media only screen and (max-width: $mediumDisplay) {
     flex-direction: column;
+    margin-bottom: 20px;
   }
   @media only screen and (max-width: $smallDisplay) {
     margin-bottom: 20px;
@@ -90,45 +92,55 @@
 .navigation {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   width: 100%;
   justify-content: space-between;
 
   @media only screen and (max-width: $extraLargeDisplay) {
     svg {
-      width: 50px!important;
+      width: 50px !important;
     }
   }
-
-
   @media only screen and (max-width: $smallDisplay) {
     margin-bottom: 0;
   }
 }
 
-.name {
-  font-size: 70px;
-  margin: 0 40px;
-  letter-spacing: 1px;
-  @media only screen and (max-width: $extraLargeDisplay) {
-    font-size: 55px;
+.pageCount {
+  padding-right: 15px;
+  font-size: 25px;
+  display: flex;
+  .left {
+    opacity: 0.6;
   }
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-family: LexendLight;
+  font-size: 45px;
+  margin: 0 40px 0 0 ;
+  letter-spacing: 1px;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 50px;
-    margin: 0 10px;
+    font-size: 40px;
+    margin: 0 10px 0 0 ;
   }
   @media only screen and (max-width: $mediumDisplay) {
-    font-size: 54px;
+    font-size: 40px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 34px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    margin: 0 5px;
+    margin: 0 5px 0 0 ;
   }
 
   span {
-    color: #D83634;
+    color: #FE5840;
   }
 }
 
@@ -145,26 +157,24 @@
 }
 
 .title {
-  font-size: 48px;
+  font-family: LexendLight;
+  font-size: 28px;
   letter-spacing: 1px;
+  opacity: 0.6;
   @media only screen and (max-width: $mediumDisplay) {
-    font-size: 38px;
+    font-size: 25px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 24px;
-  }
-
-  span {
-    color: #D83634;
+    font-size: 20px;
   }
 }
 
 .companies {
   font-family: Arial;
-  max-height: 300px;
-  font-size: 24px;
+  max-height: 350px;
+  font-size: 22px;
   overflow: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   line-height: 1.8;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 18px;

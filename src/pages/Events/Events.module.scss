@@ -1,0 +1,147 @@
+@import "src/variables";
+
+.root {
+  background: linear-gradient(#232725, #232725);
+  color: white;
+  font-family: Lexend;
+  padding: 50px 50px 0;
+  min-height: 100vh;
+
+  @media only screen and (max-width: $mediumDisplay) {
+    padding: 20px 80px 0;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    padding: 0 30px 0;
+  }
+}
+
+.pageTitle {
+  font-size: 45px;
+  letter-spacing: 1px;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 40px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 34px;
+  }
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.6;
+  margin: 20px 0;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 14px;
+  }
+}
+
+.tabButton, .activeTab {
+  color: white;
+  font-size: 20px;
+  background: transparent;
+  outline: none;
+  border: none;
+  margin-bottom: 30px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 50px;
+
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 16px;
+  }
+}
+
+.activeTab {
+  color: #FE5840;
+  border-bottom: 2px solid #FE5840;
+}
+
+.event {
+  display: flex;
+  font-family: LexendLight;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #282C2A;
+  padding-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.blockOne {
+  flex: 1;
+}
+
+.blockTwo {
+  flex: 2;
+}
+
+.eventDate {
+  font-size: 35px;
+  font-family: Lexend;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 26px;
+  }
+}
+
+.eventTime {
+  margin: 15px 0;
+  opacity: 0.6;
+  font-size: 16px;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 14px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 12px;
+  }
+}
+
+.eventZone {
+  padding: 10px 15px;
+  background: #3D413F;
+  width: max-content;
+  font-size: 14px;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 12px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 10px;
+  }
+}
+
+.eventTitle {
+  font-size: 35px;
+  font-family: LexendLight;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 26px;
+  }
+}
+
+.eventDesc {
+  font-size: 16px;
+  opacity: 0.6;
+  margin-top: 15px;
+
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 14px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 12px;
+  }
+}

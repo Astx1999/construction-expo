@@ -1,14 +1,13 @@
 import React from "react";
-import {ReactComponent as Rect} from "../../images/rect.svg";
 import styles from "./AboutUs.module.scss";
-import Advert from "../../images/advert.mp4";
-
 import CtaButton from "../../components/CtaButton/CtaButton";
 import {useTranslation} from "react-i18next";
 import {useModal} from "../../components/ModalContext/ModalContext";
 import useWindowResize from "../../hook/useWindowResize";
 import ReadMoreText from "../../components/ReadMoreText/ReadMoreText";
 import {useNavigate} from "react-router-dom";
+import AboutUsImg from '../../images/aboutUsIMG.png';
+import {ReactComponent as AboutUsOutline} from "../../images/aboutUsOutline.svg";
 
 const AboutUs = () => {
     const {t} = useTranslation();
@@ -17,44 +16,11 @@ const AboutUs = () => {
     const {width} = useWindowResize()
     return (
         <div className={styles.root}>
-            <div className={styles.title}>
-                {t("about_us")}
-                <span>.</span>
-            </div>
-
             <div className={styles.content}>
-                <div className={styles.videoContainer}>
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        controls
-                        className={styles.video}
-                    >
-                        <source src={Advert} type="video/mp4"/>
-                    </video>
-                    <div className={styles.redLine}>
-                        <div/>
-                        <div/>
-                        <div>
-                            <div/>
-                        </div>
-                    </div>
-                </div>
-
                 <div className={styles.textButton}>
                     <div className={styles.textWrapper}>
                         <div className={styles.textTitle}>
-                            <div className={styles.logo}>
-                                <Rect/>
-                            </div>
-                            <p> {t("for_visitors")} </p>
-                            <div className={styles.line}>
-                                <div/>
-                                <div/>
-                                <div/>
-                            </div>
+                            {t("about_the_exhibition")}
                         </div>
                         {width <= 767 ? (
                             <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={4}/>
@@ -67,9 +33,17 @@ const AboutUs = () => {
 
                     <div className={styles.button}>
                         <CtaButton onClick={() => {
-                            setIsOpen("visitor")
-                            navigate("/about-us/becomeavisitor")
-                        }} text={t("become_a_visitor")}/>
+                            setIsOpen("exhibitor")
+                            navigate("/about-us/becomeanexhibitor")
+                        }} text={t("become_an_exhibitor")}/>
+                    </div>
+                </div>
+                <div className={styles.imageBlock}>
+                    <div className={styles.imagePath}>
+                        <img className={styles.image} src={AboutUsImg} alt="about us image"/>
+                        <div className={styles.outline}>
+                            <AboutUsOutline/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ i18n
                 translation: amTranslation,
             },
         },
-        lng: 'am', // Default language
+        lng: 'en', // Default language
         fallbackLng: 'en', // Fallback language
         interpolation: {
             escapeValue: false, // Not needed for React

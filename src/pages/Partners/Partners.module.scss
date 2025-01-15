@@ -14,20 +14,21 @@
 }
 
 .title {
+  font-family: LexendLight;
   position: absolute;
   top: 80px;
-  font-size: 74px;
+  font-size: 80px;
   letter-spacing: 1px;
   padding-bottom: 40px;
   left: 40%;
   @media only screen and (max-width: $mediumDisplay) {
-    font-size: 54px;
+    font-size: 65px;
     top: 45px;
   }
   @media only screen and (max-width: $smallDisplay) {
     left: 0;
     margin-left: 0;
-    font-size: 35px;
+    font-size: 40px;
     position: relative;
     padding: 0;
     top: 0;
@@ -35,7 +36,7 @@
     margin-bottom: 40px;
   }
   span {
-    color: #D83634;
+    color: #FE5840;
   }
 }
 .partner{

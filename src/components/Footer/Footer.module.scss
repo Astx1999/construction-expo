@@ -2,47 +2,45 @@
 
 .root {
   padding: 120px 100px 0;
-  background: linear-gradient(#262626, #111010);
+  background: #232725;
   color: white;
+  font-family: Lexend;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 80px 30px 0;
   }
 }
 
 .title {
-  font-size: 74px;
+  font-size: 45px;
   letter-spacing: 1px;
-  margin-bottom: 120px;
+  margin-bottom: 60px;
 
-  span {
-    color: #D83634;
-  }
 
   @media only screen and (max-width: $mediumDisplay) {
-    font-size: 54px;
-    margin-bottom: 90px;
+    font-size: 35px;
+    margin-bottom: 50px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 40px;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 25px;
   }
 }
 .content {
   display: grid;
   grid-gap: 35px;
-  grid-template-rows: repeat(3, 1fr); /* Three rows */
+  grid-template-rows: repeat(2, 1fr); /* Three rows */
 
-  & > div:nth-child(3n+1) {
-    grid-row: 1; /* Every third item starting from 1 goes to the first row */
+  & > div:nth-child(2n+1) {
+    grid-row: 1;
   }
 
-  & > div:nth-child(3n+2) {
-    grid-row: 2; /* Every third item starting from 2 goes to the second row */
+  & > div:nth-child(2n+2) {
+    grid-row: 2;
   }
 
-  & > div:nth-child(3n) {
-    grid-row: 3; /* Every third item starting from 3 goes to the third row */
+  & > div:nth-child(2n) {
+    grid-row: 2;
   }
 
   @media only screen and (max-width: $mediumDisplay) {
@@ -68,33 +66,31 @@
 .callUs,
 .email,
 .followUs {
-  color: #CCCCCC;
-  font-size: 16px;
+  color: #fff;
+  font-size: 20px;
   line-height: 1.5;
   letter-spacing: 1px;
-  font-family: Arial;
+  font-family: LexendLight;
   a {
-    color: #CCCCCC;
+    color: #fff;
     text-decoration: none;
 
     &:visited, &:hover, &:focus-within, &:focus {
-      color: #CCCCCC;
+      color: #fff;
     }
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 12px;
+    font-size: 18px;
   }
 }
 
 .subTitle {
   color: white;
   letter-spacing: 1px;
-  font-size: 32px;
-  margin-bottom: 20px;
-  font-family: ArmguardU;
-  span {
-    color: #D83634;
-  }
+  font-size: 20px;
+  margin-bottom: 15px;
+  opacity: 0.6;
+  font-family: Lexend;
   @media only screen and (max-width: $smallDisplay) {
     font-size: 20px;
   }
@@ -121,7 +117,7 @@
 }
 .heart{
   text-align: center;
-  padding: 95px 0 40px;
+  padding: 10px 0 40px;
   font-weight: 100;
   color: #CCCCCC;
   letter-spacing: 1px;
@@ -155,5 +151,27 @@
   svg{
     height: 100%;
     width: 100%;
+  }
+}
+.underRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px 0 10px;
+  .logo{
+    width: 180px;
+    svg{
+      width: 100%;
+    }
+  }
+  .socials{
+    path{
+      fill: white;
+    }
+    svg{
+      width: 25px;
+      height: 25px;
+      margin-left: 10px;
+    }
   }
 }

@@ -12,11 +12,11 @@
 }
 .error{
   .select{
-    border: 1px solid #D83634;
+    border: 1px solid #FE5840;
   }
 }
 .errorText{
-  color: #D83634;
+  color: #FE5840;
 }
 .open{
   .arrow{
@@ -46,7 +46,7 @@
   padding: 5px 10px;
   cursor: pointer;
   &:hover{
-    color: #D83634;
+    color: #FE5840;
   }
 }
 .arrow{

@@ -20,7 +20,8 @@ import {ModalProvider, useModal} from "./components/ModalContext/ModalContext";
 import BecomeAnExhibitor from "./components/BecomeAnExhibitor/BecomeAnExhibitor";
 import useWindowResize from "./hook/useWindowResize";
 import AdminPage from "./layout/Admin/Admin";
-
+import PartnersAndSponsors from "./pages/PartnersAndSponsors/PartnersAndSponsors";
+import Events from "./pages/Events/Events";
 
 
 const App = () => {
@@ -72,7 +73,7 @@ const App = () => {
     useEffect(() => {
 
         setActiveSection(location.pathname.substring(1));
-        if (location.pathname.search("agenda") > 0){
+        if (location.pathname.search("agenda") > 0) {
             navigate("/uploads/pdf/agenda.pdf")
             window.location.reload();
         }
@@ -85,7 +86,6 @@ const App = () => {
             window.history.replaceState(null, '', `/${activeSection}`);
         }
     }, [activeSection]);
-
 
 
     // Handle scroll to update active section
@@ -183,44 +183,51 @@ const App = () => {
                 </>
             } */}
             {!urlHasAdminCommand ?
-                    <>
-                        {/*<Header activeSection={activeSection}/>*/}
-                        <div className="section right-bar-home" id="home">
-                            <Home/>
-                        </div>
-                        {/*<div className="section right-bar-home" id="about-us">
-                            <AboutUs/>
-                        </div>
-                        <div className="section right-bar-home" id="zones">
-                            <Zones/>
-                        </div>
-                        <div className="section right-bar-home" id="special-offers">
-                            <SpecialOffers/>
-                        </div>
-                        <div className="section right-bar-home" id="partners">
+                <>
+                    {/*<Header activeSection={activeSection}/>*/}
+                    <div className="section right-bar-home" id="home">
+                        <HomeNew/>
+                    </div>
+                    <div className="section right-bar-home" id="about-us">
+                        <AboutUs/>
+                    </div>
+                    <div className="section right-bar-home" id="zones">
+                        <Zones/>
+                    </div>
+                    <div className="section right-bar-home" id="special-offers">
+                        <SpecialOffers/>
+                    </div>
+                    <div className="section right-bar-home" id="events">
+                        <Events/>
+                    </div>
+                    <div className="section right-bar-home" id="partners-and-sponsors">
+                        <PartnersAndSponsors/>
+                    </div>
+
+                    {/* <div className="section right-bar-home" id="partners">
                             <Partners/>
                         </div>
                         <div className="section right-bar-home" id="blog">
                             <Blog/>
-                        </div>
-                        <div className="section right-bar-home" id="contact-us">
-                            <Footer/>
                         </div>*/}
-                     {/*   <Modal
+                    <div className="section right-bar-home" id="contact-us">
+                        <Footer/>
+                    </div>
+                    {/*   <Modal
                             isOpen={location.pathname.search("agenda") > 0}
                             style={customStyles}
                             contentLabel="PDF Modal"
                         >
                            <PdfViewer/>
                         </Modal>*/}
-                        <Modal
-                            isOpen={!!modalIsOpen}
-                            style={customStyles}
-                            contentLabel="Register Modal"
-                        >
-                            {modalIsOpen === "exhibitor" ? <BecomeAnExhibitor/> : <BecomeAVisitor/>}
-                        </Modal>
-                    </>
+                    <Modal
+                        isOpen={!!modalIsOpen}
+                        style={customStyles}
+                        contentLabel="Register Modal"
+                    >
+                        {modalIsOpen === "exhibitor" ? <BecomeAnExhibitor/> : <BecomeAVisitor/>}
+                    </Modal>
+                </>
                 :
                 <AdminPage/>
             }

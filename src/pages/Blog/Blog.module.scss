@@ -5,7 +5,7 @@
   color: white;
   padding: 100px 0 40px 140px;
   min-height: 100vh;
-  font-family: ArmguardU, Arial, serif;
+  font-family: Lexend;
 
   :global {
     .swiper-pagination-bullet {
@@ -16,7 +16,7 @@
     }
 
     .swiper-pagination-bullet-active {
-      background: #D83634;
+      background: #FE5840;
     }
 
     .swiper-slide-prev, .swiper-slide-next {
@@ -38,23 +38,24 @@
 }
 
 .title {
-  font-size: 74px;
+  font-family: LexendLight;
+  font-size: 80px;
   letter-spacing: 1px;
   text-align: center;
   padding-bottom: 80px;
 
   span {
-    color: #D83634;
+    color: #FE5840;
   }
 
   @media only screen and (max-width: $mediumDisplay) {
     margin-left: 0;
-    font-size: 54px;
+    font-size: 65px;
     padding-bottom: 40px;
   }
   @media only screen and (max-width: $smallDisplay) {
     margin-left: 0;
-    font-size: 35px;
+    font-size: 40px;
     padding-bottom: 20px;
     position: absolute;
     text-align: center;
@@ -166,7 +167,7 @@
   margin-left: 20px;
 
   div {
-    background: #D83634;
+    background: #FE5840;
     height: 5px;
 
     &:nth-child(1) {
