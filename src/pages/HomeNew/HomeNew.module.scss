@@ -4,11 +4,11 @@
   min-height: 100vh;
   color: white;
   padding: 50px 50px 0;
-  font-family: Lexend;
+  font-family: Lexend, serif;
   display: flex;
   justify-content: center;
   position: relative;
-  background: #232725;
+  background: #292E3F;
   overflow: hidden;
   @media only screen and (max-height: 749px) {
     padding: 230px 50px 0;
@@ -17,7 +17,7 @@
     padding: 20px 80px 0;
   }
   @media only screen and (max-width: $smallDisplay) {
-    padding: 0px 30px 0;
+    padding: 0 30px 0;
     align-items: flex-end;
   }
 }
@@ -38,7 +38,7 @@
 
 
 .title {
-  font-family: LexendLight;
+  font-family: LexendLight, serif;
   font-size: 80px;
   letter-spacing: 1px;
   margin-bottom: 30px;
@@ -81,7 +81,7 @@
   display: flex;
   align-items: center;
   width: 600px;
-  font-family: LexendLight;
+  font-family: LexendLight, serif;
   line-height: 1.5;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 16px;
@@ -115,12 +115,15 @@
 }
 
 .cta {
-  margin: 50px 0;
+  margin: 35px 0;
 }
 
 .location {
   display: flex;
   align-items: center;
+  margin: 30px 0;
+  font-size: 19px;
+
   span {
     padding-left: 30px;
   }
@@ -187,4 +190,18 @@
   stroke-dashoffset: 1000;
   animation: drawStroke 3s ease-out forwards;
   stroke-width: 3;
+}
+
+.RALogo {
+  width: 470px;
+  @media only screen and (max-width: $largeDisplay) {
+    width: 400px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    width: 300px;
+  }
+
+  img {
+    width: 100%;
+  }
 }

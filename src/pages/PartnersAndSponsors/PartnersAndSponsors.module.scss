@@ -3,7 +3,7 @@
 .root {
   color: white;
   padding-top: 0;
-  background: #232725;
+  background: #292E3F;
   position: relative;
   min-height: 60vh;
   overflow: hidden;
@@ -44,7 +44,7 @@
     .swiper-pagination {
       z-index: 6;
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
     }
 
     .swiper-pagination-bullet-active {

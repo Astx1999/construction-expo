@@ -3,7 +3,7 @@
 .root {
   color: white;
   padding-top: 0;
-  background: #232725;
+  background: #292E3F;
   position: relative;
   min-height: 60vh;
   overflow: hidden;
@@ -41,7 +41,7 @@
     .swiper-pagination {
       z-index: 6;
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
     }
 
     .swiper-pagination-bullet-active {
@@ -58,11 +58,11 @@
   }
 
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 40px 0px 0px 80px;
+    padding: 40px 0 0 80px;
     min-height: auto;
   }
   @media only screen and (max-width: $smallDisplay) {
-    padding: 60px 0 0px 30px;
+    padding: 60px 0 0 30px;
     min-height: auto;
   }
 }
@@ -77,8 +77,8 @@
   right: 80px;
   width: 100%;
   @media only screen and (max-width: $mediumDisplay) {
-    top: 0px;
-    padding: 0 30px 0px;
+    top: 0;
+    padding: 0 30px 0;
   }
   @media only screen and (max-width: $extraSmallDisplay) {
     display: none;

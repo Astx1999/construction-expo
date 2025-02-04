@@ -1,13 +1,14 @@
 @import "src/variables";
+
 .cta {
   cursor: pointer;
   position: relative;
   min-height: 80px;
-  width: 360px;
+  min-width: 260px;
+  max-width: 360px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  background-color: #FE5840;
   text-align: center;
   @media only screen and (max-width: $largeDisplay) {
     max-height: 65px;
@@ -16,13 +17,24 @@
   @media only screen and (max-width: $smallDisplay) {
     width: 280px;
   }
+
+  &.primary {
+    background-color: #FE5840;
+  }
+
+  &.secondary {
+    border: 1px solid #FE5840;
+    background-color: transparent;
+  }
 }
 
 .text {
-  position: absolute;
-  padding: 0 30px;
-  font-size: 20px;
+  padding: 0 20px;
+  font-size: 19px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 16px;
   }
@@ -30,15 +42,22 @@
     font-size: 14px;
   }
 }
-.mirror{
-  .text{
+
+.mirror {
+  .text {
     padding-left: 110px;
     padding-right: 0;
   }
-  &:after{
+
+  &:after {
     left: -10px;
   }
+
   @media only screen and (max-width: $smallDisplay) {
     width: 280px;
   }
+}
+.icon{
+  min-width: 25px;
+  margin-right: 10px;
 }

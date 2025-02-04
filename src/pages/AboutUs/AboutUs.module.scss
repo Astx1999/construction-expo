@@ -1,9 +1,9 @@
 @import "src/variables";
 
 .root {
-  background: linear-gradient(#232725, #232725);
+  background: linear-gradient(#292E3F, #292E3F);
   color: white;
-  font-family: Lexend;
+  font-family: Lexend, serif;
   padding: 50px 50px 0;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 20px 80px 0;
@@ -23,6 +23,10 @@
     justify-content: flex-start;
     padding-left: 30px;
   }
+}
+
+.downloadBtn {
+  margin-left: 30px;
 }
 
 .content {
@@ -107,7 +111,7 @@
   z-index: 0;
   @media only screen and (max-width: $mediumDisplay) {
     width: 50%;
-    right: 0px;
+    right: 0;
     left: 30px;
   }
 

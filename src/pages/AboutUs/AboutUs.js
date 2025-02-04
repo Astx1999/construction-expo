@@ -8,6 +8,7 @@ import ReadMoreText from "../../components/ReadMoreText/ReadMoreText";
 import {useNavigate} from "react-router-dom";
 import AboutUsImg from '../../images/aboutUsIMG.png';
 import {ReactComponent as AboutUsOutline} from "../../images/aboutUsOutline.svg";
+import {ReactComponent as DownloadIcon} from "../../images/download.svg";
 
 const AboutUs = () => {
     const {t} = useTranslation();
@@ -36,6 +37,9 @@ const AboutUs = () => {
                             setIsOpen("exhibitor")
                             navigate("/about-us/becomeanexhibitor")
                         }} text={t("become_an_exhibitor")}/>
+
+                        <CtaButton className={styles.downloadBtn} variant={'secondary'} onClick={() => {
+                        }} text={t("download_sponsorship_packages")} IconLeft={DownloadIcon}/>
                     </div>
                 </div>
                 <div className={styles.imageBlock}>

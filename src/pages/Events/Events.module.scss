@@ -1,9 +1,9 @@
 @import "src/variables";
 
 .root {
-  background: linear-gradient(#232725, #232725);
+  background: linear-gradient(#292E3F, #292E3F);
   color: white;
-  font-family: Lexend;
+  font-family: Lexend, serif;
   padding: 50px 50px 0;
   min-height: 100vh;
 
@@ -63,7 +63,7 @@
 
 .event {
   display: flex;
-  font-family: LexendLight;
+  font-family: LexendLight, serif;
   margin-bottom: 30px;
   border-bottom: 1px solid #282C2A;
   padding-bottom: 30px;
@@ -84,7 +84,7 @@
 
 .eventDate {
   font-size: 35px;
-  font-family: Lexend;
+  font-family: Lexend, serif;
 
   @media only screen and (max-width: $largeDisplay) {
     font-size: 30px;
@@ -123,7 +123,7 @@
 
 .eventTitle {
   font-size: 35px;
-  font-family: LexendLight;
+  font-family: LexendLight, serif;
 
   @media only screen and (max-width: $largeDisplay) {
     font-size: 30px;

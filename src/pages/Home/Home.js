@@ -1,5 +1,4 @@
 import {useCountdown} from "../../hook/useCountdown";
-import ComingSoonVideo from '../../images/comingSoonVideo.mp4';
 import {ReactComponent as Logo} from "../../images/logo.svg";
 import {ReactComponent as Fb} from "../../images/fb.svg";
 import {ReactComponent as Inst} from "../../images/inst.svg";
@@ -8,12 +7,13 @@ import {ReactComponent as LocationPin} from "../../images/locationpin.svg";
 import styles from './Home.module.scss'
 import classNames from "classnames";
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 
 const Home = () => {
     const targetDate = new Date('2025-04-04T12:00:00');
     const {days, hours, minutes, seconds} = useCountdown(targetDate);
-
+    const {t} = useTranslation();
     const formatTime = (value) => {
         return value < 10 ? `0${value}` : value;
     };
@@ -31,7 +31,7 @@ const Home = () => {
                 </div>
                 <p className={classNames(styles.place, styles.line3)}>
                     <LocationPin/>
-                    <span>Karen Demirchyan sports and concerts complex</span>
+                    <span>{t('karen_demirchyan')}</span>
                 </p>
                 <div className={styles.countdown}>
                     <div className={styles.block}>

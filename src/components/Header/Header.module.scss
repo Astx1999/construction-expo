@@ -4,7 +4,7 @@
   position: fixed;
   color: white;
   padding: 30px 140px 20px;
-  font-family: ArmguardU;
+  font-family: ArmguardU, serif;
   width: 100%;
   z-index: 3;
   display: flex;
@@ -17,7 +17,7 @@
     padding: 15px 140px;
   }
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 0px 80px
+    padding: 0 80px
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 0 30px
@@ -60,8 +60,8 @@
 }
 
 .scrolled {
-  background: #232725;
-  box-shadow: 0px 20px 35px #242424;
+  background: #292E3F;
+  box-shadow: 0 20px 35px #242424;
 }
 
 .logo {
@@ -140,7 +140,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #232725;
+  background: #292E3F;
   color: white;
   display: flex;
   flex-direction: column;
