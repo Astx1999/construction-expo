@@ -1,15 +1,11 @@
 import {Pagination} from "swiper/modules";
 
-import {ReactComponent as ZoneA} from "../../images/ZoneA.svg";
-import {ReactComponent as ZoneB} from "../../images/ZoneB.svg";
-import {ReactComponent as ZoneC} from "../../images/ZoneC.svg";
-import {ReactComponent as ZoneDE} from "../../images/ZoneD-E.svg";
-import {ReactComponent as ZoneD} from "../../images/ZoneD.svg";
-
-import {ReactComponent as Filter} from "../../images/filter.svg";
+import {ReactComponent as Info} from "../../images/info.svg";
 import {ReactComponent as Next} from "../../images/next.svg";
 import {ReactComponent as Prev} from "../../images/prev.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
+
+import ZoneA from "./ZoneA";
 
 // Import Swiper styles
 import "swiper/css";
@@ -18,7 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import styles from "./Zones.module.scss";
-import React from "react";
+import React, {cloneElement, useMemo, useState} from "react";
 import SwiperButtonPrev from "../../components/SwiperButtons/SwiperButtonPrev";
 import SwiperButtonNext from "../../components/SwiperButtons/SwiperButtonNext";
 import CtaButton from "../../components/CtaButton/CtaButton";
@@ -26,67 +22,50 @@ import useWindowResize from "../../hook/useWindowResize";
 import {useTranslation} from "react-i18next";
 import {useModal} from "../../components/ModalContext/ModalContext";
 import {useNavigate} from "react-router-dom";
+import CustomInput from "../../components/CustomInput/CustomInput";
+import {useMutation} from "@apollo/client";
+import {UPDATE_ZONE_ITEM_STATUS} from "../../graphql/queries";
+import {authClient} from "../../apolloClient";
 
 const zones = [
     {
         name: "A",
         image: <ZoneA/>,
         companies: [
-            "1. Armenia Travel",
-            "2. Booking",
-            "3. Wizz Air",
-            "4. Qatar Airways",
-            "5. Airbnb",
-            "6. GreenWay Travel",
-            "7. Blackstone Travel",
-            "8. Armenia Travel",
-            "9. Lufthansa",
-            "10. Tripadvisor",
+            "Transportation companies",
+            "Aerial excursion services",
+            "Adventure tourism services",
+            "Restaurants, catering, and gastronomic services",
         ],
     },
     {
         name: "B",
-        image: <ZoneB/>,
+        image: <ZoneA/>,
         companies: [
-            "2. Booking",
-            "3. Wizz Air",
-            "4. Qatar Airways",
-            "5. Airbnb",
-            "6. GreenWay Travel",
-            "7. Blackstone Travel",
-            "8. Armenia Travel",
-            "9. Lufthansa",
-            "10. Tripadvisor",
+            "Transportation companies",
+            "Aerial excursion services",
+            "Adventure tourism services",
+            "Restaurants, catering, and gastronomic services",
         ],
     },
     {
         name: "C",
-        image: <ZoneC/>,
+        image: <ZoneA/>,
         companies: [
-            "2. Booking",
-            "3. Wizz Air",
-            "4. Qatar Airways",
-            "5. Airbnb",
-            "6. GreenWay Travel",
-            "7. Blackstone Travel",
-            "8. Armenia Travel",
-            "9. Lufthansa",
-            "10. Tripadvisor",
+            "Transportation companies",
+            "Aerial excursion services",
+            "Adventure tourism services",
+            "Restaurants, catering, and gastronomic services",
         ],
     },
     {
         name: "D",
-        image: <ZoneD/>,
+        image: <ZoneA/>,
         companies: [
-            "2. Booking",
-            "3. Wizz Air",
-            "4. Qatar Airways",
-            "5. Airbnb",
-            "6. GreenWay Travel",
-            "7. Blackstone Travel",
-            "8. Armenia Travel",
-            "9. Lufthansa",
-            "10. Tripadvisor",
+            "Transportation companies",
+            "Aerial excursion services",
+            "Adventure tourism services",
+            "Restaurants, catering, and gastronomic services",
         ],
     }
 ];
@@ -106,14 +85,48 @@ export const Zones = () => {
     };
 
     const {setIsOpen} = useModal();
+
+    const [updateZoneItemStatus] = useMutation(UPDATE_ZONE_ITEM_STATUS, {client: authClient});
+
+    const [selectedZoneItems, setSelectedZoneItems] = useState([]);
+
+    const grouped = selectedZoneItems.reduce((acc, {zoneName, zoneItem}) => {
+        if (!acc[zoneName]) {
+            acc[zoneName] = [];
+        }
+        acc[zoneName].push(zoneItem);
+        return acc;
+    }, {});
+
+    const formattedString = Object.entries(grouped)
+        .map(([zone, items]) => `Zone ${zone} [${items.join(",")}]`)
+        .join(", ");
+
+
+    const handleBook = async () => {
+        try {
+            await Promise.all(
+                selectedZoneItems.map((item) =>
+                    updateZoneItemStatus({
+                        variables: {
+                            id: item.zoneId,  // Ensure this is the correct ID for `zone_item_status`
+                            _set: {status: "REQUESTED"}
+                        }
+                    })
+                )
+            );
+            setSelectedZoneItems([]);
+            console.log("All zones updated to REQUESTED");
+        } catch (error) {
+            console.error("Error updating zone status:", error);
+        }
+    };
+
     return (
         <div className={styles.root}>
             <Swiper
-                // install Swiper modules
-                // modules={[Pagination]}
                 spaceBetween={0}
                 slidesPerView={1}
-                // pagination={false}
             >
                 {zones.map((zone, index) => {
                     return (
@@ -134,7 +147,13 @@ export const Zones = () => {
                                         </SwiperButtonNext>
                                     </div>
                                 )}
-                                <div className={styles.image}>{zone.image}</div>
+                                <div className={styles.image}>
+                                    {cloneElement(zone.image, {
+                                        selectedZoneItems,
+                                        setSelectedZoneItems,
+                                    })}
+                                </div>
+
                                 <div className={styles.info}>
                                     {width > 1023 && (
                                         <div className={styles.navigation}>
@@ -161,7 +180,7 @@ export const Zones = () => {
                                         <div className={styles.title}>
                                             {t("exhibitors")}
                                         </div>
-                                        {/* <Filter /> */}
+                                        <Info/>
                                     </div>
 
                                     <div className={styles.companies}>
@@ -173,21 +192,32 @@ export const Zones = () => {
                                             );
                                         })}
                                     </div>
-
-                                    <div className={styles.button}>
-                                        <CtaButton
-                                            onClick={() => {
-                                                setIsOpen("exhibitor")
-                                                navigate("/zones/becomeanexhibitor")
-                                            }}
-                                            text={t("become_an_exhibitor")}/>
-                                    </div>
                                 </div>
                             </div>
                         </SwiperSlide>
                     );
                 })}
             </Swiper>
+            <div className={styles.bookingInfo}>
+                <div className={styles.statuses}>
+                    <div className={styles.available}>Available</div>
+                    <div className={styles.selected}>Selected</div>
+                    <div className={styles.unavailable}>Unavailable</div>
+                </div>
+                <div className={styles.input}>
+                    <CustomInput disabled placeholder={'Select Zone Items'}
+                                 value={formattedString}/>
+                    <div className={styles.button}>
+                        <CtaButton
+                            onClick={() => {
+                                // setIsOpen("exhibitor")
+                                // navigate("/zones/becomeanexhibitor")
+                                handleBook();
+                            }}
+                            text={t("Book")}/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

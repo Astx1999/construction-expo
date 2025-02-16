@@ -1,7 +1,7 @@
 @import "src/variables";
 
 .root {
-  background-color: #292E3F;
+  background-color: #22242C;
   width: 100%;
   height: 100vh;
   font-family: Lexend, serif;
@@ -141,7 +141,7 @@
   border-top-right-radius: 80px;
   margin-bottom: 50px;
   font-family: LexendLight, serif;
-  background-color: #292E3F;
+  background-color: #22242C;
   @media screen and (max-width: $smallDisplay) {
     height: 112px;
     width: 100px;
@@ -159,7 +159,7 @@
 
 .unit {
   position: absolute;
-  background-color: #292E3F;
+  background-color: #22242C;
   border: 2px solid #FE5840;
   width: 120px;
   text-align: center;

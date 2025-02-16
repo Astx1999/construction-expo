@@ -26,6 +26,19 @@ export const GET_VISITOR_INTERESTS = gql`
 }
 `;
 
+
+export const GET_ZONE_ITEMS = gql`
+  query GetZoneItems {
+    zoneItems{
+      id
+      status
+      name
+      classname
+    }
+  }
+`;
+
+
 export const GET_TYPES = gql`
 query GetTypes {
     types {
@@ -129,6 +142,38 @@ export const UPDATE_VISITOR = gql`
     }
   }
 `;
+
+export const UPDATE_ZONE_ITEM = gql`
+  mutation UpdateZoneItem($id: uuid!, $_set: zoneItems_set_input!) {
+    updateZoneItem(pk_columns: { id: $id }, _set: $_set) {
+      affected_rows
+      returning {
+        status
+      }
+    }
+  }
+`;
+
+export const UPDATE_ZONE_ITEMS = gql`
+  mutation UpdateZoneItems($where: zoneItems_bool_exp!, $_set: zoneItems_set_input!) {
+    updateZoneItems(where: $where, _set: $_set) {
+      affected_rows
+      returning {
+        status
+      }
+    }
+  }
+`
+
+export const UPDATE_ZONE_ITEM_STATUS = gql`
+  mutation UpdateZoneItemStatus($id: uuid!, $_set: zoneItemStatuses_set_input!) {
+    updateZoneItemStatus(pk_columns: { id: $id }, _set: $_set) {
+      affected_rows
+      returning {
+        status
+      }
+    }
+  }`
 
 
 export const ADD_EXHIBITOR = gql`
