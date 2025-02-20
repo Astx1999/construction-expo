@@ -56,3 +56,6 @@ code {
     monospace;
 }
 
+polygon::selection {
+    background: transparent;
+}

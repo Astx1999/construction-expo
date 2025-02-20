@@ -2,13 +2,9 @@ import React from 'react';
 import {useQuery} from "@apollo/client";
 import {GET_ZONE_ITEMS} from "../../graphql/queries";
 
-const ZoneD = ({selectedZoneItems, setSelectedZoneItems}) => {
-    const {data: zoneItemsData} = useQuery(GET_ZONE_ITEMS);
-
+const ZoneD = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
     const zoneName = "D"
     const {zoneItems} = zoneItemsData || {};
-
-    console.log(selectedZoneItems)
 
     const getPolygonStyle = (className) => {
         const item = zoneItems?.find((item) => item.classname === className);

@@ -17,7 +17,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import styles from "./Zones.module.scss";
-import React, {cloneElement, useMemo, useState} from "react";
+import React, {cloneElement, useEffect, useState} from "react";
 import SwiperButtonPrev from "../../components/SwiperButtons/SwiperButtonPrev";
 import SwiperButtonNext from "../../components/SwiperButtons/SwiperButtonNext";
 import CtaButton from "../../components/CtaButton/CtaButton";
@@ -26,8 +26,8 @@ import {useTranslation} from "react-i18next";
 import {useModal} from "../../components/ModalContext/ModalContext";
 import {useNavigate} from "react-router-dom";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import {useMutation} from "@apollo/client";
-import {UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
+import {useMutation, useQuery} from "@apollo/client";
+import {GET_ZONE_ITEMS, UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
 import {authClient} from "../../apolloClient";
 
 const zones = [
@@ -89,8 +89,26 @@ export const Zones = () => {
 
     const {setIsOpen} = useModal();
 
-    const [updateZoneItemStatus] = useMutation(UPDATE_ZONE_ITEM_STATUS, {client: authClient});
-    const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {client: authClient});
+
+    const [zoneItemsData, setZoneItemsData] = useState([]);
+
+
+    const {data, refetch} = useQuery(GET_ZONE_ITEMS);
+
+    const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {
+        client: authClient,
+        onCompleted: () => {
+            refetch(); // Force refetch after mutation
+        },
+    });
+
+
+    useEffect(() => {
+        if (data) {
+            setZoneItemsData(data);
+        }
+    }, [data]);
+
 
     const [selectedZoneItems, setSelectedZoneItems] = useState([]);
 
@@ -109,17 +127,6 @@ export const Zones = () => {
 
     const handleBook = async () => {
         try {
-            // await Promise.all(
-            //     selectedZoneItems.map((item) =>
-            //         updateZoneItemStatus({
-            //             variables: {
-            //                 id: item.zoneId,  // Ensure this is the correct ID for `zone_item_status`
-            //                 _set: {status: "REQUESTED"}
-            //             }
-            //         })
-            //     )
-            // );
-
             const zoneIds = selectedZoneItems.map((item) => item.zoneId); // Collect all zone IDs
 
             await updateZoneItems({
@@ -167,6 +174,7 @@ export const Zones = () => {
                                     {cloneElement(zone.image, {
                                         selectedZoneItems,
                                         setSelectedZoneItems,
+                                        zoneItemsData
                                     })}
                                 </div>
 
