@@ -27,7 +27,7 @@ import {useModal} from "../../components/ModalContext/ModalContext";
 import {useNavigate} from "react-router-dom";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import {useMutation} from "@apollo/client";
-import {UPDATE_ZONE_ITEM_STATUS} from "../../graphql/queries";
+import {UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
 import {authClient} from "../../apolloClient";
 
 const zones = [
@@ -90,6 +90,7 @@ export const Zones = () => {
     const {setIsOpen} = useModal();
 
     const [updateZoneItemStatus] = useMutation(UPDATE_ZONE_ITEM_STATUS, {client: authClient});
+    const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {client: authClient});
 
     const [selectedZoneItems, setSelectedZoneItems] = useState([]);
 
@@ -108,16 +109,25 @@ export const Zones = () => {
 
     const handleBook = async () => {
         try {
-            await Promise.all(
-                selectedZoneItems.map((item) =>
-                    updateZoneItemStatus({
-                        variables: {
-                            id: item.zoneId,  // Ensure this is the correct ID for `zone_item_status`
-                            _set: {status: "REQUESTED"}
-                        }
-                    })
-                )
-            );
+            // await Promise.all(
+            //     selectedZoneItems.map((item) =>
+            //         updateZoneItemStatus({
+            //             variables: {
+            //                 id: item.zoneId,  // Ensure this is the correct ID for `zone_item_status`
+            //                 _set: {status: "REQUESTED"}
+            //             }
+            //         })
+            //     )
+            // );
+
+            const zoneIds = selectedZoneItems.map((item) => item.zoneId); // Collect all zone IDs
+
+            await updateZoneItems({
+                variables: {
+                    where: {id: {_in: zoneIds}},
+                    _set: {status: "REQUESTED"}
+                }
+            });
             setSelectedZoneItems([]);
             console.log("All zones updated to REQUESTED");
         } catch (error) {

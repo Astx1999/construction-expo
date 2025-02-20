@@ -16,9 +16,9 @@ const ZoneD = ({selectedZoneItems, setSelectedZoneItems}) => {
 
         return {
             cursor: "pointer",
-            pointerEvents: item?.status === "BOOKED" ? "none" : "auto",
-            fill: isSelected ? "transparent" : item?.status === "BOOKED" ? "rgba(254, 88, 64, 0.3)" : "transparent",
-            stroke: isSelected || item?.status === "BOOKED" ? "#FE5840" : "#fff",
+            pointerEvents: item?.status === "BOOKED" || item?.status === "REQUESTED" ? "none" : "auto",
+            fill: isSelected ? "transparent" : item?.status === "BOOKED" || item?.status === "REQUESTED" ? "rgba(254, 88, 64, 0.3)" : "transparent",
+            stroke: isSelected || item?.status === "BOOKED" || item?.status === "REQUESTED" ? "#FE5840" : "#fff",
         };
     };
     const handleSelect = (className) => {
