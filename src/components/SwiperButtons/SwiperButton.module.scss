@@ -23,8 +23,8 @@
 }
 
 .navButtonHidden {
-  //visibility: hidden;
-  display: none;
+  visibility: hidden;
+  //display: none;
 
   @media only screen and (max-width: $mediumDisplay) {
     width: 60px;

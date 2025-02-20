@@ -59,7 +59,7 @@ const HomeNew = () => {
                             setIsOpen("exhibitor")
                             navigate("/home/becomeanexhibitor")
                         }}
-                        mirror={!(width > 767)}
+                        // mirror={!(width > 767)}
                     />
                 </div>
                 <div className={classNames(styles.dates)}>

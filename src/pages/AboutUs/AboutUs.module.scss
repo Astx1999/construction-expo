@@ -21,12 +21,16 @@
   margin-top: 40px;
   @media only screen and (max-width: $mediumDisplay) {
     justify-content: flex-start;
-    padding-left: 30px;
+    flex-direction: column;
   }
 }
 
 .downloadBtn {
   margin-left: 30px;
+  @media only screen and (max-width: $mediumDisplay) {
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }
 
 .content {
@@ -58,7 +62,7 @@
     padding: 50px 30px
   }
   @media only screen and (max-width: $smallDisplay) {
-    padding: 50px 30px 0;
+    padding: 50px 0px 0;
   }
 }
 

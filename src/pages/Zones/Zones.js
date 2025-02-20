@@ -6,6 +6,9 @@ import {ReactComponent as Prev} from "../../images/prev.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import ZoneA from "./ZoneA";
+import ZoneB from "./ZoneB";
+import ZoneC from "./ZoneC";
+import ZoneD from "./ZoneD";
 
 // Import Swiper styles
 import "swiper/css";
@@ -40,7 +43,7 @@ const zones = [
     },
     {
         name: "B",
-        image: <ZoneA/>,
+        image: <ZoneB/>,
         companies: [
             "Transportation companies",
             "Aerial excursion services",
@@ -50,7 +53,7 @@ const zones = [
     },
     {
         name: "C",
-        image: <ZoneA/>,
+        image: <ZoneC/>,
         companies: [
             "Transportation companies",
             "Aerial excursion services",
@@ -60,7 +63,7 @@ const zones = [
     },
     {
         name: "D",
-        image: <ZoneA/>,
+        image: <ZoneD/>,
         companies: [
             "Transportation companies",
             "Aerial excursion services",
@@ -134,9 +137,12 @@ export const Zones = () => {
                             <div className={styles.zone}>
                                 {width <= 1023 && (
                                     <div className={styles.navigation}>
-                                        <SwiperButtonPrev isVisible={isPrevButtonVisible(index)}>
-                                            <Prev/>
-                                        </SwiperButtonPrev>
+                                        <div style={{marginRight: '10px'}}>
+                                            <SwiperButtonPrev isVisible={isPrevButtonVisible(index)}>
+                                                <Prev/>
+                                            </SwiperButtonPrev>
+                                        </div>
+
                                         <div className={styles.name}>
                                             {t("zone")} <span>{zone.name}</span>
                                         </div>
@@ -163,9 +169,11 @@ export const Zones = () => {
                                             <div className={styles.arrows}>
                                                 <span className={styles.pageCount}>{index + 1} <span
                                                     className={styles.left}>/{zones.length}</span></span>
-                                                <SwiperButtonPrev isVisible={isPrevButtonVisible(index)}>
-                                                    <Prev/>
-                                                </SwiperButtonPrev>
+                                                <div style={{marginRight: '10px'}}>
+                                                    <SwiperButtonPrev isVisible={isPrevButtonVisible(index)}>
+                                                        <Prev/>
+                                                    </SwiperButtonPrev>
+                                                </div>
                                                 <SwiperButtonNext
                                                     isVisible={isNextButtonVisible(index, zones)}
                                                 >
