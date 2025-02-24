@@ -7,7 +7,7 @@
 }
 .selectedOptions{
   height: 60px;
-  background: #262626;
+  background: #22242C;
   color: white;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border: 1px solid #313131;
+  border: 1px solid #4E5056;
   cursor: pointer;
 }
 .error{
@@ -49,12 +49,12 @@
   color: #FE5840;
 }
 .dropdownOptions{
-  background: #262626;
+  background: #22242C;
   padding: 10px;
   position: absolute;
   width: 100%;
   top: 95px;
-  border: 1px solid #313131;
+  border: 1px solid #4E5056;
   z-index: 1;
   max-height: 260px;
   overflow: auto;

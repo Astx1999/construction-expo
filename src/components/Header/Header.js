@@ -105,7 +105,7 @@ const Header = ({activeSection}) => {
             >
                 <Logo/>
             </div>
-            {width > 1440 ? (
+            {width > 1200 ? (
                 <div className={styles.nav}>
                     {menuItems.map((menuItem, index) => (
                         <div key={index} className={styles.item}>

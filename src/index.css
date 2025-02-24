@@ -7,6 +7,7 @@
     font-family: LexendBold;
     src: url("fonts/Lexend-Bold.ttf") format("truetype");
 }
+
 @font-face {
     font-family: LexendLight;
     src: url("fonts/Lexend-Light.ttf") format("truetype");
@@ -16,6 +17,7 @@
     font-family: ArmguardU;
     src: url("fonts/ArmguardU.ttf") format("truetype");
 }
+
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -36,6 +38,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #797979;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -58,4 +61,8 @@ code {
 
 polygon::selection {
     background: transparent;
+}
+
+#zones .zoneStand:hover {
+    stroke: #FE5840!important;
 }

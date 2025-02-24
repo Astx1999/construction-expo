@@ -3,7 +3,7 @@
 .root {
   position: fixed;
   color: white;
-  padding: 30px 140px 20px;
+  padding: 30px 50px 20px;
   font-family: ArmguardU, serif;
   width: 100%;
   z-index: 3;
@@ -14,7 +14,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease-in-out; /* Combined transitions */
 
   @media only screen and (max-width: $largeDisplay) {
-    padding: 15px 140px;
+    padding: 15px 50px;
   }
   @media only screen and (max-width: $mediumDisplay) {
     padding: 0 80px
@@ -110,7 +110,7 @@
   padding-left: 40px;
   font-size: 18px;
   cursor: pointer;
-  @media only screen and (max-width: $largeLaptopDisplay) {
+  @media only screen and (max-width: $largeDisplay) {
     display: none;
   }
 }

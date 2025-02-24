@@ -27,8 +27,9 @@ import {useModal} from "../../components/ModalContext/ModalContext";
 import {useNavigate} from "react-router-dom";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import {useMutation, useQuery} from "@apollo/client";
-import {GET_ZONE_ITEMS, UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
+import {GET_ZONE_ITEMS, GET_ZONES, UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
 import {authClient} from "../../apolloClient";
+import InfoIconWithTooltip from "../../components/InfoIconWithTooltip/InfoIconWithTooltip";
 
 const zones = [
     {
@@ -40,6 +41,8 @@ const zones = [
             "Adventure tourism services",
             "Restaurants, catering, and gastronomic services",
         ],
+        members: "members_A",
+        infoText: 'info_text_A'
     },
     {
         name: "B",
@@ -50,6 +53,8 @@ const zones = [
             "Adventure tourism services",
             "Restaurants, catering, and gastronomic services",
         ],
+        members: "members_B",
+        infoText: 'info_text_B'
     },
     {
         name: "C",
@@ -60,6 +65,8 @@ const zones = [
             "Adventure tourism services",
             "Restaurants, catering, and gastronomic services",
         ],
+        members: "members_C",
+        infoText: 'info_text_C'
     },
     {
         name: "D",
@@ -70,6 +77,8 @@ const zones = [
             "Adventure tourism services",
             "Restaurants, catering, and gastronomic services",
         ],
+        members: "members_D",
+        infoText: 'info_text_D'
     }
 ];
 
@@ -94,6 +103,7 @@ export const Zones = () => {
 
 
     const {data, refetch} = useQuery(GET_ZONE_ITEMS);
+    const {data: zonesData} = useQuery(GET_ZONES);
 
     const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {
         client: authClient,
@@ -101,7 +111,6 @@ export const Zones = () => {
             refetch(); // Force refetch after mutation
         },
     });
-
 
     useEffect(() => {
         if (data) {
@@ -142,8 +151,34 @@ export const Zones = () => {
         }
     };
 
+    const handleSelect = (className) => {
+        const zoneItemObj = zoneItemsData.zoneItems.find((item) => item.classname === className);
+        if (!zoneItemObj) return;
+
+        const {id: zoneStandId} = zoneItemObj;
+        const newZoneId = zoneItemObj.zoneId;
+        const zoneName = zonesData.zones.find((zone) => zone.id === newZoneId)?.name;
+        const match = className.match(/Item(\d+)$/);
+        const zoneItem = match ? match[1] : null;
+
+        setSelectedZoneItems((prev) => {
+            const existingZone = prev.find((item) => item.zoneId === newZoneId);
+
+            if (existingZone) {
+                const isSelected = prev.some((item) => item.className === className);
+                if (isSelected) {
+                    return prev.filter((item) => item.className !== className);
+                } else {
+                    return [...prev, {zoneStandId, zoneId: newZoneId, zoneName, zoneItem, className}];
+                }
+            } else {
+                return [{zoneStandId, zoneId: newZoneId, zoneName, zoneItem, className}];
+            }
+        });
+    };
+
     return (
-        <div className={styles.root}>
+        <div className={styles.root} id="zones">
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
@@ -173,8 +208,8 @@ export const Zones = () => {
                                 <div className={styles.image}>
                                     {cloneElement(zone.image, {
                                         selectedZoneItems,
-                                        setSelectedZoneItems,
-                                        zoneItemsData
+                                        zoneItemsData,
+                                        handleSelect
                                     })}
                                 </div>
 
@@ -206,18 +241,11 @@ export const Zones = () => {
                                         <div className={styles.title}>
                                             {t("exhibitors")}
                                         </div>
-                                        <Info/>
+                                        <InfoIconWithTooltip text={t(zone.infoText)}/>
                                     </div>
 
-                                    <div className={styles.companies}>
-                                        {zone.companies.map((company, index) => {
-                                            return (
-                                                <p key={index}>
-                                                    {company}
-                                                </p>
-                                            );
-                                        })}
-                                    </div>
+                                    <div className={styles.companies}
+                                         dangerouslySetInnerHTML={{__html: t(zone.members)}}/>
                                 </div>
                             </div>
                         </SwiperSlide>

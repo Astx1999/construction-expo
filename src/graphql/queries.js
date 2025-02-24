@@ -29,11 +29,12 @@ export const GET_VISITOR_INTERESTS = gql`
 
 export const GET_ZONE_ITEMS = gql`
   query GetZoneItems {
-    zoneItems{
+    zoneItems {
       id
       status
       name
       classname
+      zoneId
     }
   }
 `;

@@ -1,9 +1,6 @@
 import React from 'react';
-import {useQuery} from "@apollo/client";
-import {GET_ZONE_ITEMS} from "../../graphql/queries";
 
-const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
-    const zoneName = "B"
+const ZoneB = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
     const {zoneItems} = zoneItemsData || {};
 
     const getPolygonStyle = (className) => {
@@ -16,23 +13,6 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
             fill: isSelected ? "transparent" : item?.status === "BOOKED" || item?.status === "REQUESTED" ? "rgba(254, 88, 64, 0.3)" : "transparent",
             stroke: isSelected || item?.status === "BOOKED" || item?.status === "REQUESTED" ? "#FE5840" : "#fff",
         };
-    };
-    const handleSelect = (className) => {
-        const zoneItemObj = zoneItems.find((item) => item.classname === className);
-        if (!zoneItemObj) return;
-
-        const {id: zoneId} = zoneItemObj;
-
-        setSelectedZoneItems((prev) => {
-            const isSelected = prev.some((item) => item.zoneId === zoneId);
-
-            if (isSelected) {
-                return prev.filter((item) => item.zoneId !== zoneId);
-            } else {
-                const match = className.match(/Item(\d+)$/);
-                return [...prev, {zoneId, zoneName, zoneItem: match ? match[1] : null, className}];
-            }
-        });
     };
 
     return zoneItems && zoneItems.length ? (
@@ -145,7 +125,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1061.48,990.03 1061.48,798.13 948.22,798.13 948.22,990.03 "
-                            id="polygon42" className="zoneBItem13" style={getPolygonStyle("zoneBItem13")}
+                            id="polygon42" className="zoneBItem13 zoneStand" style={getPolygonStyle("zoneBItem13")}
                             onClick={() => handleSelect("zoneBItem13")}/>
                         <g
                             transform="matrix(0.999996 0 0 1 -8340.63 3638.83)"
@@ -177,7 +157,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="1338.02,1944.67 1300.02,1802.72 1371.01,1783.7 1409.01,1925.65 "
-                            id="polygon52" className="zoneBItem2" style={getPolygonStyle("zoneBItem2")}
+                            id="polygon52" className="zoneBItem2 zoneStand" style={getPolygonStyle("zoneBItem2")}
                             onClick={() => handleSelect("zoneBItem2")}/>
                         <polygon
                             fill="none"
@@ -185,43 +165,43 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1333.59,405.67 1333.59,296.11 1196.51,296.11 1196.51,405.67 "
-                            id="polygon54" className="zoneBItem21" style={getPolygonStyle("zoneBItem21")}
+                            id="polygon54" className="zoneBItem21 zoneStand" style={getPolygonStyle("zoneBItem21")}
                             onClick={() => handleSelect("zoneBItem21")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="983.42,1942.28 1020.95,1802.08 950.83,1783.29 913.29,1923.49 "
-                            id="polygon56" className="zoneBItem1" style={getPolygonStyle("zoneBItem1")}
+                            id="polygon56" className="zoneBItem1 zoneStand" style={getPolygonStyle("zoneBItem1")}
                             onClick={() => handleSelect("zoneBItem1")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="1430.11,1687.18 1424.3,1684.82 1356.08,1667.61 1353.12,1667.15 1396.09,1488.22 1467.8,1503.71 1474.04,1504.25 "
-                            id="polygon58" className="zoneBItem6" style={getPolygonStyle("zoneBItem6")}
+                            id="polygon58" className="zoneBItem6 zoneStand" style={getPolygonStyle("zoneBItem6")}
                             onClick={() => handleSelect("zoneBItem6")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="806.45,1280.31 812.6,1279.07 882.83,1274.76 885.82,1274.85 876.65,1091.06 803.32,1093.04 797.08,1092.41 "
-                            id="polygon60" className="zoneBItem9" style={getPolygonStyle("zoneBItem9")}
+                            id="polygon60" className="zoneBItem9 zoneStand" style={getPolygonStyle("zoneBItem9")}
                             onClick={() => handleSelect("zoneBItem9")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="792.69,873.51 798.95,873.02 869.18,877.22 872.14,877.68 885.24,694.13 812.2,687.23 806.09,685.86 "
-                            id="polygon62" className="zoneBItem15" style={getPolygonStyle("zoneBItem15")}
+                            id="polygon62" className="zoneBItem15 zoneStand" style={getPolygonStyle("zoneBItem15")}
                             onClick={() => handleSelect("zoneBItem15")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="1510.53,1283.94 1434.29,1276.78 1431.29,1276.8 1444.39,1094.19 1523.7,1100.26 "
-                            id="polygon64" className="zoneBItem12" style={getPolygonStyle("zoneBItem12")}
+                            id="polygon64" className="zoneBItem12 zoneStand" style={getPolygonStyle("zoneBItem12")}
                             onClick={() => handleSelect("zoneBItem12")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="1523.38,873.51 1517.13,873.02 1446.89,877.22 1443.93,877.68 1430.83,694.13 1503.87,687.23 1509.99,685.86 "
-                            id="polygon66" className="zoneBItem17" style={getPolygonStyle("zoneBItem17")}
+                            id="polygon66" className="zoneBItem17 zoneStand" style={getPolygonStyle("zoneBItem17")}
                             onClick={() => handleSelect("zoneBItem17")}/>
                         <polygon
                             fill="none"
@@ -229,7 +209,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1127,405.67 1127,296.11 989.91,296.11 989.91,405.67 "
-                            id="polygon68" className="zoneBItem20" style={getPolygonStyle("zoneBItem20")}
+                            id="polygon68" className="zoneBItem20 zoneStand" style={getPolygonStyle("zoneBItem20")}
                             onClick={() => handleSelect("zoneBItem20")}/>
                         <polygon
                             fill="none"
@@ -238,7 +218,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1360.57,861.33 1360.57,724.63 1137.67,724.63 1137.67,861.33 "
-                            id="polygon70" className="zoneBItem16" style={getPolygonStyle("zoneBItem16")}
+                            id="polygon70" className="zoneBItem16 zoneStand" style={getPolygonStyle("zoneBItem16")}
                             onClick={() => handleSelect("zoneBItem16")}/>
                         <polygon
                             fill="none"
@@ -247,7 +227,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1061.48,724.63 1061.48,505.92 948.22,505.92 948.22,724.63 "
-                            id="polygon72" className="zoneBItem18" style={getPolygonStyle("zoneBItem18")}
+                            id="polygon72" className="zoneBItem18 zoneStand" style={getPolygonStyle("zoneBItem18")}
                             onClick={() => handleSelect("zoneBItem18")}/>
                         <polygon
                             fill="none"
@@ -256,7 +236,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1358.37,649.37 1358.37,507.37 1135.48,507.37 1135.48,649.37 "
-                            id="polygon74" className="zoneBItem19" style={getPolygonStyle("zoneBItem19")}
+                            id="polygon74" className="zoneBItem19 zoneStand" style={getPolygonStyle("zoneBItem19")}
                             onClick={() => handleSelect("zoneBItem19")}/>
                         <polygon
                             fill="none"
@@ -265,7 +245,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1360.57,1059.92 1360.57,922.88 1137.67,922.88 1137.67,1059.92 "
-                            id="polygon76" className="zoneBItem14" style={getPolygonStyle("zoneBItem14")}
+                            id="polygon76" className="zoneBItem14 zoneStand" style={getPolygonStyle("zoneBItem14")}
                             onClick={() => handleSelect("zoneBItem14")}/>
                         <polygon
                             fill="none"
@@ -274,7 +254,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1307,1659.54 1307,1522.49 1198.83,1522.49 1198.83,1659.54 "
-                            id="polygon78" className="zoneBItem5" style={getPolygonStyle("zoneBItem5")}
+                            id="polygon78" className="zoneBItem5 zoneStand" style={getPolygonStyle("zoneBItem5")}
                             onClick={() => handleSelect("zoneBItem5")}/>
                         <polygon
                             fill="none"
@@ -283,7 +263,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1360.81,1435.38 1360.81,1298.32 1196.15,1298.32 1196.15,1435.38 "
-                            id="polygon80" className="zoneBItem8" style={getPolygonStyle("zoneBItem8")}
+                            id="polygon80" className="zoneBItem8 zoneStand" style={getPolygonStyle("zoneBItem8")}
                             onClick={() => handleSelect("zoneBItem8")}/>
                         <polygon
                             fill="none"
@@ -292,7 +272,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1358.37,1241.05 1358.37,1129.33 1136.89,1129.33 1136.89,1241.05 "
-                            id="polygon82" className="zoneBItem11" style={getPolygonStyle("zoneBItem11")}
+                            id="polygon82" className="zoneBItem11 zoneStand" style={getPolygonStyle("zoneBItem11")}
                             onClick={() => handleSelect("zoneBItem11")}/>
                         <polygon
                             fill="none"
@@ -301,7 +281,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1061.48,1212.8 1061.48,1069.79 948.22,1069.79 948.22,1212.8 "
-                            id="polygon84" className="zoneBItem10" style={getPolygonStyle("zoneBItem10")}
+                            id="polygon84" className="zoneBItem10 zoneStand" style={getPolygonStyle("zoneBItem10")}
                             onClick={() => handleSelect("zoneBItem10")}/>
                         <polygon
                             fill="none"
@@ -310,7 +290,7 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1113.9,1435.38 1113.9,1298.32 949.24,1298.32 949.24,1435.38 "
-                            id="polygon86" className="zoneBItem7" style={getPolygonStyle("zoneBItem7")}
+                            id="polygon86" className="zoneBItem7 zoneStand" style={getPolygonStyle("zoneBItem7")}
                             onClick={() => handleSelect("zoneBItem7")}/>
                         <polygon
                             fill="none"
@@ -319,13 +299,13 @@ const ZoneB = ({selectedZoneItems, setSelectedZoneItems, zoneItemsData}) => {
                             strokeWidth="4.33"
                             strokeMiterlimit="22.9256"
                             points="1115.03,1659.54 1115.03,1522.49 1006.86,1522.49 1006.86,1659.54 "
-                            id="polygon88" className="zoneBItem4" style={getPolygonStyle("zoneBItem4")}
+                            id="polygon88" className="zoneBItem4 zoneStand" style={getPolygonStyle("zoneBItem4")}
                             onClick={() => handleSelect("zoneBItem4")}/>
                         <polygon
                             fill="none"
                             stroke="#FEFEFE" strokeWidth="4.33" strokeLinejoin="bevel" strokeMiterlimit="22.9256"
                             points="887.37,1689.2 893.18,1686.84 961.4,1669.63 964.36,1669.17 921.39,1490.23 849.69,1505.73 843.44,1506.27 "
-                            id="polygon90" className="zoneBItem3" style={getPolygonStyle("zoneBItem3")}
+                            id="polygon90" className="zoneBItem3 zoneStand" style={getPolygonStyle("zoneBItem3")}
                             onClick={() => handleSelect("zoneBItem3")}/>
                         <path
                             fill="#FEFEFE" fillRule="nonzero"

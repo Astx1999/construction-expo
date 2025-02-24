@@ -47,9 +47,9 @@ const HomeNew = () => {
                 </svg>
             </div>
             <div className={styles.content}>
-                <p className={classNames(styles.title, styles.line1)}>{t("international")}</p>
-                <p className={classNames(styles.title, styles.line2)}>{t("tourism_fair")}</p>
-                <p className={classNames(styles.title, styles.line3)}>{t("armenia")} 2025</p>
+                <p className={classNames(styles.title, styles.line1)}>{t("your_opportunity")}</p>
+                <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>
+                <p className={classNames(styles.title, styles.line3)}>{t("the_world")}</p>
                 {/*<Countdown/>*/}
 
                 <div className={styles.cta}>
@@ -63,7 +63,7 @@ const HomeNew = () => {
                     />
                 </div>
                 <div className={classNames(styles.dates)}>
-                    {t("april")} 4 - 6, 2025
+                    {t("april")} 4 / 5 / 6, 2025
                 </div>
 
                 <div className={classNames(styles.location)}>

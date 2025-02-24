@@ -24,7 +24,7 @@ const AboutUs = () => {
                             {t("about_the_exhibition")}
                         </div>
                         {width <= 767 ? (
-                            <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={4}/>
+                            <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={9}/>
                         ) : width <= 1200 ? (
                             <div className={styles.text} dangerouslySetInnerHTML={{__html: t("about_us_text_mobile")}}/>
                         ) : (
@@ -39,7 +39,7 @@ const AboutUs = () => {
                         }} text={t("become_an_exhibitor")}/>
 
                         <CtaButton className={styles.downloadBtn} variant={'secondary'} onClick={() => {
-                        }} text={t("download_sponsorship_packages")} IconLeft={DownloadIcon}/>
+                        }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>
                     </div>
                 </div>
                 <div className={styles.imageBlock}>

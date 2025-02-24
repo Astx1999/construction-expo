@@ -20,28 +20,28 @@ import {useTranslation} from "react-i18next";
 
 const partners = [
     {
-        img: Partner1,
-        title: "Fast Bank",
-        subtitle: "Sponsor",
-        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+        img: Partner2,
+        title: "Alpha Consulting",
+        subtitle: "General partner",
+        desc: "partners_alpha_desc"
+    },
+    {
+        img: Partner2,
+        title: "Prom expo",
+        subtitle: "General partner",
+        desc: "partners_promexpo_desc"
     },
     {
         img: Partner2,
         title: "Alpha Consulting",
         subtitle: "General partner",
-        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
-    },
-    {
-        img: Partner1,
-        title: "Fast Bank",
-        subtitle: "Sponsor",
-        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+        desc: "partners_alpha_desc"
     },
     {
         img: Partner2,
-        title: "Alpha Consulting",
-        subtitle: "General partner",
-        desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+        title: "Fast Bank",
+        subtitle: "Sponsor",
+        desc: "partners_alpha_desc"
     },
 ]
 const PartnersAndSponsors = () => {

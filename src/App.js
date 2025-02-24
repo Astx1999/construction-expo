@@ -123,7 +123,7 @@ const App = () => {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-            backgroundColor: "#1C1C1C",
+            backgroundColor: "#22242C",
             color: "white",
             fontWeight: "300",
             width: width <= 767 ? "100%" : "700px",
@@ -184,7 +184,7 @@ const App = () => {
             } */}
             {!urlHasAdminCommand ?
                 <>
-                    {/*<Header activeSection={activeSection}/>*/}
+                    <Header activeSection={activeSection}/>
                     <div className="section right-bar-home" id="home">
                         <HomeNew/>
                     </div>
