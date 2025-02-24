@@ -19,10 +19,23 @@
       background: #FE5840;
 
     }
+
+    .swiper .swiper-slide {
+      height: auto;
+    }
+
+    .swiper-slide{
+      &:first-child {
+        @media only screen and (max-width: $mediumDisplay) {
+          height: 440px;
+        }
+      }
+    }
   }
 
   @media only screen and (max-width: $mediumDisplay) {
     padding: 100px 80px 20px;
+
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 60px 30px 40px;
@@ -55,7 +68,9 @@
   @media only screen and (max-width: $mediumDisplay) {
     width: 100%;
     margin-right: 0;
-    //max-height: 300px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
   }
 
   @media only screen and (max-width: $smallDisplay) {
@@ -156,10 +171,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  svg {
+    width: 40px;
+    height: 40px;
+  }
   @media only screen and (max-width: $mediumDisplay) {
     svg {
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
     }
   }
 }
@@ -187,11 +206,13 @@
   line-height: 1.8;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 18px;
-    min-height: 100px;
+    min-height: 105px;
+    height: 105px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
-    min-height: 100px;
+    min-height: 105px;
+    height: 105px;
   }
 }
 

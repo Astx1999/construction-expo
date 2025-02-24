@@ -19,8 +19,12 @@ const HomeNew = () => {
     const {setIsOpen} = useModal();
     const navigate = useNavigate();
 
+
     return (
         <div className={styles.root}>
+            {width <= 767 && <div className={styles.RALogo}>
+                <img src={RALogo} alt="RALogo"/>
+            </div>}
             <div className={styles.animation}>
                 <svg viewBox="150 50 585 1118" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd"
@@ -71,9 +75,10 @@ const HomeNew = () => {
                     <span
                         dangerouslySetInnerHTML={{__html: width <= 767 ? t("karen_demirchyan_mobile") : t("karen_demirchyan")}}/>
                 </div>
-                <div className={styles.RALogo}>
+                {width > 767 && <div className={styles.RALogo}>
                     <img src={RALogo} alt="RALogo"/>
-                </div>
+                </div>}
+
             </div>
 
         </div>
