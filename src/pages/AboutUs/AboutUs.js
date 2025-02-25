@@ -23,6 +23,7 @@ const AboutUs = () => {
                         <div className={styles.textTitle}>
                             {t("about_the_exhibition")}
                         </div>
+                        <p className={styles.subtitle}>{t('for_visitors')}</p>
                         {width <= 767 ? (
                             <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={9}/>
                         ) : width <= 1200 ? (
@@ -34,9 +35,9 @@ const AboutUs = () => {
 
                     <div className={styles.button}>
                         <CtaButton onClick={() => {
-                            setIsOpen("exhibitor")
-                            navigate("/about-us/becomeanexhibitor")
-                        }} text={t("become_an_exhibitor")}/>
+                            setIsOpen("visitor")
+                            navigate("/about-us/becomeavisitor")
+                        }} text={t("become_a_visitor")}/>
 
                         <CtaButton className={styles.downloadBtn} variant={'secondary'} onClick={() => {
                         }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>

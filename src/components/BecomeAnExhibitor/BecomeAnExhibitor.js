@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomInput from "../CustomInput/CustomInput";
 import styles from './BecomeAnExhibitor.module.scss';
 import {useModal} from "../ModalContext/ModalContext";
@@ -6,9 +6,16 @@ import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 import {ReactComponent as Cross} from "../../images/cross.svg";
 import {useTranslation} from "react-i18next";
 import {useMutation, useQuery} from "@apollo/client";
-import {ADD_EXHIBITOR, GET_ZONES} from "../../graphql/queries";
+import {
+    ADD_EXHIBITOR,
+    GET_AVAILABLE_ZONE_ITEMS,
+    GET_ZONE_ITEMS,
+    GET_ZONES,
+    UPDATE_ZONE_ITEMS
+} from "../../graphql/queries";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import {useLocation, useNavigate} from "react-router-dom";
+import {authClient} from "../../apolloClient";
 
 function BecomeAnExhibitor() {
     const [formData, setFormData] = useState({
@@ -16,7 +23,7 @@ function BecomeAnExhibitor() {
         industry: '',
         brands: '',
         zone: '',
-        zoneNumber: [],
+        zoneItemId: [],
         phoneNumber: '',
         email: '',
         notes: '',
@@ -31,9 +38,24 @@ function BecomeAnExhibitor() {
 
     const {setIsOpen} = useModal();
     const {t, i18n} = useTranslation();
+    const [selectedZoneId, setSelectedZoneId] = useState(""); // Default zone name
 
-    const [addExhibitor, {loading: mutationLoading, error: mutationError}] = useMutation(ADD_EXHIBITOR);
-    const {loading: queryLoading, error: queryError, data: zonesData} = useQuery(GET_ZONES);
+    const [createExhibitor, { loading: isCreatingExhibitor, error: createExhibitorError }] = useMutation(ADD_EXHIBITOR);
+
+    const { loading: isFetchingZones, error: fetchZonesError, data: zones } = useQuery(GET_ZONES);
+
+    const { data: availableZoneItems } = useQuery(GET_AVAILABLE_ZONE_ITEMS, {
+        variables: { zoneId: selectedZoneId }
+    });
+
+    const { data: allZoneItems, refetch: refetchZoneItems } = useQuery(GET_ZONE_ITEMS);
+
+    const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {
+        client: authClient,
+        onCompleted: () => {
+            refetchZoneItems();
+        },
+    });
 
     const validateField = (name, value) => {
         let error;
@@ -50,7 +72,7 @@ function BecomeAnExhibitor() {
             case 'zone':
                 error = value ? '' : t("required");
                 break;
-            case 'zoneNumber':
+            case 'zoneItemId':
                 error = value.length ? '' : t("required");
                 break;
             case 'phoneNumber':
@@ -84,16 +106,17 @@ function BecomeAnExhibitor() {
     };
 
     const handleInterestsChange = (selectedOptions) => {
-        setFormData({...formData, zoneNumber: selectedOptions});
-        const error = validateField('zoneNumber', selectedOptions);
+        setFormData({...formData, zoneItemId: selectedOptions});
+        const error = validateField('zoneItemId', selectedOptions);
         setErrors(prevErrors => ({
             ...prevErrors,
-            zoneNumber: error
+            zoneItemId: error
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const newErrors = Object.keys(formData).reduce((acc, key) => {
             const error = validateField(key, formData[key]);
             if (error) acc[key] = error;
@@ -104,20 +127,22 @@ function BecomeAnExhibitor() {
             setErrors(newErrors);
             return;
         }
+
         setErrors({});
         setLoading(true);
         const {pathname} = location;
         const urlParts = pathname.split('/');
 
         try {
-            const result = await addExhibitor({
+            // Step 1: Add Exhibitor
+            const exhibitorResult = await createExhibitor({
                 variables: {
                     companyName: formData.companyName,
                     industry: formData.industry,
                     brands: formData.brands,
                     email: formData.email,
-                    zoneId: formData.zone,
-                    zoneNumbers: formData.zoneNumber,
+                    zoneItemId: formData.zoneItemId,
+                    zoneNumbers: formData.zoneItemId,
                     phoneNumber: formData.phoneNumber,
                     notes: formData.notes,
                     message: formData.notes,
@@ -125,7 +150,29 @@ function BecomeAnExhibitor() {
                 }
             });
 
-            if (result && result.data && result.data.insertExhibitors && result.data.insertExhibitors.affected_rows) {
+            if (!exhibitorResult?.data?.insertExhibitors?.affected_rows) {
+                throw new Error("Failed to add exhibitor");
+            }
+
+            const zoneIds = formData.zoneItemId;
+            let zoneUpdateSuccess = true;
+
+            if (zoneIds?.length > 0) {
+                // Step 2: Update Zone Items (Only if there are zones)
+                const zoneUpdateResult = await updateZoneItems({
+                    variables: {
+                        where: {id: {_in: zoneIds}},
+                        _set: {status: "REQUESTED"}
+                    }
+                });
+
+                if (!zoneUpdateResult?.data?.update_zoneItems?.affected_rows) {
+                    zoneUpdateSuccess = false;
+                }
+            }
+
+            // Step 3: Ensure both requests succeeded before triggering success
+            if (zoneUpdateSuccess) {
                 setTimeout(() => {
                     if (urlParts.length >= 3) {
                         navigate(`/${urlParts[1]}/exhibitor-registration-success`);
@@ -133,22 +180,43 @@ function BecomeAnExhibitor() {
                     setLoading(false);
                     setSuccess(true);
                 }, 1000);
+            } else {
+                throw new Error("Failed to update zone items");
             }
         } catch (err) {
+            console.error("Error submitting form:", err);
             setLoading(false);
         }
     };
 
-    const getAvailableNumbers = (selectedZoneID) => {
-        const zone = zonesData && zonesData?.zones?.find((z) => z.id === selectedZoneID || "");
-        if (!zone && !selectedZoneID) {
-            return [];
+
+    const [availableNumbers, setAvailableNumbers] = useState([]);
+
+    useEffect(() => {
+        if (formData.zone) {
+            setSelectedZoneId(formData.zone);
+            const zone = zones?.zones?.find((z) => z.id === formData.zone);
+            if (zone && availableZoneItems?.zones?.length > 0) {
+
+                setAvailableNumbers(
+                    availableZoneItems.zones[0].items.map(zoneItem => {
+                        const match = zoneItem.name.match(/Item(\d+)$/);
+                        const zoneName = match ? match[1] : null;
+                        return (
+                            {
+                                id: zoneItem.id,
+                                name:
+                                zoneName
+                            }
+                        )
+
+                    })
+                );
+            } else {
+                setAvailableNumbers([]);
+            }
         }
-        return [...zone.availableNumbers.map(number => ({
-            id: number,
-            name: number
-        }))];
-    };
+    }, [formData.zone, zones, availableZoneItems]);
 
     const closeModal = () => {
         setIsOpen(false);
@@ -168,6 +236,7 @@ function BecomeAnExhibitor() {
         );
     }
 
+    console.log(formData.zoneItemId)
     return (
         <div className={styles.modal}>
             <div className={styles.close} onClick={closeModal}><Cross/></div>
@@ -207,9 +276,9 @@ function BecomeAnExhibitor() {
                         name="zone"
                         value={formData.zone}
                         onChange={(e) => {
-                            setFormData({...formData, zone: e, zoneNumber: []});
+                            setFormData({...formData, zone: e, zoneItemId: []});
                         }}
-                        options={zonesData ? [...zonesData?.zones?.map((zone) => ({
+                        options={zones ? [...zones?.zones?.map((zone) => ({
                             id: zone.id,
                             name: zone.name
                         }))] : []}
@@ -217,11 +286,11 @@ function BecomeAnExhibitor() {
                     />
                     <MultiselectDropdown
                         label={`${t("desired_number")}*`}
-                        name="zoneNumber"
-                        value={formData.zoneNumber}
-                        onChange={(e) => setFormData({...formData, zoneNumber: e})}
-                        options={getAvailableNumbers(formData.zone)}
-                        error={errors.zoneNumber}
+                        name="zoneItemId"
+                        value={formData.zoneItemId}
+                        onChange={(e) => setFormData({...formData, zoneItemId: e})}
+                        options={availableNumbers}
+                        error={errors.zoneItemId}
                         emptyDropdownText={t('choose_zone')}
                     />
                 </div>
@@ -258,12 +327,12 @@ function BecomeAnExhibitor() {
 
                 <button
                     className={styles.submit}
-                    disabled={isLoading || mutationLoading || Object.values(errors).some(error => error)}
-                    type={isLoading || mutationLoading ? "" : "submit"}
+                    disabled={isLoading || isCreatingExhibitor || Object.values(errors).some(error => error)}
+                    type={isLoading || isCreatingExhibitor ? "" : "submit"}
                 >
-                    {isLoading || mutationLoading ? t("sending") : t("exhibitor_submit")}
+                    {isLoading || isCreatingExhibitor ? t("sending") : t("exhibitor_submit")}
                 </button>
-                {mutationError && <p className={styles.error}>{mutationError.message}</p>}
+                {createExhibitorError && <p className={styles.error}>{createExhibitorError.message}</p>}
             </form>
         </div>
     );

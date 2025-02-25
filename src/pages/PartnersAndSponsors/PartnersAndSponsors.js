@@ -4,6 +4,7 @@ import {Pagination} from 'swiper/modules';
 
 import Partner1 from "../../images/partner1.png"
 import Partner2 from "../../images/partner2.png"
+import Partner3 from "../../images/partner3.png"
 import styles from './PartnersAndSponsors.module.scss'
 
 // Import Swiper styles
@@ -26,22 +27,16 @@ const partners = [
         desc: "partners_alpha_desc"
     },
     {
-        img: Partner2,
-        title: "Prom expo",
+        img: Partner1,
+        title: "Prom Expo",
         subtitle: "General partner",
         desc: "partners_promexpo_desc"
     },
     {
-        img: Partner2,
-        title: "Alpha Consulting",
+        img: Partner3,
+        title: "Armenia Travel",
         subtitle: "General partner",
-        desc: "partners_alpha_desc"
-    },
-    {
-        img: Partner2,
-        title: "Fast Bank",
-        subtitle: "Sponsor",
-        desc: "partners_alpha_desc"
+        desc: "partners_atm_desc"
     },
 ]
 const PartnersAndSponsors = () => {
@@ -57,7 +52,7 @@ const PartnersAndSponsors = () => {
                 // install Swiper modules
                 // modules={[Pagination]}
                 spaceBetween={width <= 1023 ? 30 : 70}
-                slidesPerView={width <= 767 ? 1 : 2}
+                slidesPerView={width <= 600 ? 1 : 2}
                 initialSlide={0}
                 pagination={{clickable: true}}
                 // centeredSlides={true}

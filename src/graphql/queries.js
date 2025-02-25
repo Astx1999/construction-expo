@@ -66,6 +66,23 @@ export const GET_ZONES = gql`
 }
 `;
 
+export const GET_AVAILABLE_ZONE_ITEMS = gql`
+  query GetAvailableZoneItems($zoneId: uuid!) {
+    zones(where: {id: {_eq: $zoneId}}) {
+      id
+      name
+      items(where: {status: {_eq: FREE}}, order_by: {createdAt: asc}) {
+        id
+        name
+        classname
+      }
+    }
+  }
+`;
+
+
+
+
 // query MyQuery {
 //       visitorInterests {
 //             id
@@ -187,7 +204,7 @@ export const ADD_EXHIBITOR = gql`
     $notes: String!,
     $phoneNumber: String!,
     $website: String!,
-    $zoneId: uuid!,
+    $zoneItemId: uuid!,
     $zoneNumbers: jsonb!
   ) {
     insertExhibitors(
@@ -200,7 +217,7 @@ export const ADD_EXHIBITOR = gql`
         notes: $notes,
         phoneNumber: $phoneNumber,
         website: $website,
-        zoneId: $zoneId,
+        zoneItemId: $zoneItemId,
         zoneNumbers: $zoneNumbers
       }]
     ) {

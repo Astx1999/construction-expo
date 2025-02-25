@@ -3,7 +3,7 @@
 .root {
   min-height: 100vh;
   color: white;
-  padding: 50px 50px 0;
+  padding: 150px 50px 0;
   font-family: Lexend, serif;
   display: flex;
   justify-content: center;
@@ -14,23 +14,27 @@
     padding: 230px 50px 0;
   }
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 20px 80px 0;
-    flex-direction: column-reverse;
+    padding: 120px 80px 0;
+
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 0 30px 0;
     align-items: flex-end;
+    flex-direction: column-reverse;
   }
 }
 
 .animation {
   width: 40%;
-
+  display: flex;
   svg {
     width: 100%;
   }
-  @media only screen and (max-width: $mediumDisplay) {
+
+  @media only screen and (max-width: $smallDisplay) {
+    display: block;
     width: 100%;
+    margin-top: -70px;
   }
 }
 
@@ -38,7 +42,7 @@
   padding-top: 120px;
   width: calc(60% - 0px);
   padding-left: 80px;
-  @media only screen and (max-width: $mediumDisplay) {
+  @media only screen and (max-width: $smallDisplay) {
     width: 100%;
     padding-left: 0;
   }
@@ -52,6 +56,10 @@
   margin-bottom: 30px;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 65px;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    text-align:  -webkit-right;
+    font-size: 45px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 40px;
@@ -71,6 +79,11 @@
   align-items: center;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 30px;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    display: flex;
+    justify-content: end;
+    font-size: 25px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 24px;
@@ -124,6 +137,9 @@
 
 .cta {
   margin: 35px 0;
+  @media only screen and (max-width: $mediumDisplay) {
+    text-align: -webkit-right;
+  }
 }
 
 .location {
@@ -131,16 +147,32 @@
   align-items: center;
   margin: 30px 0;
   font-size: 19px;
-
+  @media only screen and (max-width: $mediumDisplay) {
+    font-size: 12px;
+    width: 204px;
+    float: right;
+    text-align: end;
+    align-items: flex-start;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    svg{
+      width: 20px;
+      height: 20px;
+    }
+  }
   span {
     padding-left: 30px;
+    @media only screen and (max-width: $mediumDisplay) {
+      padding-left: 10px;
+    }
   }
 }
-.line1{
+
+.line1 {
   margin-left: -35px;
 }
 
-.line2{
+.line2 {
   margin-left: 40px;
 }
 
@@ -212,6 +244,9 @@
   width: 470px;
   @media only screen and (max-width: $largeDisplay) {
     width: 400px;
+  }
+  @media only screen and (max-width: $mediumDisplay) {
+    width: 100%;
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 70%;

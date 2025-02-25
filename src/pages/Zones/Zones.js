@@ -136,7 +136,7 @@ export const Zones = () => {
 
     const handleBook = async () => {
         try {
-            const zoneIds = selectedZoneItems.map((item) => item.zoneId); // Collect all zone IDs
+            const zoneIds = selectedZoneItems.map((item) => item.zoneStandId); // Collect all zone stand IDs
 
             await updateZoneItems({
                 variables: {
@@ -239,7 +239,7 @@ export const Zones = () => {
 
                                     <div className={styles.titleLine}>
                                         <div className={styles.title}>
-                                            {t("exhibitors")}
+                                            {t("exhibitor_sectors")}
                                         </div>
                                         <InfoIconWithTooltip text={t(zone.infoText)}/>
                                     </div>
@@ -260,15 +260,16 @@ export const Zones = () => {
                 </div>
                 <div className={styles.input}>
                     <CustomInput disabled placeholder={'Select Zone Items'}
-                                 value={formattedString}/>
+                                 value={formattedString} handleClearAll={()=>setSelectedZoneItems([])}/>
                     <div className={styles.button}>
                         <CtaButton
+                            className={styles.cta}
                             onClick={() => {
                                 // setIsOpen("exhibitor")
                                 // navigate("/zones/becomeanexhibitor")
                                 handleBook();
                             }}
-                            text={t("Book")}/>
+                            text={t("send_book_request")}/>
                     </div>
                 </div>
             </div>

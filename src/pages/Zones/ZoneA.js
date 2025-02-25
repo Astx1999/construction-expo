@@ -1,8 +1,9 @@
 import React from 'react';
 
 const ZoneA = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
-    const {zoneItems} = zoneItemsData || {};
+    const {zoneItems} = zoneItemsData || null;
 
+    console.log(zoneItems?.filter((item) => item.status === "REQUESTED" && item.zoneId === "62c9dd31-8155-4bed-a541-3138c2cfbbc7"))
     const getPolygonStyle = (className) => {
         const item = zoneItems?.find((item) => item.classname === className);
         const isSelected = selectedZoneItems?.some((selected) => selected.className === className);

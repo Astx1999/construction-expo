@@ -60,6 +60,7 @@
   max-height: 700px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   @media only screen and (max-width: $extraLargeDisplay) {
     width: 55%;
     margin-right: 50px;
@@ -71,6 +72,8 @@
     min-height: 300px;
     display: flex;
     justify-content: center;
+    margin-bottom: 0px;
+    margin-bottom: 0px;
   }
 
   @media only screen and (max-width: $smallDisplay) {
@@ -100,6 +103,7 @@
 
   @media only screen and (max-width: $mediumDisplay) {
     width: 100%;
+    margin-top: 20px;
     margin-bottom: 40px;
   }
   @media only screen and (max-width: $mediumDisplay) {
@@ -198,7 +202,6 @@
 
 .companies {
   white-space: break-spaces;
-  font-family: Arial;
   min-height: 350px;
   font-size: 22px;
   overflow: auto;
@@ -276,7 +279,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  position: relative;
   & > div {
     width: 58%;
   }
@@ -285,6 +288,7 @@
     margin-bottom: 30px;
   }
 }
+
 
 .button {
   width: 40% !important;
@@ -303,5 +307,10 @@
   }
   @media only screen and (max-width: $mediumDisplay) {
     width: 100%;
+  }
+}
+.cta{
+  @media only screen and (max-width: $mediumDisplay) {
+    width: auto;
   }
 }

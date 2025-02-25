@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import { ReactComponent as Info } from "../../images/info.svg";
+import React, {useRef, useState} from "react";
+import {ReactComponent as Info} from "../../images/info.svg";
 import styles from "./InfoIconWithTooltip.module.scss";
+import useOnClickOutside from "../../hook/useOnClickOutside";
 
 const InfoIconWithTooltip = ({text}) => {
-    const [showTooltip, setShowTooltip] = useState(true);
+    const [showTooltip, setShowTooltip] = useState(false);
 
-    const handleMouseEnter = () => {
-        setShowTooltip(true);
-    };
+    const ref = useRef(null);
 
-    const handleMouseLeave = () => {
-        setShowTooltip(true);
-    };
-
+    useOnClickOutside(ref, () => {
+        setShowTooltip(false);
+    });
     return (
         <div
+            ref={ref}
             className={styles.infoIconWrapper}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={{ position: 'relative' }}
+            onClick={() => setShowTooltip((prev) => !prev)}
+            style={{position: 'relative'}}
         >
-            <Info />
+            <Info/>
             {showTooltip && (
                 <div className={styles.tooltip}>
                     {text}

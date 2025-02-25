@@ -14,7 +14,9 @@
     max-height: 65px;
     min-height: 65px;
   }
-  @media only screen and (max-width: $smallDisplay) {
+  @media only screen and (max-width: $mediumDisplay) {
+    min-width: 198px;
+    width: 198px;
     //width: 280px;
   }
 
