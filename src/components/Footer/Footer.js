@@ -19,8 +19,8 @@ const Footer = ({id}) => {
                 <div className={styles.openingHours}>
                     <p className={styles.subTitle}>{t("workingHours")}</p>
                     <p className={styles.openingLine}>{t("april")} 4 / 11:00 - 19:00</p>
-                    <p className={styles.openingLine}>{t("April")} 5 / 11:00 - 19:00</p>
-                    <p className={styles.openingLine}>{t("April")} 6 / 11:00 - 19:00</p>
+                    <p className={styles.openingLine}>{t("april")} 5 / 11:00 - 19:00</p>
+                    <p className={styles.openingLine}>{t("april")} 6 / 11:00 - 19:00</p>
                 </div>
                 <div className={styles.address}>
                     <p className={styles.subTitle}>{t('address')}</p>
@@ -29,12 +29,11 @@ const Footer = ({id}) => {
                 </div>
                 <div className={styles.callUs}>
                     <p className={styles.subTitle}>{t("callUs")}</p>
-                    <p><a href="tel:+37415678678">+(374) 15 678 678</a></p>
-                    <p><a href="tel:+37499234889 ">+(374) 99 23 48 89</a></p>
+                    <p><a href="tel:+37415456456">+(374) 15 456 456</a></p>
                 </div>
                 <div className={styles.email}>
                     <p className={styles.subTitle}>{t("email")}</p>
-                    <p><a href="mailto:info@armenianautoshow.com">info@armenianautoshow.com</a></p>
+                    <p><a href="mailto:info@itfArmenia.com">info@itfArmenia.com</a></p>
                 </div>
                 {/*  <div className={styles.followUs}>
                     <p className={styles.subTitle}>{t("followUs")}</p>
@@ -66,9 +65,10 @@ const Footer = ({id}) => {
 
             </div>
             <div className={styles.underRow}>
-               <div className={styles.logo}><Logo/></div>
-                <div className={styles.socials}><a href="https://www.facebook.com/share/19dYGXsSYx/?mibextid=LQQJ4d" target="_blank"
-                        rel="noopener noreferrer"><Fb/></a>
+                <div className={styles.logo}><Logo/></div>
+                <div className={styles.socials}><a href="https://www.facebook.com/share/19dYGXsSYx/?mibextid=LQQJ4d"
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"><Fb/></a>
                     <a href="https://www.instagram.com/i.t.f.armenia?igsh=dWR5a2xvOXBwZXh3" target="_blank"
                        rel="noopener noreferrer"><Inst/></a>
                     <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank"

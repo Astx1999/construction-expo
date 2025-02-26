@@ -16,6 +16,7 @@ import {
 import CustomSelect from "../CustomSelect/CustomSelect";
 import {useLocation, useNavigate} from "react-router-dom";
 import {authClient} from "../../apolloClient";
+import useLocalStorage from "../../hook/useLocalStorage";
 
 function BecomeAnExhibitor() {
     const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ function BecomeAnExhibitor() {
         industry: '',
         brands: '',
         zone: '',
-        zoneItemId: [],
+        zoneItemIds: [],
         phoneNumber: '',
         email: '',
         notes: '',
@@ -38,17 +39,19 @@ function BecomeAnExhibitor() {
 
     const {setIsOpen} = useModal();
     const {t, i18n} = useTranslation();
-    const [selectedZoneId, setSelectedZoneId] = useState(""); // Default zone name
+    const [selectedZoneId, setSelectedZoneId] = useState("");
 
-    const [createExhibitor, { loading: isCreatingExhibitor, error: createExhibitorError }] = useMutation(ADD_EXHIBITOR);
+    const [createExhibitor, {loading: isCreatingExhibitor, error: createExhibitorError}] = useMutation(ADD_EXHIBITOR);
 
-    const { loading: isFetchingZones, error: fetchZonesError, data: zones } = useQuery(GET_ZONES);
+    const {loading: isFetchingZones, error: fetchZonesError, data: zones} = useQuery(GET_ZONES);
 
-    const { data: availableZoneItems } = useQuery(GET_AVAILABLE_ZONE_ITEMS, {
-        variables: { zoneId: selectedZoneId }
+    const {data: availableZoneItems} = useQuery(GET_AVAILABLE_ZONE_ITEMS, {
+        variables: {zoneId: selectedZoneId}
     });
 
-    const { data: allZoneItems, refetch: refetchZoneItems } = useQuery(GET_ZONE_ITEMS);
+    const {data: allZoneItems, refetch: refetchZoneItems} = useQuery(GET_ZONE_ITEMS);
+
+    const [selectedZoneItems, setSelectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
     const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {
         client: authClient,
@@ -56,6 +59,22 @@ function BecomeAnExhibitor() {
             refetchZoneItems();
         },
     });
+
+    useEffect(() => {
+        if (selectedZoneItems.length && zones.zones.length) {
+            const zoneItemIdArray = []
+            selectedZoneItems.map((selectedZoneItem) => {
+                zoneItemIdArray.push(selectedZoneItem.zoneStandId)
+            })
+            setFormData({
+                ...formData,
+                zoneItemIds: zoneItemIdArray,
+                zone: selectedZoneItems[0].zoneId
+
+            });
+        }
+    }, [selectedZoneItems, zones])
+
 
     const validateField = (name, value) => {
         let error;
@@ -72,7 +91,7 @@ function BecomeAnExhibitor() {
             case 'zone':
                 error = value ? '' : t("required");
                 break;
-            case 'zoneItemId':
+            case 'zoneItemIds':
                 error = value.length ? '' : t("required");
                 break;
             case 'phoneNumber':
@@ -106,18 +125,18 @@ function BecomeAnExhibitor() {
     };
 
     const handleInterestsChange = (selectedOptions) => {
-        setFormData({...formData, zoneItemId: selectedOptions});
-        const error = validateField('zoneItemId', selectedOptions);
+        setFormData({...formData, zoneItemIds: selectedOptions});
+        const error = validateField('zoneItemIds', selectedOptions);
         setErrors(prevErrors => ({
             ...prevErrors,
-            zoneItemId: error
+            zoneItemIds: error
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newErrors = Object.keys(formData).reduce((acc, key) => {
+        const newErrors = Object.keys(formData)?.reduce((acc, key) => {
             const error = validateField(key, formData[key]);
             if (error) acc[key] = error;
             return acc;
@@ -141,20 +160,19 @@ function BecomeAnExhibitor() {
                     industry: formData.industry,
                     brands: formData.brands,
                     email: formData.email,
-                    zoneItemId: formData.zoneItemId,
-                    zoneNumbers: formData.zoneItemId,
                     phoneNumber: formData.phoneNumber,
                     notes: formData.notes,
                     message: formData.notes,
                     website: formData.companyName,
-                }
+                    zoneItems: formData.zoneItemIds.map((id) => ({zoneItemId: id})),
+                },
             });
 
             if (!exhibitorResult?.data?.insertExhibitors?.affected_rows) {
                 throw new Error("Failed to add exhibitor");
             }
 
-            const zoneIds = formData.zoneItemId;
+            const zoneIds = formData.zoneItemIds;
             let zoneUpdateSuccess = true;
 
             if (zoneIds?.length > 0) {
@@ -166,7 +184,7 @@ function BecomeAnExhibitor() {
                     }
                 });
 
-                if (!zoneUpdateResult?.data?.update_zoneItems?.affected_rows) {
+                if (!zoneUpdateResult?.data?.updateZoneItems?.affected_rows) {
                     zoneUpdateSuccess = false;
                 }
             }
@@ -179,6 +197,7 @@ function BecomeAnExhibitor() {
                     }
                     setLoading(false);
                     setSuccess(true);
+                    setSelectedZoneItems([])
                 }, 1000);
             } else {
                 throw new Error("Failed to update zone items");
@@ -236,7 +255,6 @@ function BecomeAnExhibitor() {
         );
     }
 
-    console.log(formData.zoneItemId)
     return (
         <div className={styles.modal}>
             <div className={styles.close} onClick={closeModal}><Cross/></div>
@@ -276,7 +294,7 @@ function BecomeAnExhibitor() {
                         name="zone"
                         value={formData.zone}
                         onChange={(e) => {
-                            setFormData({...formData, zone: e, zoneItemId: []});
+                            setFormData({...formData, zone: e, zoneItemIds: []});
                         }}
                         options={zones ? [...zones?.zones?.map((zone) => ({
                             id: zone.id,
@@ -286,11 +304,11 @@ function BecomeAnExhibitor() {
                     />
                     <MultiselectDropdown
                         label={`${t("desired_number")}*`}
-                        name="zoneItemId"
-                        value={formData.zoneItemId}
-                        onChange={(e) => setFormData({...formData, zoneItemId: e})}
+                        name="zoneItemIds"
+                        value={formData.zoneItemIds}
+                        onChange={(e) => setFormData({...formData, zoneItemIds: e})}
                         options={availableNumbers}
-                        error={errors.zoneItemId}
+                        error={errors.zoneItemIds}
                         emptyDropdownText={t('choose_zone')}
                     />
                 </div>

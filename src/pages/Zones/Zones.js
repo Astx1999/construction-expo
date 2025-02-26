@@ -30,6 +30,7 @@ import {useMutation, useQuery} from "@apollo/client";
 import {GET_ZONE_ITEMS, GET_ZONES, UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} from "../../graphql/queries";
 import {authClient} from "../../apolloClient";
 import InfoIconWithTooltip from "../../components/InfoIconWithTooltip/InfoIconWithTooltip";
+import useLocalStorage from "../../hook/useLocalStorage";
 
 const zones = [
     {
@@ -96,13 +97,13 @@ export const Zones = () => {
         return index + 1 !== zones.length;
     };
 
-    const {setIsOpen} = useModal();
-
-
     const [zoneItemsData, setZoneItemsData] = useState([]);
 
 
-    const {data, refetch} = useQuery(GET_ZONE_ITEMS);
+    const {data, refetch} = useQuery(GET_ZONE_ITEMS, {
+        fetchPolicy: "network-only",
+    });
+
     const {data: zonesData} = useQuery(GET_ZONES);
 
     const [updateZoneItems] = useMutation(UPDATE_ZONE_ITEMS, {
@@ -112,6 +113,16 @@ export const Zones = () => {
         },
     });
 
+    const {modalIsOpen, setIsOpen} = useModal();
+
+
+    useEffect(() => {
+        console.log(modalIsOpen);
+        refetch();
+        setZoneItemsData(data);
+        console.log(1)
+    }, [modalIsOpen]);
+
     useEffect(() => {
         if (data) {
             setZoneItemsData(data);
@@ -119,9 +130,9 @@ export const Zones = () => {
     }, [data]);
 
 
-    const [selectedZoneItems, setSelectedZoneItems] = useState([]);
+    const [selectedZoneItems, setSelectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
-    const grouped = selectedZoneItems.reduce((acc, {zoneName, zoneItem}) => {
+    const grouped = selectedZoneItems?.reduce((acc, {zoneName, zoneItem}) => {
         if (!acc[zoneName]) {
             acc[zoneName] = [];
         }
@@ -260,14 +271,13 @@ export const Zones = () => {
                 </div>
                 <div className={styles.input}>
                     <CustomInput disabled placeholder={'Select Zone Items'}
-                                 value={formattedString} handleClearAll={()=>setSelectedZoneItems([])}/>
+                                 value={formattedString} handleClearAll={() => setSelectedZoneItems([])}/>
                     <div className={styles.button}>
                         <CtaButton
                             className={styles.cta}
                             onClick={() => {
-                                // setIsOpen("exhibitor")
-                                // navigate("/zones/becomeanexhibitor")
-                                handleBook();
+                                setIsOpen("exhibitor")
+                                navigate("/zones/becomeanexhibitor")
                             }}
                             text={t("send_book_request")}/>
                     </div>

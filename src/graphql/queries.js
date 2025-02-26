@@ -204,11 +204,10 @@ export const ADD_EXHIBITOR = gql`
     $notes: String!,
     $phoneNumber: String!,
     $website: String!,
-    $zoneItemId: uuid!,
-    $zoneNumbers: jsonb!
+    $zoneItems: [exhibitorZoneItems_insert_input!]!
   ) {
     insertExhibitors(
-      objects: [{
+      objects: {
         brands: $brands,
         companyName: $companyName,
         email: $email,
@@ -217,9 +216,10 @@ export const ADD_EXHIBITOR = gql`
         notes: $notes,
         phoneNumber: $phoneNumber,
         website: $website,
-        zoneItemId: $zoneItemId,
-        zoneNumbers: $zoneNumbers
-      }]
+        zoneItems: {
+          data: $zoneItems
+        }
+      }
     ) {
       affected_rows
     }
