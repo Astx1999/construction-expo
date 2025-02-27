@@ -1,10 +1,12 @@
 import React from 'react';
+import useLocalStorage from "../../hook/useLocalStorage";
 
-const ZoneC = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
-    const {zoneItems} = zoneItemsData || {};
+const ZoneC = ({ zoneItemsData, handleSelect}) => {
+
+    const [selectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
     const getPolygonStyle = (className) => {
-        const item = zoneItems?.find((item) => item.classname === className);
+        const item = zoneItemsData?.zoneItems?.find((item) => item.classname === className);
         const isSelected = selectedZoneItems?.some((selected) => selected.className === className);
 
         return {
@@ -15,7 +17,7 @@ const ZoneC = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
         };
     };
 
-    return zoneItems && zoneItems.length ? (<svg
+    return zoneItemsData?.zoneItems && zoneItemsData.zoneItems.length ? (<svg
             width="190.276mm"
             height="186.546mm"
             version="1.1"
@@ -226,7 +228,7 @@ const ZoneC = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
                             </text>
                         </g>
                         <polygon
-                            fill="#FEFEFE" fillRule="nonzero"
+                            fill="#FF4F36" fillRule="nonzero"
                             points="1656.51,3126.77 1656.51,3051.27 1691.45,3051.27 1627.19,2975.77 1562.93,3051.27 1597.87,3051.27 1597.87,3126.77 "
                             id="polygon83"/>
                     </g>

@@ -3,6 +3,7 @@ import {Pagination} from "swiper/modules";
 import {ReactComponent as Info} from "../../images/info.svg";
 import {ReactComponent as Next} from "../../images/next.svg";
 import {ReactComponent as Prev} from "../../images/prev.svg";
+import {ReactComponent as TextArrow} from "../../images/textArrow.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
 
 import ZoneA from "./ZoneA";
@@ -117,14 +118,12 @@ export const Zones = () => {
 
 
     useEffect(() => {
-        console.log(modalIsOpen);
-        refetch();
-        setZoneItemsData(data);
-        console.log(1)
+        refetch()
     }, [modalIsOpen]);
 
     useEffect(() => {
         if (data) {
+            console.log(data.zoneItems.filter((item) => item.status === "REQUESTED"), 123)
             setZoneItemsData(data);
         }
     }, [data]);
@@ -216,8 +215,10 @@ export const Zones = () => {
                                         </SwiperButtonNext>
                                     </div>
                                 )}
-                                <div className={styles.image}>
+                                <div className={styles.image}
+                                     key={`${zone.name}-${Date.now()}`}>
                                     {cloneElement(zone.image, {
+                                        key: `${zone.name}-${Date.now()}`,
                                         selectedZoneItems,
                                         zoneItemsData,
                                         handleSelect
@@ -255,8 +256,13 @@ export const Zones = () => {
                                         <InfoIconWithTooltip text={t(zone.infoText)}/>
                                     </div>
 
-                                    <div className={styles.companies}
-                                         dangerouslySetInnerHTML={{__html: t(zone.members)}}/>
+                                    <div className={styles.areas}>
+                                        {t(zone.members).split("\n").map((item, index) => (
+                                            <div className={styles.area}>
+                                                <div className={styles.textarrow}><TextArrow/></div><p key={index}>{item}</p>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </SwiperSlide>

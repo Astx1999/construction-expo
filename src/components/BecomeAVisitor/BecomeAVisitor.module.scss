@@ -2,7 +2,6 @@
 
 .modal {
   background: #22242C;
-  font-family: Lexend, serif;
   padding: 30px 60px 0;
   @media only screen and (max-width: $smallDisplay) {
     padding: 70px 10px 0 30px
@@ -25,14 +24,12 @@
 
 .success {
   padding-top: 40px;
-  font-family:Lexend, serif;
   line-height: 1.5;
 }
 
 .title {
   text-align: center;
   margin: 10px 0 10px;
-  font-family: Lexend, serif;;
   letter-spacing: 1px;
   font-size: 24px;
   @media only screen and (max-width: $smallDisplay) {
@@ -86,7 +83,6 @@
     margin-bottom: 20px;
     padding: 10px;
     font-size: 16px;
-    font-family: Lexend, serif;;
     resize: none;
     border: 1px solid #4E5056;
   }
@@ -94,7 +90,6 @@
 .submissionTerms{
   font-size: 12px;
   margin-bottom: 20px;
-  font-family: Lexend, serif;;
 }
 .submit {
   cursor: pointer;
@@ -106,7 +101,6 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  font-family: Lexend, serif;;
   border: none;
   outline: none;
   margin: 10px auto 20px;

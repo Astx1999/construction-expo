@@ -133,7 +133,9 @@
     height: 60px;
   }
 }
-
+html[lang='am'] .title, html[lang='am'] .subtitle,{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .title {
   font-family: LexendLight;
   font-size: 32px;
@@ -149,9 +151,10 @@
   margin: 12px 0;
   opacity: 0.6;
   font-size: 19px;
-  font-family: Lexend;
 }
-
+html[lang='am'] .desc{
+  font-family: Arial, sans-serif;
+}
 .desc {
   font-size: 16px;
   font-family: LexendLight;

@@ -4,7 +4,6 @@
   padding: 120px 100px 0;
   background: #22242C;
   color: white;
-  font-family: Lexend;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 80px 25px 0;
   }
@@ -60,7 +59,19 @@
     margin-top: 0;
   }
 }
+html[lang='am'] .address,
+html[lang='am'] .openingHours,
+html[lang='am'] .callUs,
+html[lang='am'] .email,
+html[lang='am'] .followUs{
+  p{
+    font-family: Arial, sans-serif;
+  }
+  .subTitle{
+    font-family: DejaVuSans, sans-serif;
+  }
 
+}
 .address,
 .openingHours,
 .callUs,
@@ -90,7 +101,6 @@
   font-size: 20px;
   margin-bottom: 15px;
   opacity: 0.6;
-  font-family: Lexend;
   @media only screen and (max-width: $smallDisplay) {
     font-size: 20px;
   }

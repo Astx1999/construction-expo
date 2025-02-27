@@ -12,7 +12,9 @@
     padding: 20px 0 80px;
   }
 }
-
+html[lang='am'] .title{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .title {
   font-family: LexendLight;
   position: absolute;

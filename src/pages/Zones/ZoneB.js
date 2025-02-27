@@ -1,10 +1,12 @@
 import React from 'react';
+import useLocalStorage from "../../hook/useLocalStorage";
 
-const ZoneB = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
-    const {zoneItems} = zoneItemsData || {};
+const ZoneB = ({ zoneItemsData, handleSelect}) => {
+
+    const [selectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
     const getPolygonStyle = (className) => {
-        const item = zoneItems?.find((item) => item.classname === className);
+        const item = zoneItemsData?.zoneItems?.find((item) => item.classname === className);
         const isSelected = selectedZoneItems?.some((selected) => selected.className === className);
 
         return {
@@ -15,7 +17,7 @@ const ZoneB = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
         };
     };
 
-    return zoneItems && zoneItems.length ? (
+    return zoneItemsData?.zoneItems && zoneItemsData.zoneItems.length ? (
             <svg
                 width="190.086mm"
                 height="181.04mm"

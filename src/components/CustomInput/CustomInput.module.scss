@@ -16,7 +16,9 @@
     }
   }
 }
-
+html[lang='am'] .input{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .input{
   height: 60px;
   background: #22242C;
@@ -45,5 +47,4 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .label{
   margin-bottom: 10px;
-  font-family: Lexend, serif;;
 }

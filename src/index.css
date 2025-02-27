@@ -14,8 +14,13 @@
 }
 
 @font-face {
-    font-family: Arial;
+    font-family: ArmguardU;
     src: url("fonts/ArmguardU.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: DejaVuSans;
+    src: url("fonts/DejaVuSans.ttf") format("truetype");
 }
 
 ::-webkit-scrollbar {
@@ -47,7 +52,7 @@
 
 body {
     margin: 0;
-    font-family: ArmguardU, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: Lexend, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -55,9 +60,14 @@ body {
 }
 
 code {
-    font-family: ArmguardU, Arial, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: Lexend, Arial, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html[lang='am'] body {
+    font-family: DejaVuSans, Arial, sans-serif;
+}
+
 
 polygon::selection {
     background: transparent;

@@ -18,8 +18,8 @@ i18n
                 translation: amTranslation,
             },
         },
-        lng: 'en', // Default language
-        fallbackLng: 'en', // Fallback language
+        lng: 'am', // Default language
+        fallbackLng: 'am', // Fallback language
         interpolation: {
             escapeValue: false, // Not needed for React
         },

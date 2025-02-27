@@ -60,7 +60,9 @@
   color: #FE5840;
   border-bottom: 2px solid #FE5840;
 }
-
+html[lang='am'] .event{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .event {
   display: flex;
   font-family: LexendLight, serif;
@@ -84,8 +86,6 @@
 
 .eventDate {
   font-size: 35px;
-  font-family: Lexend, serif;
-
   @media only screen and (max-width: $largeDisplay) {
     font-size: 30px;
   }

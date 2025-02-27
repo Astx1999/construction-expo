@@ -56,6 +56,7 @@ const Header = ({activeSection}) => {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [activePage, setActivePage] = useState(location.pathname);
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
         let prevScrollPos = window.pageYOffset; // Initialize previous scroll position
@@ -86,7 +87,11 @@ const Header = ({activeSection}) => {
         setMenuOpen(!menuOpen);
     };
 
-    const {t, i18n} = useTranslation();
+    useEffect(() => {
+        document.documentElement.lang = i18n.language;
+    }, [i18n.language]);
+
+
     return (
         <div
             className={classNames(styles.root, {

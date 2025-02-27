@@ -3,7 +3,6 @@
 .root {
   background: linear-gradient(#22242C, #22242C);
   color: white;
-  font-family: Lexend, serif;
   padding: 50px 50px 0;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 20px 80px 0;
@@ -81,13 +80,17 @@
     padding: 50px 0px 0;
   }
 }
-
+html[lang='am'] .text{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .text {
   font-family: LexendLight;
   line-height: 1.5;
 }
 
-
+html[lang='am'] .textTitle{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .textTitle {
   font-family: LexendLight;
   display: flex;

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import useLocalStorage from "../../hook/useLocalStorage";
 
-const ZoneA = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
-    const { zoneItems } = zoneItemsData || {};
+const ZoneA = ({zoneItemsData, handleSelect}) => {
+
+    const [selectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
     const getPolygonStyle = (className) => {
-        const item = zoneItems?.find((item) => item.classname === className);
+        const item = zoneItemsData?.zoneItems?.find((item) => item.classname === className);
         const isSelected = selectedZoneItems?.some((selected) => selected.className === className);
 
+        console.log(selectedZoneItems, 7)
         return {
             cursor: "pointer",
             pointerEvents: item?.status === "BOOKED" || item?.status === "REQUESTED" ? "none" : "auto",
@@ -15,8 +18,13 @@ const ZoneA = ({selectedZoneItems, zoneItemsData, handleSelect}) => {
         };
     };
 
-    return zoneItems && zoneItems.length ? (
+    useEffect(() => {
+        console.log('Selected zone items or zone items data updated');
+    }, [selectedZoneItems, zoneItemsData]);
+
+    return zoneItemsData?.zoneItems && zoneItemsData.zoneItems.length ? (
         <svg
+            key={zoneItemsData.zoneItems.filter((i) => i.status === "REQUESTED").length}
             width="224.869mm"
             height="143.655mm"
             version="1.1"

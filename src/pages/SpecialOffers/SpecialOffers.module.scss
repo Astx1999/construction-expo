@@ -1,5 +1,4 @@
 @import "src/variables";
-
 .root {
   color: white;
   padding-top: 0;
@@ -7,7 +6,6 @@
   position: relative;
   min-height: 60vh;
   overflow: hidden;
-  font-family: LexendLight;
   padding-left: 50px;
 
   :global {
@@ -114,7 +112,9 @@
     width: 100%;
   }
 }
-
+html[lang='am'] .title{
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .title {
   font-family: LexendLight;
   font-size: 32px;
@@ -127,7 +127,6 @@
 
 .desc {
   font-size: 20px;
-  font-family: Lexend, serif;;
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
   }

@@ -4,7 +4,6 @@
   min-height: 100vh;
   color: white;
   padding: 150px 50px 0;
-  font-family: Lexend, serif;
   display: flex;
   justify-content: center;
   position: relative;
@@ -50,7 +49,7 @@
 
 
 .title {
-  font-family: LexendLight, serif;
+  font-family: LexendLight;
   font-size: 80px;
   letter-spacing: 1px;
   margin-bottom: 30px;
@@ -102,7 +101,7 @@
   display: flex;
   align-items: center;
   width: 600px;
-  font-family: LexendLight, serif;
+  font-family: LexendLight;
   line-height: 1.5;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 16px;
