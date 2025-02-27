@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from "./Header.module.scss";
 import {ReactComponent as Logo} from "../../images/logo.svg";
 import classNames from "classnames";
 import {NavLink, useLocation} from "react-router-dom";
 import useWindowResize from "../../hook/useWindowResize";
+import {ReactComponent as Languages} from "../../images/languages.svg";
 import {ReactComponent as Fb} from "../../images/fb.svg";
 import {ReactComponent as Inst} from "../../images/insta.svg";
 import {ReactComponent as Youtube} from "../../images/youtube.svg";
 import {useTranslation} from "react-i18next";
+import useOnClickOutside from "../../hook/useOnClickOutside";
 
 const menuItems = [
     {
@@ -40,6 +42,7 @@ const Header = ({activeSection}) => {
     const location = useLocation();
     const {width} = useWindowResize();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [openLangMenu, setOpenLangMenu] = useState(false);
 
 
     useEffect(() => {
@@ -57,6 +60,12 @@ const Header = ({activeSection}) => {
     const [visible, setVisible] = useState(true);
     const [activePage, setActivePage] = useState(location.pathname);
     const {t, i18n} = useTranslation();
+
+    const langSelect = useRef(null);
+
+    useOnClickOutside(langSelect, () => {
+        setOpenLangMenu(false);
+    });
 
     useEffect(() => {
         let prevScrollPos = window.pageYOffset; // Initialize previous scroll position
@@ -141,26 +150,32 @@ const Header = ({activeSection}) => {
                                 {t(menuItem.name)}
                             </div>*/}
                             {index < menuItems.length - 1 && (
-                                <div className={styles.slash}> /</div>
+                                <div className={styles.slash}/>
                             )}
                         </div>
                     ))}
 
-                    <div
-                        className={classNames(styles.lang, {
-                            [styles.activeLang]: i18n.language === "am",
-                        })}
-                        onClick={() => i18n.changeLanguage("am")}
-                    >
-                        AM
-                    </div>
-                    <div
-                        className={classNames(styles.lang, {
-                            [styles.activeLang]: i18n.language === "en",
-                        })}
-                        onClick={() => i18n.changeLanguage("en")}
-                    >
-                        EN
+                    <div ref={langSelect} className={styles.langSelect} onClick={() => setOpenLangMenu(!openLangMenu)}>
+                        <Languages/>
+
+                        {openLangMenu && <div className={styles.langOption}>
+                            <div
+                                className={classNames(styles.lang, {
+                                    [styles.activeLang]: i18n.language === "am",
+                                })}
+                                onClick={() => i18n.changeLanguage("am")}
+                            >
+                                AM
+                            </div>
+                            <div
+                                className={classNames(styles.lang, {
+                                    [styles.activeLang]: i18n.language === "en",
+                                })}
+                                onClick={() => i18n.changeLanguage("en")}
+                            >
+                                EN
+                            </div>
+                        </div>}
                     </div>
                 </div>
             ) : (

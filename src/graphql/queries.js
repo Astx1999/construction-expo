@@ -248,3 +248,14 @@ export const VISITOR_ENTERED_MUTATION = gql`
     }
   }
 `;
+
+
+export const GET_AGENDA_LOCALiZATIONS = gql`
+  query GetAgendaLocalizations($distinct_on: [localizations_select_column!], $limit: Int, $offset: Int, $order_by: [localizations_order_by!], $where: localizations_bool_exp) {
+    localizations(distinct_on: $distinct_on, limit: $limit, offset: $offset, order_by: $order_by, where: $where) {
+      id
+      language
+      source(path: "agenda")
+    }
+  }
+`

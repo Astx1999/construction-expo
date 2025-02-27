@@ -10,6 +10,8 @@ import AboutUsImg from '../../images/aboutUsIMG.png';
 import {ReactComponent as AboutUsOutline} from "../../images/aboutUsOutline.svg";
 import {ReactComponent as DownloadIcon} from "../../images/download.svg";
 
+import Advert from "../../images/aboutUs.mp4";
+
 const AboutUs = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
@@ -27,9 +29,11 @@ const AboutUs = () => {
                         {width <= 767 ? (
                             <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={9}/>
                         ) : width <= 1200 ? (
-                            <div className={styles.text} dangerouslySetInnerHTML={{__html: t("about_us_text_mobile")}}/>
+                            <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={13}/>
+                            // <div className={styles.text} dangerouslySetInnerHTML={{__html: t("about_us_text_mobile")}}/>
                         ) : (
-                            <div className={styles.text} dangerouslySetInnerHTML={{__html: t("about_us_text")}}/>
+                            <ReadMoreText htmlContent={t("about_us_text")} maxLines={13}/>
+                            // <div className={styles.text} dangerouslySetInnerHTML={{__html: t("about_us_text")}}/>
                         )}
                     </div>
 
@@ -44,12 +48,26 @@ const AboutUs = () => {
                     </div>
                 </div>
                 <div className={styles.imageBlock}>
-                    <div className={styles.imagePath}>
+                    {/*  <div className={styles.imagePath}>
                         <img className={styles.image} src={AboutUsImg} alt="about us image"/>
                         <div className={styles.outline}>
                             <AboutUsOutline/>
                         </div>
+                    </div>*/}
+
+                    <div className={styles.videoContainer}>
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            controls
+                            className={styles.video}
+                        >
+                            <source src={Advert} type="video/mp4"/>
+                        </video>
                     </div>
+
                 </div>
             </div>
         </div>

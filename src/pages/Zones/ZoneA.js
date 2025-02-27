@@ -9,7 +9,6 @@ const ZoneA = ({zoneItemsData, handleSelect}) => {
         const item = zoneItemsData?.zoneItems?.find((item) => item.classname === className);
         const isSelected = selectedZoneItems?.some((selected) => selected.className === className);
 
-        console.log(selectedZoneItems, 7)
         return {
             cursor: "pointer",
             pointerEvents: item?.status === "BOOKED" || item?.status === "REQUESTED" ? "none" : "auto",

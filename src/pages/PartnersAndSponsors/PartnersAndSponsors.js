@@ -1,10 +1,12 @@
 import React from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination} from 'swiper/modules';
-
-import Partner1 from "../../images/partner1.png"
-import Partner2 from "../../images/partner2.png"
-import Partner3 from "../../images/partner3.png"
+import Federation from '../../images/Armenian Tourism Federation Logo GREY PNG.png'
+import Committee from "../../images/Tourism Committe Logo PNG Grey 2 copy.png"
+//commitee atm
+import PromExpo from "../../images/partner1.png"
+import Alpha from "../../images/partner2.png"
+import ATM from "../../images/Armenia Travel Logo Lite Grey PNG.png"
 import styles from './PartnersAndSponsors.module.scss'
 
 // Import Swiper styles
@@ -21,23 +23,37 @@ import {useTranslation} from "react-i18next";
 
 const partners = [
     {
-        img: Partner2,
-        title: "Alpha Consulting",
-        subtitle: "General partner",
-        desc: "partners_alpha_desc"
+        img: Federation,
+        title: "Federation",
+        subtitle: "organizer",
+        desc: "partners_federation_desc"
     },
     {
-        img: Partner1,
+        img: Committee,
+        title: "Tourism Committe",
+        subtitle: "general_information_partner",
+        desc: "partners_atm_desc"
+    },
+    {
+        img: ATM,
+        title: "Armenia Travel",
+        subtitle: "co_organizer",
+        desc: "partners_atm_desc"
+    },
+    {
+        img: PromExpo,
         title: "Prom Expo",
-        subtitle: "General partner",
+        subtitle: "co_organizer",
         desc: "partners_promexpo_desc"
     },
     {
-        img: Partner3,
-        title: "Armenia Travel",
-        subtitle: "General partner",
-        desc: "partners_atm_desc"
+        img: Alpha,
+        title: "Alpha Consulting",
+        subtitle: "marketing_partner",
+        desc: "partners_alpha_desc"
     },
+
+
 ]
 const PartnersAndSponsors = () => {
     const {width} = useWindowResize()

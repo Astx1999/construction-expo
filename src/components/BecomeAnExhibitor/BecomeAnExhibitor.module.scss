@@ -3,7 +3,7 @@
   background: #22242C;
   padding: 30px 60px 0;
   @media only screen and (max-width: $smallDisplay) {
-    padding: 70px 10px 0 30px
+    padding: 70px 10px 0 10px
   }
 }
 .successModal{
@@ -53,6 +53,8 @@
   display: flex;
   flex-direction: column;
   margin-top: 15px;
+  font-size: 14px;
+
   textarea{
     background: #22242C;
     color: white;

@@ -84,28 +84,18 @@ html[lang='am'] .event{
   flex: 2;
 }
 
-.eventDate {
-  font-size: 35px;
-  @media only screen and (max-width: $largeDisplay) {
-    font-size: 30px;
-  }
-  @media only screen and (max-width: $smallDisplay) {
-    font-size: 26px;
-  }
-}
-
 .eventTime {
-  margin: 15px 0;
-  opacity: 0.6;
-  font-size: 16px;
-
+  margin-bottom: 15px;
+  opacity: 0.8;
+  font-size: 30px;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 14px;
+    font-size: 28px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 12px;
+    font-size: 25px;
   }
 }
+
 
 .eventZone {
   padding: 10px 15px;
@@ -144,4 +134,9 @@ html[lang='am'] .event{
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
   }
+}
+
+.tabContent{
+  max-height: 90vh;
+  overflow: auto;
 }

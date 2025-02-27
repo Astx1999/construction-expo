@@ -67,6 +67,7 @@
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
     margin-top: 80px;
+    padding: 0
   }
 }
 
@@ -153,4 +154,11 @@ html[lang='am'] .textTitle{
   }
 }
 
-
+.videoContainer{
+  overflow: hidden;
+  border-top-right-radius: 50px;
+  height: 100%;
+}
+.video{
+  width: 100%;
+}
