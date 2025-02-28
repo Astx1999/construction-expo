@@ -11,12 +11,12 @@
   align-items: center;
   text-align: center;
   @media only screen and (max-width: $largeDisplay) {
-    max-height: 65px;
-    min-height: 65px;
+    max-height: 68px;
+    min-height: 68px;
   }
   @media only screen and (max-width: $mediumDisplay) {
     min-width: 198px;
-    width: 198px;
+    width: 244px;
     //width: 280px;
   }
 

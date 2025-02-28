@@ -32,7 +32,7 @@ const partners = [
         img: Committee,
         title: "Tourism Committe",
         subtitle: "general_information_partner",
-        desc: "partners_atm_desc"
+        desc: "partners_committee_desc"
     },
     {
         img: ATM,

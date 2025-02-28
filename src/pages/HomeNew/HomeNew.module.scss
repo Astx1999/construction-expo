@@ -5,7 +5,7 @@
   color: white;
   padding: 150px 50px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   background: #22242C;
   overflow: hidden;
@@ -18,52 +18,63 @@
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 0 30px 0;
-    align-items: flex-end;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
+.homeBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 0;
+}
+
 .animation {
-  width: 40%;
+  width: 30%;
   display: flex;
+  z-index: 1;
+  padding-top: 30px;
   svg {
     width: 100%;
+    height: 100%;
   }
 
   @media only screen and (max-width: $smallDisplay) {
     display: block;
-    width: 100%;
-    margin-top: -70px;
+    width: 250px;
+    padding-top: 0;
+    margin: 0 0 0 auto;
   }
 }
 
 .content {
-  padding-top: 120px;
   width: calc(60% - 0px);
-  padding-left: 80px;
+  padding-right: 80px;
+  z-index: 1;
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
     padding-left: 0;
+    padding-top: 120px;
   }
 }
 
 
 .title {
   font-family: LexendLight;
-  font-size: 80px;
+  font-size: 65px;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 65px;
+    font-size: 60px;
   }
   @media only screen and (max-width: $mediumDisplay) {
-    text-align:  -webkit-right;
     font-size: 45px;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 40px;
-    text-align: right;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 
   span {
@@ -81,7 +92,6 @@
   }
   @media only screen and (max-width: $mediumDisplay) {
     display: flex;
-    justify-content: end;
     font-size: 25px;
   }
   @media only screen and (max-width: $smallDisplay) {
@@ -136,9 +146,6 @@
 
 .cta {
   margin: 35px 0;
-  @media only screen and (max-width: $mediumDisplay) {
-    text-align: -webkit-right;
-  }
 }
 
 .location {
@@ -148,33 +155,25 @@
   font-size: 19px;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 12px;
-    width: 204px;
-    float: right;
-    text-align: end;
     align-items: flex-start;
-  }
-  @media only screen and (max-width: $mediumDisplay) {
-    svg{
+    svg {
       width: 20px;
       height: 20px;
     }
   }
+
   span {
     padding-left: 30px;
     @media only screen and (max-width: $mediumDisplay) {
       padding-left: 10px;
     }
   }
-}
 
-.line1 {
-  margin-left: -35px;
+  @media only screen and (max-width: $smallDisplay) {
+    width: 204px;
+    margin-bottom: 0;
+  }
 }
-
-.line2 {
-  margin-left: 40px;
-}
-
 
 //@keyframes slideInFromRight {
 //  from {
@@ -241,6 +240,7 @@
 
 .RALogo {
   width: 470px;
+  z-index: 1;
   @media only screen and (max-width: $largeDisplay) {
     width: 400px;
   }
@@ -248,8 +248,7 @@
     width: 100%;
   }
   @media only screen and (max-width: $smallDisplay) {
-    width: 70%;
-    margin-top: -90px;
+    width: 300px;
   }
 
   img {
