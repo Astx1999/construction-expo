@@ -21,16 +21,12 @@ const menuItems = [
         link: "zones",
     },
     {
-        name: "special_offers",
-        link: "special-offers",
+        name: "agenda",
+        link: "events",
     },
     {
         name: "partners",
-        link: "partners",
-    },
-    {
-        name: "blog",
-        link: "blog",
+        link: "partners-and-sponsors",
     },
     {
         name: "contact_us",
