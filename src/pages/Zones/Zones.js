@@ -299,8 +299,8 @@ export const Zones = () => {
                             }}
                             text={t("reserve_booth")}/>
                     </div>
-                    <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
-                    }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>
+                   {/* <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
+                    }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>*/}
                 </div>
             </div>
         </div>
