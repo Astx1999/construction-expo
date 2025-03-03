@@ -5,6 +5,7 @@
   min-height: 100vh;
   padding: 120px 50px 20px;
   color: white;
+
   :global {
     .swiper-pagination-bullet {
       width: 42px;
@@ -144,9 +145,11 @@
   display: flex;
   align-items: center;
 }
-html[lang='am'] .name{
+
+html[lang='am'] .name {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .name {
   font-family: LexendLight;
   font-size: 45px;
@@ -188,9 +191,11 @@ html[lang='am'] .name{
     }
   }
 }
-html[lang='am'] .title{
+
+html[lang='am'] .title {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .title {
   font-family: LexendLight;
   font-size: 28px;
@@ -233,25 +238,33 @@ html[lang='am'] .title{
     width: calc(100% - 25px)
   }
 }
-.textarrow{
+
+.textarrow {
   width: 20px;
   height: 20px;
   position: relative;
   margin-top: 10px;
+
   svg {
     width: 100%;
     height: 100%;
     position: absolute;
   }
 }
+
 .statuses {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
+  width: 60%;
+  @media only screen and (max-width: $extraLargeDisplay) {
+    width: 55%;
+  }
   @media only screen and (max-width: $mediumDisplay) {
     align-items: flex-start;
     font-size: 18px;
+    width: 100%;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
@@ -323,6 +336,7 @@ html[lang='am'] .title{
 
   @media only screen and (max-width: $mediumDisplay) {
     margin-bottom: 30px;
+    flex-wrap: wrap;
   }
 }
 
@@ -338,10 +352,7 @@ html[lang='am'] .title{
 }
 
 .bookingInfo {
-  width: 60%;
-  @media only screen and (max-width: $extraLargeDisplay) {
-    width: 55%;
-  }
+  width: 100%;
   @media only screen and (max-width: $mediumDisplay) {
     width: 100%;
   }
@@ -350,5 +361,10 @@ html[lang='am'] .title{
 .cta {
   @media only screen and (max-width: $mediumDisplay) {
     width: auto;
+  }
+}
+.ctaDownload{
+  @media only screen and (max-width: $mediumDisplay) {
+    margin-top: 30px;
   }
 }

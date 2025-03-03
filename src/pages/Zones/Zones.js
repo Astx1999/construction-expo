@@ -32,6 +32,7 @@ import {GET_ZONE_ITEMS, GET_ZONES, UPDATE_ZONE_ITEM_STATUS, UPDATE_ZONE_ITEMS} f
 import {authClient} from "../../apolloClient";
 import InfoIconWithTooltip from "../../components/InfoIconWithTooltip/InfoIconWithTooltip";
 import useLocalStorage from "../../hook/useLocalStorage";
+import {ReactComponent as DownloadIcon} from "../../images/download.svg";
 
 const zones = [
     {
@@ -123,7 +124,6 @@ export const Zones = () => {
 
     useEffect(() => {
         if (data) {
-            console.log(data.zoneItems.filter((item) => item.status === "REQUESTED"), 123)
             setZoneItemsData(data);
         }
     }, [data]);
@@ -131,16 +131,19 @@ export const Zones = () => {
 
     const [selectedZoneItems, setSelectedZoneItems] = useLocalStorage("selectedZoneItems", []);
 
-    const grouped = selectedZoneItems?.reduce((acc, {zoneName, zoneItem}) => {
+    const grouped = selectedZoneItems?.reduce((acc, {zoneName, zoneItem, size}) => {
         if (!acc[zoneName]) {
             acc[zoneName] = [];
         }
-        acc[zoneName].push(zoneItem);
+        acc[zoneName].push({zoneItem, size});
         return acc;
     }, {});
 
     const formattedString = Object.entries(grouped)
-        .map(([zone, items]) => `Zone ${zone} [${items.join(",")}]`)
+        .map(([zone, items]) => {
+            const itemStrings = items.map(item => `${item.zoneItem} (${item.size}sq. m)`);
+            return `Zone ${zone} [${itemStrings.join(", ")}]`;
+        })
         .join(", ");
 
 
@@ -170,6 +173,7 @@ export const Zones = () => {
         const zoneName = zonesData.zones.find((zone) => zone.id === newZoneId)?.name;
         const match = className.match(/Item(\d+)$/);
         const zoneItem = match ? match[1] : null;
+        const size = zoneItemObj?.metadata?.size || "";
 
         setSelectedZoneItems((prev) => {
             const existingZone = prev.find((item) => item.zoneId === newZoneId);
@@ -179,10 +183,17 @@ export const Zones = () => {
                 if (isSelected) {
                     return prev.filter((item) => item.className !== className);
                 } else {
-                    return [...prev, {zoneStandId, zoneId: newZoneId, zoneName, zoneItem, className}];
+                    return [...prev, {
+                        zoneStandId,
+                        zoneId: newZoneId,
+                        zoneName,
+                        zoneItem,
+                        className,
+                        size
+                    }];
                 }
             } else {
-                return [{zoneStandId, zoneId: newZoneId, zoneName, zoneItem, className}];
+                return [{zoneStandId, zoneId: newZoneId, zoneName, zoneItem, className, size}];
             }
         });
     };
@@ -288,6 +299,8 @@ export const Zones = () => {
                             }}
                             text={t("reserve_booth")}/>
                     </div>
+                    <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
+                    }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>
                 </div>
             </div>
         </div>

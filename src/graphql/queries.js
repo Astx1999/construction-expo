@@ -35,6 +35,7 @@ export const GET_ZONE_ITEMS = gql`
       name
       classname
       zoneId
+      metadata
     }
   }
 `;
