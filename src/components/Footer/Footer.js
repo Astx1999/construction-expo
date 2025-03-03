@@ -71,8 +71,9 @@ const Footer = ({id}) => {
                                                    rel="noopener noreferrer"><Fb/></a>
                     <a href="https://www.instagram.com/i.t.f.armenia/" target="_blank"
                        rel="noopener noreferrer"><Inst/></a>
-                    <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank"
-                       rel="noopener noreferrer"><Youtube/></a></div>
+                   {/* <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank"
+                       rel="noopener noreferrer"><Youtube/></a>*/}
+                </div>
             </div>
             <a href={"https://www.neen.am/"} target={"_blank"} className={styles.heart}>made with ❤️ by Neen</a>
         </div>
