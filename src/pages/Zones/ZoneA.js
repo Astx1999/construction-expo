@@ -17,10 +17,6 @@ const ZoneA = ({zoneItemsData, handleSelect}) => {
         };
     };
 
-    useEffect(() => {
-        console.log('Selected zone items or zone items data updated');
-    }, [selectedZoneItems, zoneItemsData]);
-
     return zoneItemsData?.zoneItems && zoneItemsData.zoneItems.length ? (
         <svg
             key={zoneItemsData.zoneItems.filter((i) => i.status === "REQUESTED").length}

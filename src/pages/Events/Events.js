@@ -14,8 +14,6 @@ const Events = () => {
 
     const {data: agenda} = useQuery(GET_AGENDA_LOCALiZATIONS);
 
-    console.log(agenda?.localizations?.find((a) => a.language === i18n.language), 123);
-
     const data = agenda?.localizations?.find((a) => a.language === i18n.language)
 
     return (

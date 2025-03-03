@@ -158,7 +158,6 @@ export const Zones = () => {
                 }
             });
             setSelectedZoneItems([]);
-            console.log("All zones updated to REQUESTED");
         } catch (error) {
             console.error("Error updating zone status:", error);
         }
