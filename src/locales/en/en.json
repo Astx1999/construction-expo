@@ -29,6 +29,7 @@
   "events": "Events agenda",
   "zones": "Zones",
   "send_book_request": "Send Book Request",
+  "reserve_booth": "Reserve a booth",
   "members_A": "Transportation companies\nAerial excursion services\nAdventure tourism services\nRestaurants, catering, and gastronomic services",
   "members_B": "Travel companies\nAirlines\nHotels and resorts\nRestaurants\nCultural institutions (museums and galleries)\nInsurance companies\nTelecommunication services\nBanks and financial organizations",
   "members_C": "Tour operators and travel agencies\nHotels, resorts, and wellness centers\nRestaurants, catering, and food services\nAirlines and transportation companies\nMICE companies and event organizers\nCultural institutions (museums and others)\nAdventure, ecotourism, enotourism (wine tours), and agrotourism\nTourism education institutions\nTour guides and excursion services\nReal estate agencies\nInsurance companies",
@@ -80,6 +81,8 @@
   "general_information_partner": "General information partner",
   "co_organizer": "Co-organizer",
   "marketing_partner": "Marketing partner",
+  "committee_title": "Tourism Committee of RA",
+  "federation_title": "Armenian Tourism Federation",
   "partners_federation_desc": "The Armenian Tourism Federation was established on August 2, 2018, by the decision of its founding assembly, through the reorganization of the Union of Inbound Tour Operators of Armenia, which had been operating since 2004, and is its legal successor.\n\nThe Union of Inbound Tour Operators of Armenia has played a significant role in Armenia's economy, actively and effectively cooperating with public and private sector partners in Armenia, including within the framework of international collaboration.\n\nToday, the Armenian Tourism Federation facilitates cooperation among stakeholders, supports the development and implementation of tourism policies, promotes the establishment of business connections, and provides information and consultation, contributing to the sustainable development of tourism in Armenia.\n",
   "partners_promexpo_desc": "Founded in 2007, Prom Expo has established itself as one of the leading organizers of exhibitions, conferences, festivals, business meetings, and events. Since 2009, Prom Expo has been a strategic partner of the Chamber of Commerce and Industry of Armenia.\n\nThroughout its history, the company has organized over 150 events both in Armenia and internationally. These include Armenian Auto Show, Construction and Interior, Drink Expo, PanArmenian Expo, ArmSign Expo, Healthy Lifestyle, Intour Expo, and many other exhibitions. Prom Expo has also hosted the Coffee-Tea-Chocolate and Spirits of Armenia festivals, Francophone conferences, and several other high-profile events.\n\nSince 2016, Prom Expo has been the main builder and technical provider for the ArmHighTech and ArmSecurity exhibitions.\n\n",
   "partners_alpha_desc": "Alpha Consulting is a company with extensive experience in building, establishing, and maintaining strong connections among participants in various events, including expos, exhibitions, and trade fairs. \n\nThe company is also responsible for managing marketing activities.\n\nAlpha Consulting operates in the fields of business operations, advertising, and marketing consultancy, as well as the localization of international brands in Armenia. Among its partners are Evolution, JLR Armenia, Zeekr Armenia, and Petronas.\n",
@@ -114,5 +117,8 @@
   "mins_to_read": "mins to read",
   "email_is_used": "This email address is used",
   "invalid_email_format": "Invalid format",
-  "choose_zone": "Please choose preferred stand zone"
+  "choose_zone": "Please choose preferred stand zone",
+  "available": "Available",
+  "unavailable": "Unvailable",
+  "selected": "Selected"
 }

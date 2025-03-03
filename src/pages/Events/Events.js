@@ -22,7 +22,7 @@ const Events = () => {
         <div className={styles.root}>
             <p className={styles.pageTitle}>{t('events')}</p>
             <p className={styles.subtitle}>
-                {t('To participate you need to register for the event')}
+                {/*{t('To participate you need to register for the event')}*/}
             </p>
 
             <div className={styles.tabs}>

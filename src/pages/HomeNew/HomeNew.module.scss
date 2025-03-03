@@ -57,7 +57,7 @@
   z-index: 1;
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
-    padding-left: 0;
+    padding: 0;
     padding-top: 120px;
   }
 }
@@ -78,7 +78,7 @@ html[lang='am'] .title{
     font-size: 45px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 40px;
+    font-size: 26px;
     margin-bottom: 0;
   }
 
@@ -100,7 +100,7 @@ html[lang='am'] .title{
     font-size: 25px;
   }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 10px;
   }
   @media only screen and (max-width: $extraExtraSmallDisplay) {
@@ -153,6 +153,9 @@ html[lang='am'] .desc{
 
 .cta {
   margin: 35px 0;
+  @media only screen and (max-width: $smallDisplay) {
+    margin: 25px 0;
+  }
 }
 
 .location {

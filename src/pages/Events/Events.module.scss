@@ -11,10 +11,12 @@
     padding: 20px 80px 0;
   }
   @media only screen and (max-width: $smallDisplay) {
-    padding: 0 30px 0;
+    padding: 20px 0 0 30px;
   }
 }
-
+html[lang='am'] .root {
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .pageTitle {
   font-size: 45px;
   letter-spacing: 1px;
@@ -50,7 +52,9 @@
   padding: 10px;
   cursor: pointer;
   margin-right: 50px;
-
+  @media only screen and (max-width: $mediumDisplay) {
+    margin-right: 10px;
+  }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 16px;
   }
@@ -60,9 +64,11 @@
   color: #FE5840;
   border-bottom: 2px solid #FE5840;
 }
-html[lang='am'] .event{
+
+html[lang='am'] .event {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .event {
   display: flex;
   font-family: LexendLight, serif;
@@ -74,10 +80,18 @@ html[lang='am'] .event{
     margin-bottom: 0;
     border-bottom: none;
   }
+
+  @media only screen and (max-width: $mediumDisplay) {
+    flex-direction: column;
+  }
 }
 
 .blockOne {
   flex: 1;
+  @media only screen and (max-width: $mediumDisplay) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .blockTwo {
@@ -88,11 +102,16 @@ html[lang='am'] .event{
   margin-bottom: 15px;
   opacity: 0.8;
   font-size: 30px;
+  white-space: nowrap;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 28px;
   }
+  @media only screen and (max-width: $mediumDisplay) {
+    margin-bottom: 0;
+    margin-right: 26px;
+  }
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 
@@ -102,7 +121,7 @@ html[lang='am'] .event{
   background: #383A41;
   width: max-content;
   font-size: 14px;
-
+  text-align: center;
   @media only screen and (max-width: $largeDisplay) {
     font-size: 12px;
   }
@@ -110,7 +129,9 @@ html[lang='am'] .event{
     font-size: 10px;
   }
 }
-
+html[lang='am'] .eventTitle {
+  font-family: DejaVuSans, Arial, sans-serif;
+}
 .eventTitle {
   font-size: 35px;
   font-family: LexendLight, serif;
@@ -118,8 +139,11 @@ html[lang='am'] .event{
   @media only screen and (max-width: $largeDisplay) {
     font-size: 30px;
   }
-  @media only screen and (max-width: $smallDisplay) {
+  @media only screen and (max-width: $mediumDisplay) {
     font-size: 26px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 20px;
   }
 }
 
@@ -136,7 +160,7 @@ html[lang='am'] .event{
   }
 }
 
-.tabContent{
+.tabContent {
   max-height: 90vh;
   overflow: auto;
 }

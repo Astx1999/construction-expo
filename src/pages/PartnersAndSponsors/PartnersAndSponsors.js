@@ -24,13 +24,13 @@ import {useTranslation} from "react-i18next";
 const partners = [
     {
         img: Federation,
-        title: "Federation",
+        title: "federation_title",
         subtitle: "organizer",
         desc: "partners_federation_desc"
     },
     {
         img: Committee,
-        title: "Tourism Committe",
+        title: "committee_title",
         subtitle: "general_information_partner",
         desc: "partners_committee_desc"
     },

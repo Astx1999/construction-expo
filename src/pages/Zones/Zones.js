@@ -259,7 +259,8 @@ export const Zones = () => {
                                     <div className={styles.areas}>
                                         {t(zone.members).split("\n").map((item, index) => (
                                             <div className={styles.area}>
-                                                <div className={styles.textarrow}><TextArrow/></div><p key={index}>{item}</p>
+                                                <div className={styles.textarrow}><TextArrow/></div>
+                                                <p key={index}>{item}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -271,9 +272,9 @@ export const Zones = () => {
             </Swiper>
             <div className={styles.bookingInfo}>
                 <div className={styles.statuses}>
-                    <div className={styles.available}>Available</div>
-                    <div className={styles.selected}>Selected</div>
-                    <div className={styles.unavailable}>Unavailable</div>
+                    <div className={styles.available}>{t("available")}</div>
+                    <div className={styles.selected}>{t("selected")}</div>
+                    <div className={styles.unavailable}>{t("unavailable")}</div>
                 </div>
                 <div className={styles.input}>
                     <CustomInput disabled placeholder={'Select Zone Items'}
@@ -285,7 +286,7 @@ export const Zones = () => {
                                 setIsOpen("exhibitor")
                                 navigate("/zones/becomeanexhibitor")
                             }}
-                            text={t("send_book_request")}/>
+                            text={t("reserve_booth")}/>
                     </div>
                 </div>
             </div>

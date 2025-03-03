@@ -69,7 +69,7 @@ const Footer = ({id}) => {
                 <div className={styles.socials}><a href="https://www.facebook.com/share/19dYGXsSYx/?mibextid=LQQJ4d"
                                                    target="_blank"
                                                    rel="noopener noreferrer"><Fb/></a>
-                    <a href="https://www.instagram.com/i.t.f.armenia?igsh=dWR5a2xvOXBwZXh3" target="_blank"
+                    <a href="https://www.instagram.com/i.t.f.armenia/" target="_blank"
                        rel="noopener noreferrer"><Inst/></a>
                     <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank"
                        rel="noopener noreferrer"><Youtube/></a></div>

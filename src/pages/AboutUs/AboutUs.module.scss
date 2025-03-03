@@ -102,6 +102,9 @@ html[lang='am'] .textTitle{
     font-size: 45px;
     width: auto;
   }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 30px;
+  }
 }
 
 .subtitle{
@@ -110,6 +113,9 @@ html[lang='am'] .textTitle{
   opacity: 0.7;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 25px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 20px;
   }
 }
 .logo {
