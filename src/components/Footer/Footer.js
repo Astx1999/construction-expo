@@ -18,8 +18,8 @@ const Footer = ({id}) => {
             <div className={styles.content}>
                 <div className={styles.openingHours}>
                     <p className={styles.subTitle}>{t("workingHours")}</p>
-                    <p className={styles.openingLine}>{t("april")} 4 / 11:00 - 19:00</p>
-                    <p className={styles.openingLine}>{t("april")} 5 / 11:00 - 19:00</p>
+                    <p className={styles.openingLine}>{t("april")} 4 / 12:00 - 20:00</p>
+                    <p className={styles.openingLine}>{t("april")} 5 / 11:00 - 20:00</p>
                     <p className={styles.openingLine}>{t("april")} 6 / 11:00 - 19:00</p>
                 </div>
                 <div className={styles.address}>
