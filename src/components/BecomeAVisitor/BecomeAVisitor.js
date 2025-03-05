@@ -152,12 +152,14 @@ function BecomeAVisitor() {
 
     return (
         <div className={styles.modal}>
-            <div className={styles.close} onClick={closeModal}><Cross/></div>
-            <h2 className={styles.title}>
-                {t("become_a_visitor")}
-            </h2>
-            <p className={styles.subtitle}>{t("participate_in_the_giveaway")}</p>
 
+            <div className={styles.close} onClick={closeModal}><Cross/></div>
+            {/*<h2 className={styles.title}>*/}
+            {/*    {t("become_a_visitor")}*/}
+            {/*</h2>*/}
+            {/*<p className={styles.subtitle}>{t("participate_in_the_giveaway")}</p>*/}
+            <p className={styles.soon}>{t("registration_soon")}</p>
+            {/*
             <form onSubmit={handleSubmit}>
                 <div className={styles.row}>
                     <CustomInput
@@ -234,7 +236,7 @@ function BecomeAVisitor() {
                 >
                     {isLoading || mutationLoading ? t("sending") : t("submit")}
                 </button>
-            </form>
+            </form>*/}
         </div>
     );
 }
