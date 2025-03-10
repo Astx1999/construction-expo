@@ -70,19 +70,19 @@ const zones = [
         ],
         members: "members_C",
         infoText: 'info_text_C'
-    },
-    {
-        name: "D",
-        image: <ZoneD/>,
-        companies: [
-            "Transportation companies",
-            "Aerial excursion services",
-            "Adventure tourism services",
-            "Restaurants, catering, and gastronomic services",
-        ],
-        members: "members_D",
-        infoText: 'info_text_D'
     }
+    // {
+    //     name: "D",
+    //     image: <ZoneD/>,
+    //     companies: [
+    //         "Transportation companies",
+    //         "Aerial excursion services",
+    //         "Adventure tourism services",
+    //         "Restaurants, catering, and gastronomic services",
+    //     ],
+    //     members: "members_D",
+    //     infoText: 'info_text_D'
+    // }
 ];
 
 export const Zones = () => {
@@ -298,7 +298,7 @@ export const Zones = () => {
                             }}
                             text={t("reserve_booth")}/>
                     </div>
-                   {/* <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
+                    {/* <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
                     }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>*/}
                 </div>
             </div>

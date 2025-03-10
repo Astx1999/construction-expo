@@ -17,12 +17,12 @@
       padding-bottom: 100px;
       height: 780px;
       @media only screen and (max-width: $mediumDisplay) {
-        padding-top: 120px;
+        padding-top: 100px;
         padding-bottom: 100px;
         height: 750px;
       }
       @media only screen and (max-width: $smallDisplay) {
-        padding-top: 120px;
+        padding-top: 100px;
         height: 500px;
       }
     }
@@ -90,6 +90,10 @@
 
 .arrow {
   margin-right: 15px;
+}
+
+html[lang='am'] .pageTitle{
+  font-family: DejaVuSans, Arial, sans-serif;
 }
 
 .pageTitle {

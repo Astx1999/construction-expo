@@ -216,16 +216,16 @@ function BecomeAnExhibitor() {
             setSelectedZoneId(formData.zone);
             const zone = zones?.zones?.find((z) => z.id === formData.zone);
             if (zone && availableZoneItems?.zones?.length > 0) {
-
                 setAvailableNumbers(
                     availableZoneItems.zones[0].items.map(zoneItem => {
                         const match = zoneItem.name.match(/Item(\d+)$/);
                         const zoneName = match ? match[1] : null;
+                        const zoneItemObj = allZoneItems.zoneItems.find((item) => item.classname === zoneItem.classname);
                         return (
                             {
                                 id: zoneItem.id,
                                 name:
-                                zoneName
+                                `${zoneName} (${zoneItemObj?.metadata?.size} sq. m)`,
                             }
                         )
 

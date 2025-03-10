@@ -185,50 +185,49 @@ html[lang='am'] .desc{
   }
 }
 
-//@keyframes slideInFromRight {
-//  from {
-//    opacity: 0;
-//    transform: translateX(100%);
-//  }
-//  to {
-//    opacity: 1;
-//    transform: translateX(0);
-//  }
-//}
-//
-//.title,
-//.line1,
-//.line2,
-//.line3,
-//.line4 {
-//  opacity: 0;
-//}
-//
-//.title {
-//  animation: slideInFromRight 0.5s ease forwards;
-//  animation-delay: 0.5s;
-//}
-//
-//.line1 {
-//  animation: slideInFromRight 0.5s ease forwards;
-//  animation-delay: 1s;
-//}
-//
-//.line2 {
-//  animation: slideInFromRight 0.5s ease forwards;
-//  animation-delay: 1.5s;
-//  margin-left: -80px;
-//}
-//
-//.line3 {
-//  animation: slideInFromRight 0.5s ease forwards;
-//  animation-delay: 2s;
-//}
-//
-//.line4 {
-//  animation: slideInFromRight 0.5s ease forwards;
-//  animation-delay: 2.5s;
-//}
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.title,
+.line1,
+.line2,
+.line3,
+.line4 {
+  opacity: 0;
+}
+
+.title {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.line1 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1s;
+}
+
+.line2 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.line3 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2s;
+}
+
+.line4 {
+  animation: slideInFromRight 0.5s ease forwards;
+  animation-delay: 2.5s;
+}
 
 @keyframes drawStroke {
   from {

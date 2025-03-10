@@ -24,31 +24,31 @@ import {useTranslation} from "react-i18next";
 const partners = [
     {
         img: Federation,
-        title: "federation_title",
+        // title: "federation_title",
         subtitle: "organizer",
         desc: "partners_federation_desc"
     },
     {
         img: Committee,
-        title: "committee_title",
+        // title: "committee_title",
         subtitle: "general_information_partner",
         desc: "partners_committee_desc"
     },
     {
         img: ATM,
-        title: "Armenia Travel",
+        // title: "Armenia Travel",
         subtitle: "co_organizer",
         desc: "partners_atm_desc"
     },
     {
         img: PromExpo,
-        title: "Prom Expo",
+        // title: "Prom Expo",
         subtitle: "co_organizer",
         desc: "partners_promexpo_desc"
     },
     {
         img: Alpha,
-        title: "Alpha Consulting",
+        // title: "Alpha Consulting",
         subtitle: "marketing_partner",
         desc: "partners_alpha_desc"
     },
@@ -62,7 +62,7 @@ const PartnersAndSponsors = () => {
     return (
         <div className={styles.root}>
 
-            <div className={styles.pageTitle}>{t("partners_and_sponsors")}</div>
+            <div className={styles.pageTitle}>{t("partners")}</div>
 
             <Swiper
                 // install Swiper modules
@@ -85,7 +85,7 @@ const PartnersAndSponsors = () => {
                         <SwiperSlide key={index}>
                             <div className={styles.partner}>
                                 <img src={partner.img} alt={partner.title}/>
-                                <p className={styles.title}>{t(partner.title)}</p>
+                                {partner.title && <p className={styles.title}>{t(partner.title)}</p>}
                                 <p className={styles.subtitle}>{t(partner.subtitle)}</p>
                                 <p className={styles.desc}>{t(partner.desc)}</p>
                             </div>

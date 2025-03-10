@@ -103,7 +103,7 @@ function BecomeAVisitor() {
         const urlParts = pathname.split('/');
 
         try {
-            const result = await addVisitor({variables: {...formData}});
+            const result = await addVisitor({ variables: { ...formData } });
             if (result && result.data && result.data.insertVisitors && result.data.insertVisitors.affected_rows) {
                 setTimeout(() => {
                     if (urlParts.length >= 3) {
@@ -117,7 +117,7 @@ function BecomeAVisitor() {
             setLoading(false);
             if (err && err.graphQLErrors && err.graphQLErrors.length > 0) {
                 const errorMessages = err.graphQLErrors.map(error => error.message);
-                if (errorMessages.includes("Uniqueness violation. duplicate key value violates unique constraint \"visitors_email_key\"")) {
+                if (errorMessages.includes("Uniqueness violation. duplicate key value violates unique constraint \"visitors_email_event_key\"")) {
                     setErrors(prevErrors => ({...prevErrors, email: t('email_is_used')}));
                 }
             } else {

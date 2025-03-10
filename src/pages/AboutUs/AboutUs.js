@@ -25,7 +25,7 @@ const AboutUs = () => {
                         <div className={styles.textTitle}>
                             {t("about_the_exhibition")}
                         </div>
-                        <p className={styles.subtitle}>{t('for_visitors')}</p>
+                        {/*<p className={styles.subtitle}>{t('for_visitors')}</p>*/}
                         {width <= 767 ? (
                             <ReadMoreText htmlContent={t("about_us_text_mobile")} maxLines={9}/>
                         ) : width <= 1200 ? (
