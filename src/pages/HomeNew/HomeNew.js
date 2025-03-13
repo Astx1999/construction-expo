@@ -27,8 +27,6 @@ const HomeNew = () => {
 
     return (
         <div className={styles.root}>
-            <img className={styles.homeBG} src={HomeBG} alt=""/>
-
             <div className={styles.content}>
                 <p className={classNames(styles.title, styles.line1)}>{t("your_opportunity")}</p>
                 <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>

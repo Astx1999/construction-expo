@@ -84,6 +84,7 @@
 .nav {
   color: var(--text-color);
   display: flex;
+  align-items: center;
 }
 
 .menuItem {
@@ -168,6 +169,7 @@
   width: 50px;
   height: 50px;
   z-index: 3;
+  margin-left: 30px;
 }
 
 .menuToggle {
@@ -260,6 +262,7 @@
   position: relative;
   margin-left: 30px;
   cursor: pointer;
+  margin-right: 30px;
 }
 .langOption{
   position: absolute;

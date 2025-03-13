@@ -10,7 +10,6 @@
   height: 30px;
   transition: background-color 0.3s ease;
   user-select: none;
-  margin-bottom: 20px;
 
   &:focus {
     outline: 2px solid var(--highlight-color);
@@ -27,8 +26,8 @@
   left: 4px;
   transition: transform 0.3s ease;
 
-  &.dark {
-    transform: translateX(32px);
+  &.light {
+    transform: translateX(29px);
   }
 }
 

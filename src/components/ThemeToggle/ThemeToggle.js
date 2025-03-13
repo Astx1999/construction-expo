@@ -4,26 +4,18 @@ import styles from './ThemeToggle.module.scss';
 const ThemeToggle = () => {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        const isDark = savedTheme === 'dark';
-        setIsDarkTheme(isDark);
-        document.documentElement.classList.toggle('dark-theme', isDark);
-    }, []);
-
-
     const toggleTheme = () => {
         const newTheme = isDarkTheme ? 'light' : 'dark';
-        setIsDarkTheme(newTheme === 'dark');
-        document.documentElement.classList.toggle('dark-theme', newTheme === 'dark');
+        setIsDarkTheme(!isDarkTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-
-        // Force a repaint to ensure CSS updates
-        document.documentElement.style.display = "none";
-        setTimeout(() => {
-            document.documentElement.style.display = "";
-        }, 10);
     };
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setIsDarkTheme(savedTheme === 'dark');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -42,7 +34,7 @@ const ThemeToggle = () => {
             aria-pressed={isDarkTheme}
             aria-label="Toggle dark mode"
         >
-            <div className={`${styles.toggleButton} ${isDarkTheme ? styles.dark : ''}`} />
+            <div className={`${styles.toggleButton} ${isDarkTheme ? styles.dark : styles.light}`} />
             <span className={`${styles.icon} ${styles.moon}`}>🌙</span>
             <span className={`${styles.icon} ${styles.sun}`}>☀️</span>
         </div>
