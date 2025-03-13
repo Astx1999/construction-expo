@@ -1,8 +1,8 @@
 @import "src/variables";
 .root {
-  color: white;
+  color: var(--text-color);
   padding-top: 0;
-  background: #22242C;
+  background: var(--background-color);
   position: relative;
   min-height: 60vh;
   overflow: hidden;

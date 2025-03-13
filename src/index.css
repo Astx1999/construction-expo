@@ -22,7 +22,9 @@
     font-family: DejaVuSans;
     src: url("fonts/DejaVuSans.ttf") format("truetype");
 }
-
+body{
+    background-color: var(--background-color);
+}
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -30,12 +32,12 @@
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 10px;
-    background-color: #414141;
+    background-color: var(--background-color-secondary);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #696969;
+    background: var(--highlight-color);
     border-radius: 10px;
 }
 

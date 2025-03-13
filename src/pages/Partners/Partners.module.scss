@@ -1,9 +1,9 @@
 @import "src/variables";
 .root {
   position: relative;
-  background: #22242C;
+  background: var(--background-color);
   padding: 80px 0 0;
-  color: white;
+  color: var(--text-color);
   width: 100%;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 40px 0 80px;

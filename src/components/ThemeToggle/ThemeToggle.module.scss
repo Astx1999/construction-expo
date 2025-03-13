@@ -1,0 +1,50 @@
+.toggleContainer {
+  display: inline-flex;
+  align-items: center;
+  background: var(--background-color-secondary);
+  border-radius: 30px;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  margin-bottom: 20px;
+
+  &:focus {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 2px;
+  }
+}
+
+.toggleButton {
+  width: 24px;
+  height: 24px;
+  background: var(--highlight-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  transition: transform 0.3s ease;
+
+  &.dark {
+    transform: translateX(32px);
+  }
+}
+
+.icon {
+  font-size: 14px;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &.sun {
+    right: 8px;
+  }
+
+  &.moon {
+    left: 8px;
+  }
+}

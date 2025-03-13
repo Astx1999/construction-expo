@@ -1,6 +1,6 @@
 @import "src/variables";
 .modal{
-  background: #22242C;
+  background: var(--background-color);
   padding: 10px 10px 0;
   @media only screen and (max-width: $smallDisplay) {
     padding: 20px 10px 0 10px

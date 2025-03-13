@@ -1,11 +1,12 @@
 @import "src/variables";
 
-.root{
+.root {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--text-color);
   position: relative;
-  .clear{
+
+  .clear {
     position: absolute;
     top: 27px;
     right: 22px;
@@ -17,19 +18,26 @@
     @media only screen and (max-width: $smallDisplay) {
       right: 15px;
     }
-    svg{
+
+    svg {
       width: 100%;
       height: 100%;
+
+      rect {
+        fill: var(--text-color);
+      }
     }
   }
 }
-html[lang='am'] .input{
+
+html[lang='am'] .input {
   font-family: DejaVuSans, Arial, sans-serif;
 }
-.input{
+
+.input {
   height: 68px;
-  background: #22242C;
-  color: white;
+  background: var(--background-color);
+  color: var(--text-color);
   outline: none;
   padding: 15px 20px;
   font-size: 16px;
@@ -41,14 +49,17 @@ html[lang='am'] .input{
     padding: 10px 15px;
   }
 }
-.error{
-  .input{
+
+.error {
+  .input {
     border: 1px solid #FE5840;
   }
 }
-.errorText{
+
+.errorText {
   color: #FE5840;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -56,7 +67,8 @@ input[type=number]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
-.label{
+
+.label {
   margin-bottom: 10px;
   font-size: 14px;
 }

@@ -1,6 +1,6 @@
 @import "src/variables";
 .modal{
-  background: #22242C;
+  background: var(--background-color);
   padding: 30px 60px 0;
   @media only screen and (max-width: $smallDisplay) {
     padding: 70px 10px 0 10px
@@ -24,6 +24,7 @@
   line-height: 1.5;
 }
 .title{
+  color: var(--text-color);
   text-align: center;
   margin: 10px 0 30px;
   letter-spacing: 1px;
@@ -48,16 +49,22 @@
   right: 40px;
   top: 60px;
   cursor: pointer;
+  svg{
+    rect{
+      fill: var(--text-color);
+    }
+  }
 }
 .message{
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   margin-top: 15px;
   font-size: 14px;
 
   textarea{
-    background: #22242C;
-    color: white;
+    background: var(--background-color);
+    color: var(--text-color);
     outline: none;
     margin-top: 10px;
     margin-bottom: 20px;

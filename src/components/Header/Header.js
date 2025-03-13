@@ -10,6 +10,7 @@ import {ReactComponent as Inst} from "../../images/insta.svg";
 import {ReactComponent as Youtube} from "../../images/youtube.svg";
 import {useTranslation} from "react-i18next";
 import useOnClickOutside from "../../hook/useOnClickOutside";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const menuItems = [
     {
@@ -173,6 +174,7 @@ const Header = ({activeSection}) => {
                             </div>
                         </div>}
                     </div>
+                    <ThemeToggle/>
                 </div>
             ) : (
                 <div className={styles.mobileNav}>
@@ -188,6 +190,7 @@ const Header = ({activeSection}) => {
                     >
                         EN
                     </div>
+                    <ThemeToggle/>
                     <div className={styles.crossContainer} onClick={toggleMenu}>
                         <span
                             className={classNames(styles.menuToggle, {

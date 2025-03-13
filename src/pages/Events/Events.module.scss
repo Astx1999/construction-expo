@@ -1,8 +1,8 @@
 @import "src/variables";
 
 .root {
-  background: linear-gradient(#22242C, #22242C);
-  color: white;
+  background: var(--background-color);
+  color: var(--text-color);
   font-family: Lexend, serif;
   padding: 50px 50px 50px;
   min-height: 100vh;
@@ -14,9 +14,11 @@
     padding: 20px 0 0 30px;
   }
 }
+
 html[lang='am'] .root {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .pageTitle {
   font-size: 45px;
   letter-spacing: 1px;
@@ -43,7 +45,7 @@ html[lang='am'] .root {
 }
 
 .tabButton, .activeTab {
-  color: white;
+  color: var(--text-color);
   font-size: 20px;
   background: transparent;
   outline: none;
@@ -118,7 +120,7 @@ html[lang='am'] .event {
 
 .eventZone {
   padding: 10px 15px;
-  background: #383A41;
+  background: var(--background-color-secondary);
   width: max-content;
   font-size: 14px;
   text-align: center;
@@ -129,9 +131,11 @@ html[lang='am'] .event {
     font-size: 10px;
   }
 }
+
 html[lang='am'] .eventTitle {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .eventTitle {
   font-size: 35px;
   font-family: LexendLight, serif;

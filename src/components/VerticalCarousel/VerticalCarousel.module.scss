@@ -331,11 +331,11 @@
 
   a {
     margin-left: 20px;
-    color: white;
+    color: var(--text-color);
     letter-spacing: 1px;
 
     &:visited, &:hover, &:focus-within, &:focus {
-      color: white;
+      color: var(--text-color);
     }
   }
 

@@ -2,6 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 import {ReactComponent as LocationPin} from "../../images/locationpin.svg";
+import {ReactComponent as CommitteeArm} from "../../images/committeeArm.svg";
+import {ReactComponent as CommitteeEng} from "../../images/committeeEng.svg";
+import {ReactComponent as Federation} from "../../images/federation.svg";
+import {ReactComponent as LogoGroup} from "../../images/logoGroup.svg";
 
 import styles from "./HomeNew.module.scss";
 import CtaButton from "../../components/CtaButton/CtaButton";
@@ -15,7 +19,7 @@ import HomeBG from '../../images/homeBG.png'
 
 const HomeNew = () => {
     const {width} = useWindowResize();
-    const {t} = useTranslation(); // Access translations
+    const {t, i18n} = useTranslation(); // Access translations
 
     const {setIsOpen} = useModal();
     const navigate = useNavigate();
@@ -51,32 +55,20 @@ const HomeNew = () => {
                         dangerouslySetInnerHTML={{__html: width <= 767 ? t("karen_demirchyan_mobile") : t("karen_demirchyan")}}/>
                 </div>
                 {width > 767 && <div className={styles.RALogo}>
-                    <img src={RALogo} alt="RALogo"/>
+                    {/*<img src={RALogo} alt="RALogo"/>*/}
+                    <Federation/>
+                    {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}
                 </div>}
 
             </div>
 
             <div className={styles.animation}>
-                <svg width="459" height="460" viewBox="0 0 459 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M457.999 256.256H395.272L335.178 256.253C301.677 256.251 271.95 247.257 243.234 218.2C237.357 212.254 233.434 208.083 228.525 200.919C213.602 179.142 207.138 153.457 208.315 125.506L208.316 125.484L208.316 125.463L208.185 1H260.679L260.679 100.025L260.679 100.028L260.625 124.364C260.576 146.924 266.123 167.693 279.811 181.582L280.523 180.88L279.811 181.582C289.518 191.43 299.276 196.067 313.598 199.433C326.069 202.366 339.529 203.162 352.816 203.162H457.999V256.256Z"
-                        stroke="#FE5840" strokeWidth="2"/>
-                    <path
-                        d="M124.611 257.264C124.68 257.264 124.748 257.274 124.815 257.279C154.271 259.432 178.983 267.947 192.603 297.209M124.611 257.264L1 257.256V256.256M124.611 257.264L124.611 256.264C124.693 256.264 124.764 256.27 124.807 256.274C124.865 256.279 124.866 256.28 124.885 256.281L124.888 256.281C139.679 257.363 153.376 260.046 165.111 266.192C176.872 272.352 186.609 281.961 193.51 296.787M124.611 257.264V256.264L62.0974 256.256H62.0973H1M192.603 297.209C198.721 310.335 200.491 326.048 200.491 341.713V458.179H200.492H201.491M192.603 297.209L193.51 296.787M192.603 297.209L193.51 296.787C193.51 296.787 193.51 296.787 193.51 296.787M201.491 458.179V459.179H252.867M201.491 458.179H251.869M201.491 458.179V341.713C201.491 325.993 199.719 310.108 193.51 296.787M252.867 459.179L253.148 334.993M252.867 459.179V458.179H251.869M252.867 459.179L251.867 459.177L251.869 458.179M253.148 334.993C253.03 258.017 200.821 207.739 126.589 207.908H1V208.908M253.148 334.993L252.148 334.994M253.148 334.993L252.148 334.99V334.994M1 208.908H0V256.256H1M1 208.908V256.256M1 208.908L126.589 208.908L126.591 208.908C163.476 208.824 194.821 221.269 216.957 243.231C239.091 265.191 252.09 296.738 252.148 334.994M252.148 334.994L251.869 458.179"
-                        stroke="#989D9F" strokeWidth="2"/>
-                    <path d="M432.111 62.9251L333.046 164.365L297.096 128.642L396.454 28.7804L432.111 62.9251Z"
-                          stroke="#FE5840" strokeWidth="2"/>
-                    <path d="M431.962 393.203L395.984 429.734L296.417 329.207L332.099 294.09L431.962 393.203Z"
-                          stroke="#FE5840" strokeWidth="2"/>
-                    <path
-                        d="M162.356 332.928L66.9382 429.236C66.5076 428.926 65.9142 428.454 65.1639 427.816C63.9996 426.827 62.5377 425.509 60.8712 423.958C57.5396 420.856 53.4167 416.844 49.2713 412.711C41.551 405.014 33.8207 396.966 30.9691 393.599L127.744 297.842L162.356 332.928Z"
-                        stroke="#989D9F" strokeWidth="2"/>
-                    <path d="M162.349 124.74L127.557 160.036L30.8499 64.1388L66.9002 28.6813L162.349 124.74Z"
-                          stroke="#FE5840" strokeWidth="2"/>
-                </svg>
+                    <LogoGroup/>
             </div>
             {width <= 767 && <div className={styles.RALogo}>
-                <img src={RALogo} alt="RALogo"/>
+                {/*<img src={RALogo} alt="RALogo"/>*/}
+                <Federation/>
+                {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}
             </div>}
         </div>
     );

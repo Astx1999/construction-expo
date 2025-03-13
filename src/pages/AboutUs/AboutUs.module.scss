@@ -1,8 +1,7 @@
 @import "src/variables";
 
 .root {
-  background: linear-gradient(#22242C, #22242C);
-  color: white;
+  color: var(--text-color);
   padding: 50px 50px 0;
   @media only screen and (max-width: $mediumDisplay) {
     padding: 20px 80px 0;
@@ -66,7 +65,7 @@
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
-    margin-top: 80px;
+    margin-top: 0px;
     padding: 0
   }
 }

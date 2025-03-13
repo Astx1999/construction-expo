@@ -123,7 +123,7 @@ const App = () => {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-            backgroundColor: "#22242C",
+            backgroundColor: "var(--background-color)",
             color: "white",
             fontWeight: "300",
             width: width <= 767 ? "100%" : "700px",
@@ -194,7 +194,7 @@ const App = () => {
                     <div className="section right-bar-home" id="zones">
                         <Zones/>
                     </div>
-                  {/*  <div className="section right-bar-home" id="special-offers">
+                    {/*  <div className="section right-bar-home" id="special-offers">
                         <SpecialOffers/>
                     </div>*/}
                     <div className="section right-bar-home" id="events">
