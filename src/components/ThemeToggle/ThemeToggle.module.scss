@@ -1,32 +1,30 @@
 .toggleContainer {
+  z-index: 2;
   display: inline-flex;
   align-items: center;
-  background: var(--background-color-secondary);
   border-radius: 30px;
   padding: 4px;
   cursor: pointer;
   position: relative;
   width: 60px;
-  height: 30px;
+  height: 28px;
   transition: background-color 0.3s ease;
   user-select: none;
-
-  &:focus {
-    outline: 2px solid var(--highlight-color);
-    outline-offset: 2px;
-  }
+  outline: 2px solid var(--toggle-border);
+  outline-offset: 1px;
 }
 
 .toggleButton {
   width: 24px;
   height: 24px;
-  background: var(--highlight-color);
+  background: #FE5840;
   border-radius: 50%;
   position: absolute;
   left: 4px;
   transition: transform 0.3s ease;
+  z-index: 5;
 
-  &.light {
+  &.dark {
     transform: translateX(29px);
   }
 }
@@ -35,15 +33,18 @@
   font-size: 14px;
   line-height: 1;
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   z-index: 1;
 
-  &.sun {
+  &.moon {
     right: 8px;
   }
 
-  &.moon {
+  &.sun {
     left: 8px;
+  }
+  path{
+    fill: var(--text-color);
   }
 }

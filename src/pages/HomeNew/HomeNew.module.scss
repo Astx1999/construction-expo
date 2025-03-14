@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  background: var(--background-color);
+  //background: var(--background-color);
   overflow: hidden;
   align-items: flex-start;
   @media only screen and (max-height: 749px) {
@@ -35,7 +35,7 @@
 }
 
 .animation {
-  width: 30%;
+  width: 39%;
   display: flex;
   z-index: 1;
   margin-top: 100px;
@@ -46,7 +46,7 @@
 
   @media only screen and (max-width: $smallDisplay) {
     display: block;
-    width: 250px;
+    width: 100%;
     padding-top: 0;
     margin-top: 40px;
   }
@@ -187,7 +187,6 @@ html[lang='am'] .desc{
   }
 
   @media only screen and (max-width: $smallDisplay) {
-    width: 204px;
     margin-bottom: 0;
   }
 }
@@ -267,7 +266,7 @@ html[lang='am'] .desc{
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 250px;
-    margin-top: -260px;
+    margin-top: -125%;
     padding-bottom: 80px;
   }
 

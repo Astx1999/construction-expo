@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import styles from './ThemeToggle.module.scss';
+import {ReactComponent as Moon} from "../../images/moon.svg";
+import {ReactComponent as Sun} from "../../images/sun.svg";
 
 const ThemeToggle = () => {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -34,9 +36,10 @@ const ThemeToggle = () => {
             aria-pressed={isDarkTheme}
             aria-label="Toggle dark mode"
         >
-            <div className={`${styles.toggleButton} ${isDarkTheme ? styles.dark : styles.light}`} />
-            <span className={`${styles.icon} ${styles.moon}`}>🌙</span>
-            <span className={`${styles.icon} ${styles.sun}`}>☀️</span>
+            <div className={`${styles.toggleButton} ${isDarkTheme ? styles.dark : styles.light}`}/>
+            <span className={`${styles.icon} ${styles.sun}`}><Sun/>️</span>
+            <span className={`${styles.icon} ${styles.moon}`}><Moon/></span>
+
         </div>
     );
 };
