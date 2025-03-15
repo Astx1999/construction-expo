@@ -28,9 +28,20 @@ const HomeNew = () => {
     return (
         <div className={styles.root}>
             <div className={styles.content}>
-                <p className={classNames(styles.title, styles.line1)}>{t("your_opportunity")}</p>
-                <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>
-                <p className={classNames(styles.title, styles.line3)}>{t("the_world")}</p>
+                {i18n.language === "am" ?
+                    <>
+                        <p className={classNames(styles.title, styles.line1)}>{t("the_world")}</p>
+                        <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>
+                        <p className={classNames(styles.title, styles.line1)}><span>{t("your")} </span>{t("opportunity")}</p>
+                    </>
+                    :
+                    <>
+                        <p className={classNames(styles.title, styles.line1)}>
+                            <span>{t("your")} </span>{t("opportunity")}</p>
+                        <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>
+                        <p className={classNames(styles.title, styles.line3)}>{t("the_world")}</p>
+                    </>}
+
                 {/*<Countdown/>*/}
 
                 <div className={styles.cta}>
@@ -61,7 +72,7 @@ const HomeNew = () => {
             </div>
 
             <div className={styles.animation}>
-                    <LogoGroup/>
+                <LogoGroup/>
             </div>
             {width <= 767 && <div className={styles.RALogo}>
                 {/*<img src={RALogo} alt="RALogo"/>*/}

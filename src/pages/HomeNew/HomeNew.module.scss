@@ -1,7 +1,7 @@
 @import "src/variables";
 
 .root {
-  min-height: 100vh;
+  max-height: 100vh;
   color: var(--text-color);
   padding: 0px 50px 0;
   display: flex;
@@ -44,6 +44,15 @@
     height: 100%;
   }
 
+  svg {
+    path{
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawStroke 8s ease-out forwards;
+      stroke-width: 3;
+    }
+  }
+
   @media only screen and (max-width: $smallDisplay) {
     display: block;
     width: 100%;
@@ -55,7 +64,7 @@
 .content {
   padding-top: 150px;
   width: calc(60% - 0px);
-  padding-right: 80px;
+  padding-right: 20px;
   z-index: 1;
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
@@ -70,11 +79,11 @@ html[lang='am'] .title{
 
 .title {
   font-family: LexendLight;
-  font-size: 65px;
+  font-size: 55px;
   letter-spacing: 1px;
   margin-bottom: 0;
   @media only screen and (max-width: $largeDisplay) {
-    font-size: 60px;
+    font-size: 50px;
   }
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 45px;
@@ -190,15 +199,14 @@ html[lang='am'] .desc{
     margin-bottom: 0;
   }
 }
-
-@keyframes slideInFromRight {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -208,30 +216,33 @@ html[lang='am'] .desc{
 .line3,
 .line4 {
   opacity: 0;
+  span{
+    color: #FE5840;
+  }
 }
 
 .title {
-  animation: slideInFromRight 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
   animation-delay: 0.5s;
 }
 
 .line1 {
-  animation: slideInFromRight 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
   animation-delay: 1s;
 }
 
 .line2 {
-  animation: slideInFromRight 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
   animation-delay: 1.5s;
 }
 
 .line3 {
-  animation: slideInFromRight 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
   animation-delay: 2s;
 }
 
 .line4 {
-  animation: slideInFromRight 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
   animation-delay: 2.5s;
 }
 
@@ -246,12 +257,6 @@ html[lang='am'] .desc{
   }
 }
 
-.animatedStroke {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: drawStroke 3s ease-out forwards;
-  stroke-width: 3;
-}
 
 .RALogo {
   width: 470px;
@@ -266,7 +271,7 @@ html[lang='am'] .desc{
   }
   @media only screen and (max-width: $smallDisplay) {
     width: 250px;
-    margin-top: -125%;
+    margin-top: -150%;
     padding-bottom: 80px;
   }
 

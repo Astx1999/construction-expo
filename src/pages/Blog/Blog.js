@@ -61,10 +61,7 @@ const Blog = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.title}>{t("blog")}<span>.</span></div>
             <Swiper
-                // install Swiper modules
-                modules={[Pagination]}
                 spaceBetween={70}
                 slidesPerView={1}
                 // initialSlide={1}
@@ -81,17 +78,13 @@ const Blog = () => {
                     return (
                         <SwiperSlide key={index}>
                             <div className={styles.content}>
+                                <div className={styles.imgContainer}>
+                                    <img className={styles.img} src={blog.img} alt=""/>
+                                </div>
+
                                 <div className={styles.text}>
                                     <div className={styles.textTitle}>
-                                        <div className={styles.logo}>
-                                            <Rect/>
-                                        </div>
                                         <p>{t(blog.title)}</p>
-                                        <div className={styles.line}>
-                                            <div/>
-                                            <div/>
-                                            <div/>
-                                        </div>
                                     </div>
                                     <div>
                                         <div className={styles.time}>
@@ -101,7 +94,7 @@ const Blog = () => {
                                                               dangerouslySetInnerHTML={{__html: t(blog.text)}}/> :
                                             <ReadMoreText htmlContent={t(blog.text)} maxLines={4} resetKey={resetKey}/>}
 
-                                        {index === 0 &&
+                                        {/* {index === 0 &&
                                         <div className={styles.button}>
                                             <CtaButton onClick={() => {
                                                 setIsOpen("visitor")
@@ -109,12 +102,10 @@ const Blog = () => {
                                             }}
                                                        text={t("participate_in_the_giveaway")}/>
                                         </div>
-                                        }
+                                        }*/}
                                     </div>
                                 </div>
-                                <div className={styles.imgContainer}>
-                                    <img className={styles.img} src={blog.img} alt=""/>
-                                </div>
+
                             </div>
                         </SwiperSlide>
                     )

@@ -15,11 +15,11 @@
     .swiper {
       padding-top: 155px;
       padding-bottom: 100px;
-      height: 780px;
+      height: 725px;
       @media only screen and (max-width: $mediumDisplay) {
         padding-top: 100px;
         padding-bottom: 100px;
-        height: 750px;
+        height: 725px;
       }
       @media only screen and (max-width: $smallDisplay) {
         padding-top: 100px;
@@ -113,6 +113,13 @@ html[lang='am'] .pageTitle{
     top: 40px;
   }
 }
+:root {
+  .partner{
+    img{
+      filter: brightness(0.6);
+    }
+  }
+}
 
 .partner {
   margin-bottom: 30px;
@@ -181,10 +188,11 @@ html[lang='am'] .desc {
   overflow: auto;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 15px;
-    height: 75px;
+    height: 140px;
     overflow: auto;
   }
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
+    height: 145px;
   }
 }

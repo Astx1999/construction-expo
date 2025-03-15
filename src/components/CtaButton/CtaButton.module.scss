@@ -30,6 +30,7 @@
   }
 
   &.secondary {
+    color: var(--text-secondary);
     border: 1px solid #FE5840;
     background-color: transparent;
   }
@@ -48,12 +49,18 @@
   @media only screen and (max-width: $smallDisplay) {
     font-size: 14px;
   }
+  svg{
+    path{
+      fill: var(--text-color);
+    }
+  }
 }
 
 .mirror {
   .text {
     padding-left: 110px;
     padding-right: 0;
+
   }
 
   &:after {

@@ -207,9 +207,10 @@ const App = () => {
                     {/* <div className="section right-bar-home" id="partners">
                             <Partners/>
                         </div>
-                        <div className="section right-bar-home" id="blog">
-                            <Blog/>
-                        </div>*/}
+                        */}
+                    <div className="section right-bar-home" id="blog">
+                        <Blog/>
+                    </div>
                     <div className="section right-bar-home" id="contact-us">
                         <Footer/>
                     </div>

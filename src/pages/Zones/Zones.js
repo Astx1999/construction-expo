@@ -234,7 +234,29 @@ export const Zones = () => {
                                         handleSelect
                                     })}
                                 </div>
-
+                                {width <= 1023 && (
+                                    <>
+                                        <div className={styles.statuses}>
+                                            <div className={styles.available}>{t("available")}</div>
+                                            <div className={styles.selected}>{t("selected")}</div>
+                                            <div className={styles.unavailable}>{t("unavailable")}</div>
+                                        </div>
+                                        <div className={styles.input}>
+                                            <CustomInput disabled placeholder={'Select Zone Items'}
+                                                         value={formattedString}
+                                                         handleClearAll={() => setSelectedZoneItems([])}/>
+                                            <div className={styles.button}>
+                                                <CtaButton
+                                                    className={styles.cta}
+                                                    onClick={() => {
+                                                        setIsOpen("exhibitor")
+                                                        navigate("/zones/becomeanexhibitor")
+                                                    }}
+                                                    text={t("reserve_booth")}/>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                                 <div className={styles.info}>
                                     {width > 1023 && (
                                         <div className={styles.navigation}>
@@ -275,32 +297,41 @@ export const Zones = () => {
                                         ))}
                                     </div>
                                 </div>
+                                {width <= 1023 && (<CtaButton className={styles.ctaDownload} variant={'secondary'}
+                                                              onClick={() => {
+                                                              }} text={t("download_event_presentation")}
+                                                              IconLeft={DownloadIcon}/>)}
                             </div>
                         </SwiperSlide>
                     );
                 })}
             </Swiper>
             <div className={styles.bookingInfo}>
-                <div className={styles.statuses}>
-                    <div className={styles.available}>{t("available")}</div>
-                    <div className={styles.selected}>{t("selected")}</div>
-                    <div className={styles.unavailable}>{t("unavailable")}</div>
-                </div>
-                <div className={styles.input}>
-                    <CustomInput disabled placeholder={'Select Zone Items'}
-                                 value={formattedString} handleClearAll={() => setSelectedZoneItems([])}/>
-                    <div className={styles.button}>
-                        <CtaButton
-                            className={styles.cta}
-                            onClick={() => {
-                                setIsOpen("exhibitor")
-                                navigate("/zones/becomeanexhibitor")
-                            }}
-                            text={t("reserve_booth")}/>
-                    </div>
-                    {/* <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
-                    }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>*/}
-                </div>
+                {width > 1023 && (
+                    <>
+                        <div className={styles.statuses}>
+                            <div className={styles.available}>{t("available")}</div>
+                            <div className={styles.selected}>{t("selected")}</div>
+                            <div className={styles.unavailable}>{t("unavailable")}</div>
+                        </div>
+                        <div className={styles.input}>
+                            <CustomInput disabled placeholder={'Select Zone Items'}
+                                         value={formattedString} handleClearAll={() => setSelectedZoneItems([])}/>
+                            <div className={styles.button}>
+                                <CtaButton
+                                    className={styles.cta}
+                                    onClick={() => {
+                                        setIsOpen("exhibitor")
+                                        navigate("/zones/becomeanexhibitor")
+                                    }}
+                                    text={t("reserve_booth")}/>
+                            </div>
+                            <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
+                            }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>
+                        </div>
+                    </>
+                )}
+
             </div>
         </div>
     );

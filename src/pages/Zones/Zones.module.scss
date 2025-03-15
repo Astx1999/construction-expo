@@ -231,7 +231,9 @@ html[lang='am'] .title {
   display: flex;
   align-items: flex-start;
   margin-bottom: 5px;
-
+  @media only screen and (max-width: $smallDisplay) {
+    align-items: end;
+  }
   p {
     margin-left: 5px;
     width: calc(100% - 25px)
@@ -268,6 +270,7 @@ html[lang='am'] .title {
   @media only screen and (max-width: $smallDisplay) {
     font-size: 12px;
     justify-content: space-around;
+    margin-bottom: 0px;
   }
 }
 
@@ -281,6 +284,7 @@ html[lang='am'] .title {
   @media only screen and (max-width: $smallDisplay) {
     margin-left: 10px;
     font-size: 10px;
+    margin-bottom: 0;
   }
 
   &:before {
@@ -333,8 +337,12 @@ html[lang='am'] .title {
     width: 58%;
   }
 
+  input{
+    margin-right: 20px;
+  }
   @media only screen and (max-width: $mediumDisplay) {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+    margin-top: 20px;
     flex-wrap: wrap;
   }
 }
@@ -364,6 +372,7 @@ html[lang='am'] .title {
 }
 .ctaDownload{
   @media only screen and (max-width: $mediumDisplay) {
-    margin-top: 30px;
+    margin-top: 0px;
+    width: 100%;
   }
 }
