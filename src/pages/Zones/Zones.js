@@ -89,7 +89,7 @@ export const Zones = () => {
     const {width} = useWindowResize();
 
     const navigate = useNavigate();
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const isPrevButtonVisible = (index) => {
         return index !== 0;
@@ -285,7 +285,7 @@ export const Zones = () => {
                                         <div className={styles.title}>
                                             {t("exhibitor_sectors")}
                                         </div>
-                                        <InfoIconWithTooltip text={t(zone.infoText)}/>
+                                    {/*    <InfoIconWithTooltip text={t(zone.infoText)}/>*/}
                                     </div>
 
                                     <div className={styles.areas}>
@@ -326,8 +326,20 @@ export const Zones = () => {
                                     }}
                                     text={t("reserve_booth")}/>
                             </div>
-                            <CtaButton className={styles.ctaDownload} variant={'secondary'} onClick={() => {
-                            }} text={t("download_event_presentation")} IconLeft={DownloadIcon}/>
+                            <CtaButton
+                                className={styles.ctaDownload}
+                                variant={'secondary'}
+                                onClick={() => {
+                                    const link = document.createElement('a');
+                                    link.href = i18n.language === "am" ? '/uploads/pdf/ITFpresentationAM.pdf' : '/uploads/pdf/ITFpresentationEN.pdf';
+                                    link.download = i18n.language === "am" ? 'ITFpresentationAM.pdf' : 'ITFpresentationEN.pdf';
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                }}
+                                text={t("download_event_presentation")}
+                                IconLeft={DownloadIcon}
+                            />
                         </div>
                     </>
                 )}

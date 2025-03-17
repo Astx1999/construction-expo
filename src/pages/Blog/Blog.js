@@ -23,6 +23,7 @@ import ReadMoreText from "../../components/ReadMoreText/ReadMoreText";
 import useWindowResize from "../../hook/useWindowResize";
 import CtaButton from "../../components/CtaButton/CtaButton";
 import {useModal} from "../../components/ModalContext/ModalContext";
+import {EffectFade} from 'swiper/modules';
 
 const blogs = [
     {
@@ -64,7 +65,7 @@ const Blog = () => {
             <Swiper
                 spaceBetween={70}
                 slidesPerView={1}
-                // initialSlide={1}
+                initialSlide={1}
                 pagination={{clickable: true}}
                 // centeredSlides={true}
                 loop={true}
@@ -83,16 +84,19 @@ const Blog = () => {
                                 </div>
 
                                 <div className={styles.text}>
+                                    <div className={styles.title}>
+                                        <p>{t('blog')}</p>
+                                    </div>
                                     <div className={styles.textTitle}>
                                         <p>{t(blog.title)}</p>
                                     </div>
                                     <div>
                                         <div className={styles.time}>
-                                            <Time/><span>2 {t("mins_to_read")}</span>
+                                            <Time/><span>15 {t("mins_to_read")}</span>
                                         </div>
-                                        {width >= 1200 ? <div className={styles.desc}
-                                                              dangerouslySetInnerHTML={{__html: t(blog.text)}}/> :
-                                            <ReadMoreText htmlContent={t(blog.text)} maxLines={4} resetKey={resetKey}/>}
+                                        <div className={styles.desc}
+                                             dangerouslySetInnerHTML={{__html: t(blog.text)}}/>
+                                        {/* <ReadMoreText htmlContent={t(blog.text)} maxLines={4} resetKey={resetKey}/>*/}
 
                                         {/* {index === 0 &&
                                         <div className={styles.button}>

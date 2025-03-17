@@ -1,11 +1,11 @@
 @import "src/variables";
 
 .root {
-  padding: 120px 100px 0;
+  padding: 120px 50px 0;
   background: var(--background-color);
   color: var(--text-color);
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 80px 80px 0;
+    padding: 80px 50px 0;
   }
   @media only screen and (max-width: $smallDisplay) {
     padding: 80px 25px 0;
@@ -28,21 +28,23 @@
     margin-bottom: 25px;
   }
 }
+
 .content {
   display: grid;
   grid-gap: 35px;
-  grid-template-rows: repeat(2, 1fr); /* Three rows */
+  //grid-template-rows: repeat(3, 1fr); /* Three rows */
+  grid-template-rows: minmax(200px, auto);
 
-  & > div:nth-child(2n+1) {
-    grid-row: 1;
+  & > div:nth-child(3n+1) {
+    grid-row: 1; /* Every third item starting from 1 goes to the first row */
   }
 
-  & > div:nth-child(2n+2) {
-    grid-row: 2;
+  & > div:nth-child(3n+2) {
+    grid-row: 2; /* Every third item starting from 2 goes to the second row */
   }
 
-  & > div:nth-child(2n) {
-    grid-row: 2;
+  & > div:nth-child(3n) {
+    grid-row: 3; /* Every third item starting from 3 goes to the third row */
   }
 
   @media only screen and (max-width: $mediumDisplay) {
@@ -51,30 +53,33 @@
     text-align: center;
 
     & > div {
-      grid-row: unset!important; /* Reset grid row span */
+      grid-row: unset !important; /* Reset grid row span */
     }
   }
 }
 
-.followUs{
+.followUs {
   margin-top: -60px;
   @media only screen and (max-width: $mediumDisplay) {
     margin-top: 0;
   }
 }
+
 html[lang='am'] .address,
 html[lang='am'] .openingHours,
 html[lang='am'] .callUs,
 html[lang='am'] .email,
-html[lang='am'] .followUs{
-  p{
+html[lang='am'] .followUs {
+  p {
     font-family: Arial, sans-serif;
   }
-  .subTitle{
+
+  .subTitle {
     font-family: DejaVuSans, sans-serif;
   }
 
 }
+
 .address,
 .openingHours,
 .callUs,
@@ -85,6 +90,7 @@ html[lang='am'] .followUs{
   line-height: 1.5;
   letter-spacing: 1px;
   font-family: LexendLight;
+
   a {
     color: var(--text-color);
     text-decoration: none;
@@ -93,6 +99,7 @@ html[lang='am'] .followUs{
       color: var(--text-color);
     }
   }
+
   @media only screen and (max-width: $smallDisplay) {
     font-size: 18px;
   }
@@ -125,10 +132,11 @@ html[lang='am'] .followUs{
   }
 }
 
-.openingLine{
+.openingLine {
   padding-bottom: 10px;
 }
-.heart{
+
+.heart {
   text-align: center;
   padding: 10px 0 40px;
   font-weight: 100;
@@ -140,48 +148,87 @@ html[lang='am'] .followUs{
     padding: 80px 30px 30px
   }
 }
-.organizers{
-  .promExpo{
-      margin-right: 25px;
+
+.organizers {
+  .promExpo {
+    margin-right: 25px;
+    display: inline-block;
   }
-  img{
+
+  .armeniaTravel {
+    margin-right: 25px;
+    display: inline-block;
+  }
+
+  .federation {
+    display: inline-block;
+    width: 100px;
+
+    svg {
+      width: 100%;
+      height: auto;
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  img {
     max-height: 55px;
     width: auto;
   }
 }
-.sponsor{
+
+.partners {
+  .alphaConsulting {
+    margin-right: 30px;
+  }
+
+  .committee {
+    filter: brightness(9);
+  }
+}
+
+.sponsor {
   @media only screen and (max-width: $mediumDisplay) {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 }
-.evoca{
+
+.evoca {
   margin-top: 10px;
   display: block;
   width: 120px;
   height: 30px;
-  svg{
+
+  svg {
     height: 100%;
     width: 100%;
   }
 }
-.underRow{
+
+.underRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 70px 0 10px;
-  .logo{
+
+  .logo {
     width: 180px;
-    svg{
+
+    svg {
       width: 100%;
     }
   }
-  .socials{
-    path{
+
+  .socials {
+    path {
       fill: var(--text-color);
     }
-    svg{
+
+    svg {
       width: 25px;
       height: 25px;
       margin-left: 10px;

@@ -46,7 +46,7 @@
 .imgContainer {
   flex: 1;
   width: 50%;
-  border-top-right-radius: 50px;
+  border-top-right-radius: 150px;
   overflow: hidden;
   @media only screen and (max-width: $smallDisplay) {
     width: 100%;
@@ -56,7 +56,7 @@
 }
 
 .img {
-  width: 100%;
+  //width: 100%;
   object-fit: contain;
   object-position: center;
   background: black;
@@ -101,6 +101,8 @@
   line-height: 1.5;
   margin-bottom: 40px;
   font-size: 18px;
+  max-height: 400px;
+  overflow: auto;
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 16px;
   }
@@ -110,11 +112,27 @@
   }
 }
 
+html[lang='am'] .title {
+  font-family: DejaVuSans, Arial, sans-serif;
+}
+
+.title {
+  font-family: LexendLight;
+  font-size: 40px;
+  margin-bottom: 35px;
+  @media only screen and (max-width: $mediumDisplay) {
+    font-size: 35px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 30px;
+  }
+}
+
 .textTitle {
   display: flex;
   align-items: center;
-  font-size: 32px;
-  margin-bottom: 35px;
+  font-size: 28px;
+  margin-bottom: 20px;
   @media only screen and (max-width: $smallDisplay) {
     font-size: 20px;
     margin-bottom: 10px;
@@ -126,6 +144,10 @@
   display: flex;
   //margin-top: 50px;
   justify-content: flex-end;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
   @media only screen and (max-width: $smallDisplay) {
     position: absolute;
     top: 0;

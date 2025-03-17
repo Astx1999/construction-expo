@@ -6,12 +6,15 @@ import PromExpo from '../../images/promExpo.png'
 import AlphaConsulting from '../../images/alphaConsulting.png'
 import {ReactComponent as Evoca} from '../../images/EvocaLogo.svg'
 import ArmeniaTravel from '../../images/armeniaTravel.png'
+import {ReactComponent as Federation} from '../../images/federation.svg'
+import {ReactComponent as CommitteeArm} from '../../images/committeeArm.svg'
+import {ReactComponent as CommitteeEng} from '../../images/committeeEng.svg'
 import styles from './Footer.module.scss'
 import {useTranslation} from "react-i18next";
 import {ReactComponent as Logo} from '../../images/logo.svg'
 
 const Footer = ({id}) => {
-    const {t} = useTranslation()
+    const {t,i18n} = useTranslation()
     return (
         <div className={styles.root} id={id}>
             <div className={styles.title}>{t("contact_us")}</div>
@@ -27,15 +30,18 @@ const Footer = ({id}) => {
                     <p>{t('address1')}</p>
                     <p>{t('address2')}</p>
                 </div>
+                <div/>
                 <div className={styles.callUs}>
                     <p className={styles.subTitle}>{t("callUs")}</p>
                     <p><a href="tel:+37415456456">+(374) 15 456 456</a></p>
+                    <p><a href="tel:+37499234889">+(374) 99 23 48 89</a></p>
                 </div>
                 <div className={styles.email}>
                     <p className={styles.subTitle}>{t("email")}</p>
                     <p><a href="mailto:info@itfArmenia.com">info@itfArmenia.com</a></p>
                 </div>
-                {/*  <div className={styles.followUs}>
+                <div/>
+          {/*     <div className={styles.followUs}>
                     <p className={styles.subTitle}>{t("followUs")}</p>
                     <a href="https://www.facebook.com/profile.php?id=61556471212717" target="_blank"
                        rel="noopener noreferrer"><Fb/></a>
@@ -43,25 +49,29 @@ const Footer = ({id}) => {
                        rel="noopener noreferrer"><Inst/></a>
                     <a href="https://www.youtube.com/@ArmenianAutoShow" target="_blank"
                        rel="noopener noreferrer"><Youtube/></a>
-                </div>
+                </div>*/}
                 <div className={styles.organizers}>
                     <p className={styles.subTitle}>{t("organizers")}</p>
                     <a className={styles.promExpo} href="https://promexpo.am/" target="_blank"><img src={PromExpo}
                                                                                                     alt="promexpo"/></a>
-                    <a href="https://www.armeniatravel.am/" target="_blank"><img src={ArmeniaTravel}
+                    <a  className={styles.armeniaTravel}  href="https://www.armeniatravel.am/" target="_blank"><img src={ArmeniaTravel}
                                                                                  alt="armenia travel"/></a>
+                    <a href="" target="_blank" className={styles.federation}><Federation/></a>
                 </div>
-                <div className={styles.partner}>
-                    <p className={styles.subTitle}>{t("partner")}</p>
-                    <a className={styles.promExpo} href="https://www.alphaconsulting.am/" target="_blank"><img
+                <div className={styles.partners}>
+                    <p className={styles.subTitle}>{t("partners")}</p>
+                    <a className={styles.alphaConsulting} href="https://www.alphaconsulting.am/" target="_blank"><img
                         src={AlphaConsulting}
                         alt="AlphaConsulting"/></a>
+                    <a className={styles.committee} href="" target="_blank">
+                        {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}
+                    </a>
                 </div>
                 <div className={styles.sponsor}>
-                    <p className={styles.subTitle}>{t("sponsor")}</p>
-                    <a className={styles.evoca} href="https://www.evoca.am/" target="_blank"><Evoca/></a>
+                    {/*<p className={styles.subTitle}>{t("sponsor")}</p>*/}
+                    {/*<a className={styles.evoca} href="https://www.evoca.am/" target="_blank"><Evoca/></a>*/}
                 </div>
-*/}
+
 
             </div>
             <div className={styles.underRow}>

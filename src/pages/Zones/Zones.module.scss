@@ -178,6 +178,7 @@ html[lang='am'] .name {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   svg {
     width: 40px;
     height: 40px;
@@ -234,6 +235,7 @@ html[lang='am'] .title {
   @media only screen and (max-width: $smallDisplay) {
     align-items: end;
   }
+
   p {
     margin-left: 5px;
     width: calc(100% - 25px)
@@ -337,9 +339,10 @@ html[lang='am'] .title {
     width: 58%;
   }
 
-  input{
+  input {
     margin-right: 20px;
   }
+
   @media only screen and (max-width: $mediumDisplay) {
     margin-bottom: 0px;
     margin-top: 20px;
@@ -351,11 +354,17 @@ html[lang='am'] .title {
 .button {
   width: 40% !important;
   height: 68px;
+  margin: 0 25px;
 
   & > div {
     min-width: auto;
     min-height: 68px;
   }
+
+  @media only screen and (max-width: $mediumDisplay) {
+    margin: 0;
+  }
+
 }
 
 .bookingInfo {
@@ -370,7 +379,8 @@ html[lang='am'] .title {
     width: auto;
   }
 }
-.ctaDownload{
+
+.ctaDownload {
   @media only screen and (max-width: $mediumDisplay) {
     margin-top: 0px;
     width: 100%;
