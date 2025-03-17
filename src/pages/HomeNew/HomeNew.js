@@ -32,7 +32,7 @@ const HomeNew = () => {
                     <>
                         <p className={classNames(styles.title, styles.line1)}>{t("the_world")}</p>
                         <p className={classNames(styles.title, styles.line2)}>{t("to_explore")}</p>
-                        <p className={classNames(styles.title, styles.line1)}><span>{t("your")} </span>{t("opportunity")}</p>
+                        <p className={classNames(styles.title, styles.line3)}><span>{t("your")} </span>{t("opportunity")}</p>
                     </>
                     :
                     <>
@@ -44,7 +44,7 @@ const HomeNew = () => {
 
                 {/*<Countdown/>*/}
 
-                <div className={styles.cta}>
+                <div className={classNames(styles.cta, styles.line4)}>
                     <CtaButton
                         text={t("become_an_exhibitor")}
                         onClick={() => {
@@ -54,16 +54,16 @@ const HomeNew = () => {
                         // mirror={!(width > 767)}
                     />
                 </div>
-                <div className={classNames(styles.dates)}>
+                <div className={classNames(styles.dates, styles.line5)}>
                     {t("april")} 4 - 6, 2025
                 </div>
 
-                <div className={classNames(styles.location)}>
+                <div className={classNames(styles.location, styles.line5)}>
                     <LocationPin/>
                     <span
                         dangerouslySetInnerHTML={{__html: width <= 767 ? t("karen_demirchyan_mobile") : t("karen_demirchyan")}}/>
                 </div>
-                {width > 767 && <div className={styles.RALogo}>
+                {width > 767 && <div className={classNames(styles.RALogo, styles.line6)}>
                     {/*<img src={RALogo} alt="RALogo"/>*/}
                     <Federation/>
                     {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}
@@ -74,7 +74,7 @@ const HomeNew = () => {
             <div className={styles.animation}>
                 <LogoGroup/>
             </div>
-            {width <= 767 && <div className={styles.RALogo}>
+            {width <= 767 && <div className={classNames(styles.RALogo, styles.line6)}>
                 {/*<img src={RALogo} alt="RALogo"/>*/}
                 <Federation/>
                 {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}

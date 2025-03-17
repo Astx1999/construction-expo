@@ -39,13 +39,14 @@
   display: flex;
   z-index: 1;
   margin-top: 100px;
+
   svg {
     width: 100%;
     height: 100%;
   }
 
   svg {
-    path{
+    path {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
       animation: drawStroke 8s ease-out forwards;
@@ -73,7 +74,7 @@
   }
 }
 
-html[lang='am'] .title{
+html[lang='am'] .title {
   font-family: DejaVuSans, Arial, sans-serif;
 }
 
@@ -119,9 +120,11 @@ html[lang='am'] .title{
   }
 
 }
-html[lang='am'] .desc{
+
+html[lang='am'] .desc {
   font-family: DejaVuSans, Arial, sans-serif;
 }
+
 .desc {
   font-size: 20px;
   margin: 20px 0 40px;
@@ -174,11 +177,13 @@ html[lang='am'] .desc{
   align-items: center;
   margin: 30px 0;
   font-size: 19px;
+
   svg {
-    path{
+    path {
       fill: var(--text-color);
     }
   }
+
   @media only screen and (max-width: $mediumDisplay) {
     font-size: 12px;
     align-items: flex-start;
@@ -199,6 +204,18 @@ html[lang='am'] .desc{
     margin-bottom: 0;
   }
 }
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -206,7 +223,7 @@ html[lang='am'] .desc{
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0px);
   }
 }
 
@@ -214,36 +231,44 @@ html[lang='am'] .desc{
 .line1,
 .line2,
 .line3,
-.line4 {
+.line4,
+.line5,
+.line6{
   opacity: 0;
-  span{
-    color: #FE5840;
-  }
 }
-
 .title {
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeDown 0.5s ease forwards;
   animation-delay: 0.5s;
 }
 
 .line1 {
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeDown 0.5s ease forwards;
   animation-delay: 1s;
 }
 
 .line2 {
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeDown 0.5s ease forwards;
   animation-delay: 1.5s;
 }
 
 .line3 {
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeDown 0.5s ease forwards;
   animation-delay: 2s;
 }
 
 .line4 {
   animation: fadeUp 0.5s ease forwards;
   animation-delay: 2.5s;
+}
+
+.line5 {
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: 3s;
+}
+
+.line6 {
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: 3.5s;
 }
 
 @keyframes drawStroke {
@@ -261,7 +286,7 @@ html[lang='am'] .desc{
 .RALogo {
   width: 470px;
   z-index: 1;
-  display:flex;
+  display: flex;
   align-items: center;
   @media only screen and (max-width: $largeDisplay) {
     width: 400px;
@@ -278,17 +303,20 @@ html[lang='am'] .desc{
   img {
     width: 100%;
   }
-  svg{
+
+  svg {
     &:first-child {
       width: 90px;
       height: auto;
       margin-right: 15px;
-      path{
+
+      path {
         fill: var(--text-color);
       }
     }
-    text{
-        fill: var(--text-color);
+
+    text {
+      fill: var(--text-color);
     }
   }
 }
