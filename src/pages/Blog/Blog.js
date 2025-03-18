@@ -26,11 +26,11 @@ import {useModal} from "../../components/ModalContext/ModalContext";
 import {EffectFade} from 'swiper/modules';
 
 const blogs = [
-    {
-        title: "blog_title3",
-        img: Blog3,
-        text: "blog_text3"
-    },
+    // {
+    //     title: "blog_title3",
+    //     img: Blog3,
+    //     text: "blog_text3"
+    // },
     {
         title: "blog_title1",
         img: Blog1,
@@ -38,7 +38,7 @@ const blogs = [
     },
     {
         title: "blog_title2",
-        img: Blog2,
+        img: Blog1,
         text: "blog_text2"
     }
 ]

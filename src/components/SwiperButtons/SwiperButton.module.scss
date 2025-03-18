@@ -10,6 +10,13 @@
   svg {
     width: 100%;
     height: 100%;
+
+    path {
+      fill: var(--text-color);
+    }
+    rect{
+      stroke: var(--text-color);
+    }
   }
 
   @media only screen and (max-width: $mediumDisplay) {

@@ -84,6 +84,14 @@
 }
 .arrow{
   margin-right: 15px;
+  svg{
+    path {
+      fill: var(--text-color);
+    }
+    rect{
+      stroke: var(--text-color);
+    }
+  }
 }
 
 .pageTitle {

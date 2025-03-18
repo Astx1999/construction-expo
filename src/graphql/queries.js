@@ -233,8 +233,18 @@ export const SIGN_IN_QUERY = gql`
     signIn(email: $email, password: $password) {
       session {
         accessToken
-        user 
+        user
+        refreshToken
       }
+    }
+  }
+`;
+
+export const REFRESH_TOKEN_QUERY = gql`
+  mutation RefreshToken($refreshToken: String!) {
+    refreshToken(refreshToken: $refreshToken) {
+      accessToken
+      refreshToken
     }
   }
 `;
