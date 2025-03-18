@@ -71,11 +71,11 @@ html[lang='am'] .callUs,
 html[lang='am'] .email,
 html[lang='am'] .followUs {
   p {
-    font-family: Arial, sans-serif;
+    font-family: DejaVuSans, Arial, sans-serif;
   }
 
   .subTitle {
-    font-family: DejaVuSans, sans-serif;
+    font-family: DejaVuSans, Arial, sans-serif;
   }
 
 }
@@ -101,7 +101,7 @@ html[lang='am'] .followUs {
   }
 
   @media only screen and (max-width: $smallDisplay) {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -167,6 +167,9 @@ html[lang='am'] .followUs {
     svg {
       width: 100%;
       height: auto;
+      @media only screen and (max-width: $smallDisplay) {
+        max-height: 40px;
+      }
       path {
         fill: white;
       }
@@ -176,6 +179,9 @@ html[lang='am'] .followUs {
   img {
     max-height: 55px;
     width: auto;
+    @media only screen and (max-width: $smallDisplay) {
+      max-height: 40px;
+    }
   }
 }
 

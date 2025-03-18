@@ -33,11 +33,13 @@ const blogs = [
     // },
     {
         title: "blog_title1",
+        subtitle: "blog_subtitle1",
         img: Blog1,
         text: "blog_text1"
     },
     {
         title: "blog_title2",
+        subtitle: "blog_subtitle2",
         img: Blog1,
         text: "blog_text2"
     }
@@ -89,6 +91,9 @@ const Blog = () => {
                                     </div>
                                     <div className={styles.textTitle}>
                                         <p>{t(blog.title)}</p>
+                                    </div>
+                                    <div className={styles.textsubTitle}>
+                                        <p>{t(blog.subtitle)}</p>
                                     </div>
                                     <div>
                                         <div className={styles.time}>

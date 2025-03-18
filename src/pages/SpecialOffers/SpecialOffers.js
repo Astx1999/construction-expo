@@ -4,7 +4,7 @@ import {Pagination} from 'swiper/modules';
 
 import Offer1 from "../../images/offer1.png"
 import Offer2 from "../../images/offer2.png"
-import Offer3 from "../../images/offer1.png"
+import Offer3 from "../../images/offer3.png"
 import Offer4 from "../../images/offer2.png"
 import styles from './SpecialOffers.module.scss'
 
@@ -19,6 +19,7 @@ import SwiperButtonNext from "../../components/SwiperButtons/SwiperButtonNext";
 import {ReactComponent as Next} from "../../images/next.svg";
 import useWindowResize from "../../hook/useWindowResize";
 import {useTranslation} from "react-i18next";
+import {ReactComponent as TextArrow} from "../../images/textArrow.svg";
 
 const offers = [
     {
@@ -35,11 +36,6 @@ const offers = [
         img: Offer3,
         title: "special_title3",
         desc: "special_text3"
-    },
-    {
-        img: Offer4,
-        title: "special_title4",
-        desc: "special_text4"
     },
 ]
 const SpecialOffers = () => {
@@ -73,6 +69,10 @@ const SpecialOffers = () => {
                         <SwiperSlide key={index}>
                             <div className={styles.offer}>
                                 <img src={offer.img} alt={offer.title}/>
+                                <div className={styles.title}>
+                                    <div className={styles.textarrow}><TextArrow/></div>
+                                    <span>{t(offer.title)}</span></div>
+                                <p className={styles.desc}>{t(offer.desc)}</p>
                             </div>
                         </SwiperSlide>
                     )
