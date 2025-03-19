@@ -194,15 +194,15 @@ const App = () => {
                     <div className="section right-bar-home" id="zones">
                         <Zones/>
                     </div>
-                    <div className="section right-bar-home" id="special-offers">
+                   {/* <div className="section right-bar-home" id="special-offers">
                         <SpecialOffers/>
-                    </div>
+                    </div>*/}
                     <div className="section right-bar-home" id="events">
                         <Events/>
                     </div>
-                  {/*  <div className="section right-bar-home" id="partners-and-sponsors">
+                    <div className="section right-bar-home" id="partners-and-sponsors">
                         <PartnersAndSponsors/>
-                    </div>*/}
+                    </div>
 
                     {/* <div className="section right-bar-home" id="partners">
                             <Partners/>
