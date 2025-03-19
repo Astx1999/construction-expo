@@ -56,6 +56,13 @@
       grid-row: unset !important; /* Reset grid row span */
     }
   }
+
+  svg {
+    width: 100%;
+    path {
+      fill: var(--highlight-color);
+    }
+  }
 }
 
 .followUs {
@@ -150,6 +157,9 @@ html[lang='am'] .followUs {
 }
 
 .organizers {
+  a{
+    width: 100px;
+  }
   .promExpo {
     margin-right: 25px;
     display: inline-block;
@@ -161,6 +171,7 @@ html[lang='am'] .followUs {
   }
 
   .federation {
+    margin-right: 25px;
     display: inline-block;
     width: 100px;
 
@@ -170,8 +181,9 @@ html[lang='am'] .followUs {
       @media only screen and (max-width: $smallDisplay) {
         max-height: 40px;
       }
+
       path {
-        fill: white;
+        fill: var(--highlight-color);
       }
     }
   }
@@ -186,12 +198,17 @@ html[lang='am'] .followUs {
 }
 
 .partners {
+  a{
+    display: inline-block;
+  }
   .alphaConsulting {
     margin-right: 30px;
+    width: 100px;
   }
 
   .committee {
-    filter: brightness(9);
+    width: 200px;
+    margin-left: 30px;
   }
 }
 

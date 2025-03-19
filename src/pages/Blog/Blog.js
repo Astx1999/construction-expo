@@ -64,10 +64,15 @@ const Blog = () => {
 
     return (
         <div className={styles.root}>
+            {width <= 767 &&
+                <div className={styles.title}>
+                    <p>{t('blog')}</p>
+                </div>
+            }
             <Swiper
                 spaceBetween={70}
                 slidesPerView={1}
-                initialSlide={1}
+                initialSlide={0}
                 pagination={{clickable: true}}
                 // centeredSlides={true}
                 loop={true}
@@ -81,14 +86,17 @@ const Blog = () => {
                     return (
                         <SwiperSlide key={index}>
                             <div className={styles.content}>
+
                                 <div className={styles.imgContainer}>
                                     <img className={styles.img} src={blog.img} alt=""/>
                                 </div>
 
                                 <div className={styles.text}>
-                                    <div className={styles.title}>
-                                        <p>{t('blog')}</p>
-                                    </div>
+                                    {width > 767 &&
+                                        <div className={styles.title}>
+                                            <p>{t('blog')}</p>
+                                        </div>
+                                    }
                                     <div className={styles.textTitle}>
                                         <p>{t(blog.title)}</p>
                                     </div>

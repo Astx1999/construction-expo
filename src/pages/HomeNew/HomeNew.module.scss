@@ -3,7 +3,7 @@
 .root {
   max-height: 100vh;
   color: var(--text-color);
-  padding: 0px 50px 0;
+  padding: 0 120px 0 50px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -11,10 +11,10 @@
   overflow: hidden;
   align-items: flex-start;
   @media only screen and (max-height: 749px) {
-    padding: 0px 50px 0;
+    padding: 0 50px 0;
   }
   @media only screen and (max-width: $mediumDisplay) {
-    padding: 0px 80px 0;
+    padding: 0 80px 0;
 
   }
   @media only screen and (max-width: $smallDisplay) {
@@ -38,7 +38,7 @@
   width: 39%;
   display: flex;
   z-index: 1;
-  margin-top: 100px;
+  margin-top: 150px;
 
   svg {
     width: 100%;
@@ -167,7 +167,7 @@ html[lang='am'] .desc {
 }
 
 .cta {
-  margin: 35px 0;
+  margin: 45px 0 43px;
   @media only screen and (max-width: $smallDisplay) {
     margin: 25px 0;
   }

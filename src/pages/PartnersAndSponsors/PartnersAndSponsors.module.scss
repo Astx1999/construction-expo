@@ -92,7 +92,7 @@
   margin-right: 15px;
 }
 
-html[lang='am'] .pageTitle{
+html[lang='am'] .pageTitle {
   font-family: DejaVuSans, Arial, sans-serif;
 }
 
@@ -113,13 +113,7 @@ html[lang='am'] .pageTitle{
     top: 40px;
   }
 }
-:root {
-  .partner{
-    img{
-      filter: brightness(0.6);
-    }
-  }
-}
+
 
 .partner {
   margin-bottom: 30px;
@@ -128,7 +122,13 @@ html[lang='am'] .pageTitle{
   padding: 40px;
   min-height: 55vh;
   border-top-right-radius: 40%;
-
+  svg {
+    max-width: 90%;
+    height: 90px;
+    path {
+      fill: var(--highlight-color);
+    }
+  }
   img {
     height: 100px;
     @media only screen and (max-width: $mediumDisplay) {

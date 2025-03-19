@@ -2,13 +2,14 @@ import React from 'react';
 import {ReactComponent as Fb} from "../../images/fb.svg";
 import {ReactComponent as Inst} from "../../images/insta.svg";
 import {ReactComponent as Youtube} from "../../images/youtube.svg";
-import PromExpo from '../../images/promExpo.png'
 import AlphaConsulting from '../../images/alphaConsulting.png'
-import {ReactComponent as Evoca} from '../../images/EvocaLogo.svg'
 import ArmeniaTravel from '../../images/armeniaTravel.png'
+import {ReactComponent as PromExpo} from '../../images/promExpoGrey.svg'
 import {ReactComponent as Federation} from '../../images/federation.svg'
-import {ReactComponent as CommitteeArm} from '../../images/committeeArm.svg'
-import {ReactComponent as CommitteeEng} from '../../images/committeeEng.svg'
+import {ReactComponent as CommitteeArm} from '../../images/committeeARMGrey.svg'
+import {ReactComponent as CommitteeEng} from '../../images/committeeENGGrey.svg'
+import {ReactComponent as ATMShort} from '../../images/atmShortGrey.svg'
+import {ReactComponent as AlphaShort} from '../../images/alphaShortGrey.svg'
 import styles from './Footer.module.scss'
 import {useTranslation} from "react-i18next";
 import {ReactComponent as Logo} from '../../images/logo.svg'
@@ -53,17 +54,17 @@ const Footer = ({id}) => {
                 <div className={styles.organizers}>
                     <p className={styles.subTitle}>{t("organizers")}</p>
                     <a href="" target="_blank" className={styles.federation}><Federation/></a>
-                    <a className={styles.armeniaTravel} href="https://www.armeniatravel.am/" target="_blank"><img
-                        src={ArmeniaTravel}
-                        alt="armenia travel"/></a>
-                    <a className={styles.promExpo} href="https://promexpo.am/" target="_blank"><img src={PromExpo}
-                                                                                                    alt="promexpo"/></a>
+                    <a className={styles.armeniaTravel} href="https://www.armeniatravel.am/" target="_blank">
+                        <ATMShort/>
+                    </a>
+                    <a className={styles.promExpo} href="https://promexpo.am/" target="_blank"><PromExpo/></a>
                 </div>
                 <div className={styles.partners}>
                     <p className={styles.subTitle}>{t("partners")}</p>
-                    <a className={styles.alphaConsulting} href="https://www.alphaconsulting.am/" target="_blank"><img
-                        src={AlphaConsulting}
-                        alt="AlphaConsulting"/></a>
+                    <a href="https://www.alphaconsulting.am/" target="_blank">
+                        <AlphaShort/>
+                    </a>
+
                     <a className={styles.committee} href="" target="_blank">
                         {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}
                     </a>
@@ -82,7 +83,7 @@ const Footer = ({id}) => {
                                                    rel="noopener noreferrer"><Fb/></a>
                     <a href="https://www.instagram.com/i.t.f.armenia/" target="_blank"
                        rel="noopener noreferrer"><Inst/></a>
-                     <a href="https://www.youtube.com/@InternationalTourismFairArmeni" target="_blank"
+                    <a href="https://www.youtube.com/@InternationalTourismFairArmeni" target="_blank"
                        rel="noopener noreferrer"><Youtube/></a>
                 </div>
             </div>

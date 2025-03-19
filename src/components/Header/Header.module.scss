@@ -266,9 +266,9 @@
 }
 .langOption{
   position: absolute;
-  background-color: rgba(30, 32, 40, 0.7);
+  background-color: var(--background-color-secondary);
   width: 100px;
   right: 0;
   top: 40px;
-  padding: 5px 10px;
+  padding: 8px 10px 5px;
 }
