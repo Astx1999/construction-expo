@@ -55,7 +55,7 @@ const HomeNew = () => {
                     />
                 </div>
                 <div className={classNames(styles.dates, styles.line5)}>
-                    {t("april")} 4 - 6, 2025
+                    {t("november")}, 2025
                 </div>
 
                 <div className={classNames(styles.location, styles.line5)}>
