@@ -4,7 +4,7 @@ import { onError } from '@apollo/client/link/error';
 import {resetSession} from "./layout/Admin/utils/authProvider";
 
 // Replace with your GraphQL endpoint URL
-const graphqlEndpoint = 'https://api.armenianautoshow.com/v1/graphql';
+const graphqlEndpoint = 'https://api.armauto.show/v1/graphql';
 
 // Create an HTTP link to your GraphQL endpoint
 const httpLink = new HttpLink({
