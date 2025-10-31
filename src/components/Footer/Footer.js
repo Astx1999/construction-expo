@@ -61,9 +61,9 @@ const Footer = ({id}) => {
                 </div>
                 <div className={styles.partners}>
                     <p className={styles.subTitle}>{t("partners")}</p>
-                    <a href="https://www.alphaconsulting.am/" target="_blank">
-                        <AlphaShort/>
-                    </a>
+                    {/*<a href="https://www.alphaconsulting.am/" target="_blank">*/}
+                    {/*    <AlphaShort/>*/}
+                    {/*</a>*/}
 
                     <a className={styles.committee} href="" target="_blank">
                         {i18n.language === "am" ? <CommitteeArm/> : <CommitteeEng/>}

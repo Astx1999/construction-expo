@@ -51,12 +51,12 @@ const PartnersAndSponsors = () => {
             subtitle: "co_organizer",
             desc: "partners_promexpo_desc"
         },
-        {
-            img: <ALPHALong/>,
-            // title: "Alpha Consulting",
-            subtitle: "marketing_partner",
-            desc: "partners_alpha_desc"
-        },
+        // {
+        //     img: <ALPHALong/>,
+        //     // title: "Alpha Consulting",
+        //     subtitle: "marketing_partner",
+        //     desc: "partners_alpha_desc"
+        // },
     ]
 
     return (
