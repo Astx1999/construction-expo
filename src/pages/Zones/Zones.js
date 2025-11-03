@@ -6,9 +6,9 @@ import {ReactComponent as Prev} from "../../images/prev.svg";
 import {ReactComponent as TextArrow} from "../../images/textArrow.svg";
 import {Swiper, SwiperSlide} from "swiper/react";
 
-import ZoneA from "./ZoneA";
+import ZoneA from "./ZoneANew";
 import ZoneB from "./ZoneBNew";
-import ZoneC from "./ZoneC";
+import ZoneC from "./ZoneCNew";
 import ZoneD from "./ZoneD";
 
 // Import Swiper styles
