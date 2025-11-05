@@ -11,7 +11,8 @@ import {
     DeleteButton,
     SelectInput,
     useRedirect,
-    useNotify
+    useNotify,
+    DateField
 } from 'react-admin';
 import {Button, CircularProgress, Grid} from "@mui/material";
 import {useNavigate} from 'react-router-dom';
@@ -138,6 +139,7 @@ export const ExhibitorList = (props) => {
                   exporter={false}
                   bulkActionButtons={false}
                   actions={false}
+                  sort={{field: 'createdAt', order: 'DESC'}}
             >
                 <Datagrid bulkActionButtons={false}>
                     <TextField source="companyName" label="Company Name"/>
@@ -152,6 +154,7 @@ export const ExhibitorList = (props) => {
                         label="Zone Numbers"
                         source="zoneNumbers"
                     />
+                    <DateField source="createdAt" label="Created At" showTime/>
 
                     {/*  <EditButton basePath="/exhibitors"/>
                 <DeleteButton basePath="/exhibitors"/> */}

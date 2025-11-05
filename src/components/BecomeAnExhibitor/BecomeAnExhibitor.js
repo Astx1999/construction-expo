@@ -296,7 +296,7 @@ function BecomeAnExhibitor() {
                         onChange={(e) => {
                             setFormData({...formData, zone: e, zoneItemIds: []});
                         }}
-                        options={zones ? [...zones?.zones?.map((zone) => ({
+                        options={zones ? [...zones?.zones?.filter((zone)=>zone.name !== "D").map((zone) => ({
                             id: zone.id,
                             name: zone.name
                         }))] : []}

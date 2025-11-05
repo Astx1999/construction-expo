@@ -21,7 +21,7 @@ const ZoneA = ({zoneItemsData, handleSelect}) => {
 
     return zoneItemsData?.zoneItems && zoneItemsData.zoneItems.length ? (
         <>
-            <svg xmlns="http://www.w3.org/2000/svg" width="75.3996mm" height="48.06mm" version="1.1"
+            <svg xmlns="http://www.w3.org/2000/svg" width="75.3996mm" height="28.06mm" version="1.1"
                  viewBox="0 0 735.32 468.69">
                 <g id="Layer_x0020_1">
                     <metadata id="CorelCorpID_0Corel-Layer"/>

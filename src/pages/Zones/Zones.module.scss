@@ -66,6 +66,7 @@
 }
 
 .image {
+  margin: auto;
   width: 60%;
   margin-right: 70px;
   max-height: 700px;
@@ -74,6 +75,7 @@
   margin-bottom: 20px;
   @media only screen and (max-width: $extraLargeDisplay) {
     width: 55%;
+    margin: auto;
     margin-right: 50px;
   }
 
@@ -89,8 +91,8 @@
 
   @media only screen and (max-width: $smallDisplay) {
     height: auto;
-    margin-bottom: 18px;
-    margin-top: 18px;
+    margin-bottom: 0px;
+    margin-top: 0px;
     max-height: 500px;
   }
 
