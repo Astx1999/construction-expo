@@ -199,6 +199,7 @@ export const Zones = () => {
 
     return (
         <div className={styles.root} id="zones">
+            <div className={styles.pageTitle}>{t("zones")}</div>
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}

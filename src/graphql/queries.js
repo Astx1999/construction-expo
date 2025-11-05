@@ -19,9 +19,10 @@ const VISITOR_DETAILS_FRAGMENT = gql`
 
 export const GET_VISITOR_INTERESTS = gql`
  query GetVisitorInterests {
-  visitorInterests{
+   visitorInterests(where: {event: {_eq: ITF}}){
     translations
     id
+    event
   }
 }
 `;

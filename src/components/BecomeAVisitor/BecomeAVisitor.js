@@ -126,7 +126,7 @@ function BecomeAVisitor() {
         }
     };
 
-    const options = visitorsInterestsData?.visitorInterests?.map(item => {
+    const options = visitorsInterestsData?.visitorInterests?.filter((item) => item.event === "ITF").map(item => {
         const {id, translations} = item;
         const name = i18n.language === "am" ? translations.am : translations.en;
         return {id, name};

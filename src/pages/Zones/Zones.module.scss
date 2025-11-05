@@ -41,6 +41,18 @@
   }
 }
 
+.pageTitle {
+  font-size: 45px;
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+  @media only screen and (max-width: $largeDisplay) {
+    font-size: 40px;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    font-size: 34px;
+  }
+}
+
 .zone {
   width: 100%;
   display: flex;
