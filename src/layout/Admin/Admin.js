@@ -21,7 +21,7 @@ const AdminPage = () => {
             const headers = token ?  { Authorization: `Bearer ${token}` } : {};
 
             const dataProvider = await buildHasuraProvider({
-                clientOptions: {uri: 'https://api.armenianautoshow.com/v1/graphql', headers},
+                clientOptions: {uri: 'https://api.armauto.show/v1/graphql', headers},
             }, {
                 aggregateFieldName(resourceName) {
                     return `${resourceName}Aggregate`
