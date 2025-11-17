@@ -8,6 +8,7 @@ import {ADD_VISITOR, GET_VISITOR_INTERESTS} from '../../graphql/queries';
 import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 import {useModal} from "../ModalContext/ModalContext";
 import {useLocation, useNavigate} from "react-router-dom";
+import {ReactComponent as Logo} from "../../images/logo.svg";
 
 function BecomeAVisitor() {
     const [formData, setFormData] = useState({
@@ -154,6 +155,10 @@ function BecomeAVisitor() {
         <div className={styles.modal}>
 
             <div className={styles.close} onClick={closeModal}><Cross/></div>
+            <div className={styles.logo}>
+                <Logo/>
+            </div>
+
             <h2 className={styles.title}>
                 {t("become_a_visitor")}
             </h2>

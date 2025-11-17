@@ -7,7 +7,20 @@
     padding: 70px 10px 0 10px
   }
 }
-
+.logo{
+  //text-align: center;
+  svg{
+    width: 150px;
+    height: auto;
+  }
+  @media only screen and (max-width: $smallDisplay) {
+    position: absolute;
+    top: 50px;
+    svg{
+      width: 100px;
+    }
+  }
+}
 .successModal {
   padding: 30px;
   text-align: center;
@@ -74,7 +87,7 @@
   font-weight: bold;
   position: absolute;
   right: 40px;
-  top: 60px;
+  top: 50px;
   cursor: pointer;
   svg{
     rect{

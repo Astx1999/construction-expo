@@ -17,6 +17,7 @@ import CustomSelect from "../CustomSelect/CustomSelect";
 import {useLocation, useNavigate} from "react-router-dom";
 import {authClient} from "../../apolloClient";
 import useLocalStorage from "../../hook/useLocalStorage";
+import {ReactComponent as Logo} from "../../images/logo.svg";
 
 function BecomeAnExhibitor() {
     const [formData, setFormData] = useState({
@@ -225,7 +226,7 @@ function BecomeAnExhibitor() {
                             {
                                 id: zoneItem.id,
                                 name:
-                                `${zoneName} (${zoneItemObj?.metadata?.size} sq. m)`,
+                                    `${zoneName} (${zoneItemObj?.metadata?.size} sq. m)`,
                             }
                         )
 
@@ -258,6 +259,7 @@ function BecomeAnExhibitor() {
     return (
         <div className={styles.modal}>
             <div className={styles.close} onClick={closeModal}><Cross/></div>
+            <div className={styles.logo}><Logo/></div>
             <h2 className={styles.title}>{t("become_an_exhibitor")}</h2>
 
             <form onSubmit={handleSubmit}>
@@ -296,7 +298,7 @@ function BecomeAnExhibitor() {
                         onChange={(e) => {
                             setFormData({...formData, zone: e, zoneItemIds: []});
                         }}
-                        options={zones ? [...zones?.zones?.filter((zone)=>zone.name !== "D").map((zone) => ({
+                        options={zones ? [...zones?.zones?.filter((zone) => zone.name !== "D").map((zone) => ({
                             id: zone.id,
                             name: zone.name
                         }))] : []}

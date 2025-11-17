@@ -46,10 +46,10 @@ const HomeNew = () => {
 
                 <div className={classNames(styles.cta, styles.line4)}>
                     <CtaButton
-                        text={t("become_an_exhibitor")}
+                        text={t("become_a_visitor")}
                         onClick={() => {
                             setIsOpen("exhibitor")
-                            navigate("/home/becomeanexhibitor")
+                            navigate("/home/becomeavisitor")
                         }}
                         // mirror={!(width > 767)}
                     />
