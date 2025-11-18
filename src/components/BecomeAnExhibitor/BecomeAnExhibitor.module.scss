@@ -3,7 +3,7 @@
   background: var(--background-color);
   padding: 30px 60px 0;
   @media only screen and (max-width: $smallDisplay) {
-    padding: 70px 10px 0 10px
+    padding: 90px 10px 0 10px
   }
 }
 .logo{
@@ -14,13 +14,13 @@
   }
   @media only screen and (max-width: $smallDisplay) {
     position: absolute;
-    top: 50px;
+    top: 70px;
     svg{
       width: 100px;
     }
   }
 }
-.successModal{
+.successModal{;
   padding: 30px;
   text-align: center;
   @media only screen and (max-width: $smallDisplay) {
@@ -31,6 +31,9 @@
   }
   .close{
     top: 30px;
+    @media only screen and (max-width: $smallDisplay) {
+      top: 50px;
+    }
   }
 }
 .success{
@@ -63,6 +66,9 @@
   right: 40px;
   top: 50px;
   cursor: pointer;
+  @media only screen and (max-width: $smallDisplay) {
+    top: 70px;
+  }
   svg{
     rect{
       fill: var(--text-color);
