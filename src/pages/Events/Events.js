@@ -3,11 +3,15 @@ import {useTranslation} from 'react-i18next';
 import styles from './Events.module.scss';
 import {useQuery} from "@apollo/client";
 import {GET_AGENDA_LOCALiZATIONS, GET_AVAILABLE_ZONE_ITEMS} from "../../graphql/queries";
+import {useModal} from "../../components/ModalContext/ModalContext";
+import CtaButton from "../../components/CtaButton/CtaButton";
+import {useNavigate} from "react-router-dom";
 
 const Events = () => {
     const {t, i18n} = useTranslation();
     const [activeTab, setActiveTab] = useState(0);
-
+    const { setIsOpen } = useModal();
+    const navigate = useNavigate();
     const handleTabClick = (index) => {
         setActiveTab(index);
     };
@@ -22,7 +26,13 @@ const Events = () => {
             <p className={styles.subtitle}>
                 {/*{t('To participate you need to register for the event')}*/}
             </p>
-
+            <CtaButton
+                onClick={() => {
+                    setIsOpen("forum");
+                    navigate("/events/becomeaforumparticipant");
+                }}
+                text={t("become_a_forum_participant")}
+            />
             <div className={styles.tabs}>
                 {data?.source.map((event, index) => (
                     <button

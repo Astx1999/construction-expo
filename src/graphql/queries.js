@@ -104,6 +104,7 @@ export const ADD_VISITOR = gql`
     $companyName: String!,
     $interestsIds: json!,
     $phoneNumber: String,
+    $type: types_enum! = VISITOR
   ) {
     insertVisitors(
       objects: [{
@@ -114,12 +115,14 @@ export const ADD_VISITOR = gql`
         companyName: $companyName,
         phoneNumber: $phoneNumber,
         interestsIds: $interestsIds,
+        type: $type
       }]
     ) {
       affected_rows
     }
   }
 `;
+
 
 export const ADD_VISITOR_WITH_TYPE = gql`
   mutation AddVisitor(

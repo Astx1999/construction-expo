@@ -22,6 +22,7 @@ import useWindowResize from "./hook/useWindowResize";
 import AdminPage from "./layout/Admin/Admin";
 import PartnersAndSponsors from "./pages/PartnersAndSponsors/PartnersAndSponsors";
 import Events from "./pages/Events/Events";
+import BecomeAForumParticipant from "./components/BecomeAForumParticipant/BecomeAForumParticipant";
 
 
 const App = () => {
@@ -155,6 +156,17 @@ const App = () => {
 
     const root = useRef()
 
+    const renderModalContent = () => {
+        switch (modalIsOpen) {
+            case "exhibitor":
+                return <BecomeAnExhibitor/>;
+            case "forum":
+                return <BecomeAForumParticipant/>;
+            case "visitor":
+            default:
+                return <BecomeAVisitor/>;
+        }
+    };
     return (
         <div ref={root}>
             {/*         {
@@ -197,9 +209,9 @@ const App = () => {
                    {/* <div className="section right-bar-home" id="special-offers">
                         <SpecialOffers/>
                     </div>*/}
-                    {/*<div className="section right-bar-home" id="events">*/}
-                    {/*    <Events/>*/}
-                    {/*</div>*/}
+                    <div className="section right-bar-home" id="events">
+                        <Events/>
+                    </div>
                     <div className="section right-bar-home" id="partners-and-sponsors">
                         <PartnersAndSponsors/>
                     </div>
@@ -226,7 +238,7 @@ const App = () => {
                         style={customStyles}
                         contentLabel="Register Modal"
                     >
-                        {modalIsOpen === "exhibitor" ? <BecomeAnExhibitor/> : <BecomeAVisitor/>}
+                        {renderModalContent()}
                     </Modal>
                 </>
                 :
