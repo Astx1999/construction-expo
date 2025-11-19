@@ -8,7 +8,7 @@ import {ADD_VISITOR} from '../../graphql/queries';
 import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 import {useModal} from "../ModalContext/ModalContext";
 import {useLocation, useNavigate} from "react-router-dom";
-import {ReactComponent as Logo} from "../../images/logo.svg";
+import {ReactComponent as Logo} from "../../images/forumLogo.svg";
 
 function BecomeAForumParticipant() {
     const [formData, setFormData] = useState({
@@ -131,7 +131,7 @@ function BecomeAForumParticipant() {
         return (
             <div className={styles.successModal}>
                 <div className={styles.close} onClick={closeModal}><Cross/></div>
-                <p className={styles.success}>{t("success_visitor")}</p>
+                <p className={styles.success}>{t("success__forum_participant")}</p>
             </div>
         );
     }
