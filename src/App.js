@@ -68,6 +68,9 @@ const App = () => {
         if (location.pathname.search("becomeanexhibitor") > 0) {
             setIsOpen("exhibitor")
         }
+        if (location.pathname.search("becomeaforumparticipant") > 0) {
+            setIsOpen("forum")
+        }
     })
 
     // Set active section based on location.pathname
