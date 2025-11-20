@@ -32,6 +32,7 @@ const GET_VISITOR_BY_ID = gql`
             shortCode
             status
             type
+            event
         }
     }
 `;
@@ -49,6 +50,7 @@ const GET_VISITOR_BY_SHORT_CODE = gql`
             shortCode
             status
             type
+            event
         }
     }
 `;
@@ -209,6 +211,8 @@ const ScanUserEntry = () => {
                             <p><b>Phone Number:</b> {selectedVisitor.phoneNumber}</p>
                             <p><b>Type:</b> {selectedVisitor.type}</p>
                             <p><b>Short Code:</b> {selectedVisitor.shortCode}</p>
+                            {selectedVisitor.event === "ITF_FORUM" &&  <p className={styles.forum}><b>FORUM PARTICIPANT</b></p>}
+
                         </div>
                     )}
                     <DialogActions style={{justifyContent: "center", marginTop: "20px"}}>

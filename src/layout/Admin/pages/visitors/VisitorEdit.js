@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import {
     Edit,
     SimpleForm,
@@ -10,13 +10,15 @@ import {
     SaveButton,
     required,
 } from "react-admin";
-import { Grid, Button } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Print } from "@mui/icons-material"; // Import the Print icon
-import { useQuery , useMutation} from "@apollo/client";
+import {Grid, Button} from "@mui/material";
+import {useLocation, useNavigate} from "react-router-dom";
+import {Print} from "@mui/icons-material"; // Import the Print icon
+import {useQuery, useMutation} from "@apollo/client";
 import {GET_TYPES, GET_VISITOR_INTERESTS, UPDATE_VISITOR} from "../../../../graphql/queries";
-import { getUserIdFromUrl } from "../../../../utils/getUserIdFromUrl";
+import {getUserIdFromUrl} from "../../../../utils/getUserIdFromUrl";
 import {authClient} from "../../../../apolloClient";
+import styles from "../../Admin.module.scss";
+import {useRecordContext} from 'react-admin';
 
 const CustomToolbarEdit = (props) => {
     const notify = useNotify();
@@ -24,7 +26,7 @@ const CustomToolbarEdit = (props) => {
     const userId = getUserIdFromUrl(location.pathname);
 
     const handlePrint = async () => {
-        const apiUrl = `https://api.armenianautoshow.com/api/ticket/${userId}`;
+        const apiUrl = `https://api.armauto.show/api/ticket/${userId}`;
         try {
             // Open the URL in a new window
             const newWindow = window.open(apiUrl, '_blank', 'noopener,noreferrer');
@@ -49,7 +51,7 @@ const CustomToolbarEdit = (props) => {
                 console.error('Failed to open new window for printing.');
             }
         } catch (error) {
-            notify(`Error: ${error.message}`, { type: 'error' });
+            notify(`Error: ${error.message}`, {type: 'error'});
         }
     };
 
@@ -61,8 +63,8 @@ const CustomToolbarEdit = (props) => {
                 onClick={handlePrint}
                 variant="contained"
                 color="secondary"
-                style={{ marginLeft: 10 }}
-                startIcon={<Print />} // Place the Print icon inside the button
+                style={{marginLeft: 10}}
+                startIcon={<Print/>} // Place the Print icon inside the button
             >
                 Print
             </Button>
@@ -71,13 +73,38 @@ const CustomToolbarEdit = (props) => {
 };
 
 
+const VisitorEventBanner = ({type}) => {
+    const record = useRecordContext();
+    if (!record) return null;
+
+    const EVENT_LABELS = {
+        ITF: "ITF VISITOR",
+        ITF_FORUM: "FORUM PARTICIPANT",
+    };
+
+    if (record.event !== "ITF_FORUM") {
+        return null
+    }
+
+    if (type === 'label') {
+        return (<p className={styles.forum} style={{textAlign: 'center'}}>
+            <b>{EVENT_LABELS[record.event] || record.event}</b>
+        </p>)
+    } else {
+        return (
+            <p>Please print a badge for <b  className={styles.forum}>{EVENT_LABELS[record.event]}</b></p>
+        )
+    }
+};
+
+
 export const VisitorEdit = (props) => {
     const navigate = useNavigate();
     const notify = useNotify();
-    const { data: visitorInterestsData } = useQuery(GET_VISITOR_INTERESTS);
+    const {data: visitorInterestsData} = useQuery(GET_VISITOR_INTERESTS);
     const [, setInterestsTranslations] = useState({});
     const [updateVisitorMutation] = useMutation(UPDATE_VISITOR, {client: authClient});
-    const { data: typesData } = useQuery(GET_TYPES);
+    const {data: typesData} = useQuery(GET_TYPES);
     const VisitorType = typesData?.types
         .filter(type => type.name !== 'EXHIBITOR')
         .map(type => ({
@@ -119,7 +146,7 @@ export const VisitorEdit = (props) => {
     };
 
     const handleSubmit = (formData) => {
-        const { id, ...newData } = formData; // Extract id and other updated fields
+        const {id, ...newData} = formData; // Extract id and other updated fields
         handleUpdateVisitor(id, newData); // Call handleUpdateVisitor with id and updated data
     };
     const isManager = localStorage.getItem('userRole') === 'manager';
@@ -131,20 +158,23 @@ export const VisitorEdit = (props) => {
                 onClick={() => navigate(-1)}
                 variant="contained"
                 color="secondary"
-                style={{ marginLeft: 10 }}
+                style={{marginLeft: 10}}
             >
                 Go Back
             </Button>
-            <SimpleForm toolbar={<CustomToolbarEdit />} onSubmit={handleSubmit}>
+            <VisitorEventBanner type={'label'}/>
+            <SimpleForm toolbar={<CustomToolbarEdit/>} onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
-                        <TextInput fullWidth source="firstName" label="First Name" disabled={!isManager} validate={required()} />
+                        <TextInput fullWidth source="firstName" label="First Name" disabled={!isManager}
+                                   validate={required()}/>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <TextInput fullWidth source="lastName" label="Last Name" disabled={!isManager} validate={required()} />
+                        <TextInput fullWidth source="lastName" label="Last Name" disabled={!isManager}
+                                   validate={required()}/>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <TextInput fullWidth source="email" label="Email" disabled={!isManager} validate={required()} />
+                        <TextInput fullWidth source="email" label="Email" disabled={!isManager} validate={required()}/>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <TextInput fullWidth source="shortCode" label="Short Code" disabled/>
@@ -177,7 +207,9 @@ export const VisitorEdit = (props) => {
                         <TextInput fullWidth source="notes" label="Notes" disabled={!isManager}/>
                     </Grid>
                 </Grid>
+                <VisitorEventBanner/>
             </SimpleForm>
+
         </Edit>
     );
 };

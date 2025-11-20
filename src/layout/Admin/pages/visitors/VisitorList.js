@@ -103,7 +103,7 @@ export const VisitorList = (props) => {
     };
 
     const handlePrint = async (userId) => {
-        const apiUrl = `https://api.armenianautoshow.com/api/ticket/${userId}`;
+        const apiUrl = `https://api.armauto.show/api/ticket/${userId}`;
         try {
             // Open the URL in a new window
             const newWindow = window.open(apiUrl, '_blank', 'noopener,noreferrer');
