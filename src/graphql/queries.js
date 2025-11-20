@@ -104,7 +104,7 @@ export const ADD_VISITOR = gql`
     $companyName: String!,
     $interestsIds: json!,
     $phoneNumber: String,
-    $type: types_enum! = VISITOR
+    $event: events_enum! = ITF
   ) {
     insertVisitors(
       objects: [{
@@ -115,7 +115,7 @@ export const ADD_VISITOR = gql`
         companyName: $companyName,
         phoneNumber: $phoneNumber,
         interestsIds: $interestsIds,
-        type: $type
+        event: $event
       }]
     ) {
       affected_rows
@@ -210,6 +210,7 @@ export const ADD_EXHIBITOR = gql`
     $phoneNumber: String!,
     $website: String!,
     $zoneItems: [exhibitorZoneItems_insert_input!]!
+    $event: events_enum! = ITF
   ) {
     insertExhibitors(
       objects: {
@@ -223,7 +224,8 @@ export const ADD_EXHIBITOR = gql`
         website: $website,
         zoneItems: {
           data: $zoneItems
-        }
+        },
+        event: $event
       }
     ) {
       affected_rows

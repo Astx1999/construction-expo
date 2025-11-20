@@ -23,6 +23,7 @@
 .successModal{;
   padding: 30px;
   text-align: center;
+  color: var(--text-color);
   @media only screen and (max-width: $smallDisplay) {
     height: 95vh;
     padding: 0;

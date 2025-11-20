@@ -19,7 +19,7 @@ function BecomeAForumParticipant() {
         email: '',
         interestsIds: [],
         notes: '',
-        type: 'FORUM_PARTICIPANT'
+        event: 'ITF_FORUM'
     });
 
     const navigate = useNavigate();
