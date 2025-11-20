@@ -87,9 +87,13 @@ const VisitorEventBanner = ({type}) => {
     }
 
     if (type === 'label') {
-        return (<p className={styles.forum} style={{textAlign: 'center'}}>
-            <b>{EVENT_LABELS[record.event] || record.event}</b>
-        </p>)
+        return (
+            <div  style={{textAlign: 'center'}}>
+                <p className={styles.forum}>
+                    <b>{EVENT_LABELS[record.event] || record.event}</b>
+                </p>
+            </div>
+        )
     } else {
         return (
             <p>Please print a badge for <b  className={styles.forum}>{EVENT_LABELS[record.event]}</b></p>
