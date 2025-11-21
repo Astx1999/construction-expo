@@ -36,6 +36,7 @@ function BecomeAnExhibitor() {
 
     const [errors, setErrors] = useState({});
     const [isSuccess, setSuccess] = useState(false);
+    const [isRegistrationClosed, setIsRegistrationClosed] = useState(true);
     const [isLoading, setLoading] = useState(false);
 
     const {setIsOpen} = useModal();
@@ -246,6 +247,15 @@ function BecomeAnExhibitor() {
             navigate(`/${urlParts[1]}`);
         }
     };
+
+    if(isRegistrationClosed){
+        return (
+            <div className={styles.successModal}>
+                <div className={styles.close} onClick={closeModal}><Cross/></div>
+                <p className={styles.success}>{t("registration_is_closed")}</p>
+            </div>
+        )
+    }
 
     if (isSuccess) {
         return (

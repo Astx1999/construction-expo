@@ -28,6 +28,7 @@ function BecomeAForumParticipant() {
     const [errors, setErrors] = useState({});
     const [isSuccess, setSuccess] = useState(false);
     const [isLoading, setLoading] = useState(false);
+    const [isRegistrationClosed, setIsRegistrationClosed] = useState(true);
 
     const {setIsOpen} = useModal();
     const {t, i18n} = useTranslation();
@@ -126,6 +127,16 @@ function BecomeAForumParticipant() {
             navigate(`/${urlParts[1]}`);
         }
     };
+
+
+    if(isRegistrationClosed){
+        return (
+            <div className={styles.successModal}>
+                <div className={styles.close} onClick={closeModal}><Cross/></div>
+                <p className={styles.success}>{t("registration_is_closed")}</p>
+            </div>
+        )
+    }
 
     if (isSuccess) {
         return (
