@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb891854.css",
-    "main.js": "/static/js/main.e7d443f3.js",
+    "main.css": "/static/css/main.f47f041e.css",
+    "main.js": "/static/js/main.efd2f366.js",
     "static/media/DejaVuSans.ttf": "/static/media/DejaVuSans.67ed0b9aeb82e75288aa.ttf",
     "static/media/Lexend-Light.ttf": "/static/media/Lexend-Light.acffbebac7970a00220c.ttf",
     "static/media/Lexend-Bold.ttf": "/static/media/Lexend-Bold.6708dbd284b5ced4d2b8.ttf",
@@ -10,11 +10,11 @@
     "static/media/logo.svg": "/static/media/logo.5b62fe81160066a6ccefac09c1099a17.svg",
     "index.html": "/index.html",
     "static/media/cross.svg": "/static/media/cross.1e09ee2aee9449b85484f1eb77cdca83.svg",
-    "main.eb891854.css.map": "/static/css/main.eb891854.css.map",
-    "main.e7d443f3.js.map": "/static/js/main.e7d443f3.js.map"
+    "main.f47f041e.css.map": "/static/css/main.f47f041e.css.map",
+    "main.efd2f366.js.map": "/static/js/main.efd2f366.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb891854.css",
-    "static/js/main.e7d443f3.js"
+    "static/css/main.f47f041e.css",
+    "static/js/main.efd2f366.js"
   ]
 }

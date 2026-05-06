@@ -1,0 +1,2 @@
+export const CURRENT_EVENT = "CONSTRUCTION_2026";
+

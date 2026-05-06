@@ -11,15 +11,17 @@ import {
     Filter,
     useRedirect,
     useNotify,
-    SelectInput
+    SelectInput,
+    WithListContext
 } from 'react-admin';
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
+import {Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Typography, useMediaQuery} from "@mui/material";
 import {useNavigate} from 'react-router-dom';
 import PrintIcon from '@mui/icons-material/Print';
 import { QrReader } from "@cmdnio/react-qr-reader";
+import { CURRENT_EVENT } from "../../../../constants/events";
 
 // Define a filter component
-const VisitorFilter = ({setFilters, searched, ...props}) => {
+const VisitorFilter = ({ setFilters, searched, eventChoices, ...props }) => {
     const handleInputChange = (e) => {
         const hasLength = e.currentTarget.value.length > 0;
         if (setFilters && ((hasLength && !searched) || (!hasLength && searched))) {
@@ -47,12 +49,28 @@ const VisitorFilter = ({setFilters, searched, ...props}) => {
                 disabled={isBasic}
                 emptyText="ALL"
             />
+            <SelectInput
+                label="Event"
+                source="event"
+                choices={eventChoices}
+                alwaysOn
+                emptyText="ALL"
+            />
         </Filter>
     );
 };
 
 
 export const VisitorList = (props) => {
+    const { data: eventUsersData } = useGetList("eventUsers", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "event", order: "ASC" },
+    });
+    const eventChoices =
+        Array.from(new Set((eventUsersData || []).map((x) => x.event)))
+            .filter(Boolean)
+            .map((event) => ({ id: event, name: event }));
+
     // Fetch a large page to effectively get "all" interests (typically small lookup table).
     // Also scope interests to the current event.
     const { data: visitorInterestsData } = useGetList("visitorInterests", {
@@ -65,6 +83,7 @@ export const VisitorList = (props) => {
     const redirect = useRedirect();
     const notify = useNotify();
     const navigate = useNavigate();
+    const isSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
 
     useEffect(() => {
@@ -198,44 +217,126 @@ export const VisitorList = (props) => {
             <List {...props}
                   exporter={false}
                   hasCreate={false}
-                  filters={<VisitorFilter  setFilters={isBasic && handleFilter} searched={searched}/>}
+                  filters={<VisitorFilter setFilters={isBasic && handleFilter} searched={searched} eventChoices={eventChoices} />}
                   filter={isBasic ? { type: 'VISITOR' } : null}
-                  filterDefaultValues={isBasic ? { type: 'VISITOR' } : null}
+                  filterDefaultValues={isBasic ? { type: 'VISITOR', event: CURRENT_EVENT } : { event: CURRENT_EVENT }}
                   sort={{field: 'createdAt', order: 'DESC'}}
                   pagination={isBasic && !searched ? null : props.pagination}
             >
-                <Datagrid rowClick={(id) => handleRowClick(id)} bulkActionButtons={false}
-                          data={isBasic && !searched ? null : props.data}>
-                    <TextField source="firstName" label="First Name"/>
-                    <TextField source="lastName" label="Last Name"/>
-                    <EmailField source="email" label="Email"/>
-                    <TextField source="shortCode" label="Short Code"/>
-                    <TextField source="companyName" label="Company Name"/>
-                    <TextField source="phoneNumber" label="Phone Number"/>
-                    <FunctionField
-                        label="Interests"
-                        render={renderInterests}
-                    />
+                {isSmall ? (
+                    <WithListContext
+                        render={({ data }) => (
+                            <Box sx={{ display: "grid", gap: 2 }}>
+                                {(data || []).map((record) => {
+                                    const fullName =
+                                        `${record.firstName || ""} ${record.lastName || ""}`.trim() || "—";
+                                    const interests = renderInterests(record);
 
-                    <TextField source="notes" label="Notes"/>
-                    <TextField source="type" label="Type"/>
-                    <TextField source="event" label="Event"/>
-                    <DateField source="createdAt" label="Created At" showTime/>
-                    <FunctionField
-                        label=""
-                        render={(record) => (
-                            <Button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handlePrint(record.id);
-                                }}
-                                style={{backgroundColor: 'transparent'}}
-                            >
-                                <PrintIcon color={'#0b1726'}/>
-                            </Button>
+                                    return (
+                                        <Card
+                                            key={record.id}
+                                            onClick={() => handleRowClick(record.id)}
+                                            sx={{
+                                                cursor: "pointer",
+                                                backgroundColor: "#f8f8f9",
+                                                borderRadius: 2,
+                                                boxShadow: "none",
+                                            }}
+                                        >
+                                            <CardContent sx={{ display: "grid", gap: 0.75 }}>
+                                                <Typography sx={{ fontWeight: 800, color: "#0b1726" }}>
+                                                    {fullName}
+                                                </Typography>
+
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Email:</b> {record.email || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Phone:</b> {record.phoneNumber || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Company:</b> {record.companyName || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Short code:</b> {record.shortCode || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Type:</b> {record.type || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Event:</b> {record.event || "—"}
+                                                </Typography>
+                                                <Typography sx={{ color: "#5b6776" }}>
+                                                    <b>Interests:</b> {interests || "—"}
+                                                </Typography>
+                                                {record.notes ? (
+                                                    <Typography sx={{ color: "#5b6776" }}>
+                                                        <b>Notes:</b> {record.notes}
+                                                    </Typography>
+                                                ) : null}
+
+                                                <Box sx={{ pt: 1 }}>
+                                                    <Button
+                                                        size="small"
+                                                        variant="outlined"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handlePrint(record.id);
+                                                        }}
+                                                        sx={{
+                                                            borderColor: "#E8EAEE",
+                                                            color: "#032E42",
+                                                            textTransform: "none",
+                                                            fontWeight: 700,
+                                                        }}
+                                                    >
+                                                        Print badge
+                                                    </Button>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    );
+                                })}
+                            </Box>
                         )}
                     />
-                </Datagrid>
+                ) : (
+                    <Datagrid
+                        rowClick={(id) => handleRowClick(id)}
+                        bulkActionButtons={false}
+                        data={isBasic && !searched ? null : props.data}
+                    >
+                        <TextField source="firstName" label="First Name"/>
+                        <TextField source="lastName" label="Last Name"/>
+                        <EmailField source="email" label="Email"/>
+                        <TextField source="shortCode" label="Short Code"/>
+                        
+                        <TextField source="phoneNumber" label="Phone Number"/>
+                        <FunctionField
+                            label="Interests"
+                            render={renderInterests}
+                        />
+                        <TextField source="companyName" label="Company Name"/>
+                        <TextField source="notes" label="Notes"/>
+                        <TextField source="type" label="Type"/>
+                        <TextField source="event" label="Event"/>
+                        <DateField source="createdAt" label="Created At" showTime/>
+                        <FunctionField
+                            label=""
+                            render={(record) => (
+                                <Button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handlePrint(record.id);
+                                    }}
+                                    style={{backgroundColor: 'transparent'}}
+                                >
+                                    <PrintIcon color={'#0b1726'}/>
+                                </Button>
+                            )}
+                        />
+                    </Datagrid>
+                )}
             </List>
 
         </div>

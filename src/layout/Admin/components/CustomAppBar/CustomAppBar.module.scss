@@ -1,20 +1,49 @@
-.logoWrapper{
+.appBar {
+  background-color: #f4f4f4 !important;
+  color: #032e42 !important;
+  box-shadow: 0 6px 16px rgba(13, 27, 44, 0.08) !important;
+}
 
+.toolbar {
+  min-height: 52px !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
 }
-.logo{
-  width: 150px;
-  svg{
+.logoWrapper{
+  width: 100%;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.logo {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  svg {
     width: 100%;
+    height: auto;
   }
 }
-.title{
-  width: 80vw;
-  text-align: center;
-  font-size: 1.3rem!important;
-  @media only screen and (max-width: 1600px) {
-    width: 75vw;
-  }
-  @media only screen and (max-width: 1340px) {
-    width: 72vw;
-  }
+
+.title {
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
 }

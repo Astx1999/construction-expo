@@ -12,11 +12,58 @@
 
 :global {
   .RaLayout-contentWithSidebar {
-    margin-top: 55px;
+    margin-top: 30px;
+  }
+
+  .RaAppBar-toolbar{
+    min-height: 60px !important;
+  }
+  .css-uwxfgq-MuiPaper-root-MuiAppBar-root-RaAppBar-root{
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 5%), 0px 4px 5px 0px rgb(0 0 0 / 6%), 0px 1px 10px 0px rgb(0 0 0 / 3%) !important;
+  }
+
+  .RaList-actions{
+    padding: 15px 0 !important;
+    background: transparent !important;
+
+    .MuiToolbar-root{
+      display: none;
+    }
+   
+  }
+
+  .MuiBox-root{
+    .MuiPaper-root{
+      border: 2px solid #E8EAEE !important;
+    }
+  }
+  
+  .RaDatagrid-root {
+    border: none;
   }
 
   .RaDatagrid-headerCell {
-    background: #fafafb !important;
+    background: #f0f0f2 !important;
+    white-space: nowrap;
+    color: #8f8f95 !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    padding: 15px 15px !important;
+    span{
+      color: #8f8f95 !important;
+    }
+  }
+
+  .RaDatagrid-row, .MuiTableCell-root{
+    border: 0 !important;
+    color: #38383d !important;
+    span{
+      font-size: 16px !important;
+    }
+  }
+
+  .RaDatagrid-row:nth-of-type(odd) {
+    background: #f8f8f9;
   }
 
   .css-sghohy-MuiButtonBase-root-MuiButton-root, .MuiButton-colorSecondary {
@@ -32,6 +79,65 @@
 
   .css-1lm524j-MuiInputBase-root-MuiFilledInput-root, .css-9tq3d4-MuiInputBase-root-MuiFilledInput-root, .css-81sbzg-MuiInputBase-root-MuiFilledInput-root{
    background: transparent !important;
+  }
+
+  /* Make RA/MUI inputs look like CustomInput (clean full border) */
+  .MuiFilledInput-root,
+  .MuiInputBase-root {
+    border: 2px solid #E8EAEE;
+    border-radius: 10px!important;
+    background: #ffffff;
+    background-color: #ffffff;
+  }
+
+  .css-te332i-MuiInputBase-root-MuiFilledInput-root{
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .css-11qvwfa-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+      color: #FCA508 !important;
+  }
+  .css-1zuho2-MuiInputBase-input-MuiFilledInput-input.Mui-disabled{
+    background: #f0f0f2 !important;
+  }
+  /* Remove filled underline styling */
+  .MuiFilledInput-root:before,
+  .MuiFilledInput-root:after {
+    display: none;
+  }
+
+  .MuiFilledInput-input,
+  .MuiInputBase-input {
+    padding: 14px 12px;
+  }
+
+  .MuiFormLabel-root {
+    color: #8f8f95;
+  }
+
+  .MuiInputBase-root.Mui-focused {
+    border-color: #FCA508;
+  }
+  .css-mhc70k-MuiGrid-root>.MuiGrid-item{
+    padding-top: 0 !important;
+  }
+  .css-1i5wpaj-MuiFormControl-root-MuiTextField-root-RaResettableTextField-root{
+    margin-top: 0 !important;
+  }
+  .css-1fd8x6x-MuiCardContent-root-RaSimpleForm-root {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+  }
+  .css-bhp9pd-MuiPaper-root-MuiCard-root, .MuiToolbar-root{
+    box-shadow: none !important;
+    background: transparent !important;
+    min-height: auto;
+
+  }
+  .MuiToolbar-root{
+    padding-left: 16px!important;
+    align-items: baseline;
   }
 }
 .forum{

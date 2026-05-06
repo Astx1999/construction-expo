@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import Modal from "react-modal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useWindowResize from "./hook/useWindowResize";
 import AdminPage from "./layout/Admin/Admin";
 import BecomeAVisitor from "./components/BecomeAVisitor/BecomeAVisitor";
@@ -8,11 +8,12 @@ import BecomeAVisitor from "./components/BecomeAVisitor/BecomeAVisitor";
 const App = () => {
     const { width } = useWindowResize();
     const location = useLocation();
+    const navigate = useNavigate();
 
     const isAdminRoute = useMemo(() => {
         const p = location.pathname || "";
         return (
-            p.includes("nbspkkwwdsc") ||
+    
             p.includes("visitors") ||
             p.includes("exhibitors") ||
             p.includes("login") ||
@@ -47,6 +48,23 @@ const App = () => {
             document.body.style.overflow = '';
         };
     }, [isAdminRoute]);
+
+    useEffect(() => {
+        // If user is already authenticated and manually visits /login,
+        // send them to the appropriate admin resource instead of the public "/".
+        if (location.pathname !== "/login") return;
+
+        const accessToken = localStorage.getItem("accessToken");
+        if (!accessToken) return;
+
+        const role = localStorage.getItem("userRole");
+        if (role === "ticket_qr_check") {
+            navigate("/ticket_qr_scan", { replace: true });
+        } else {
+            // manager/basic default landing
+            navigate("/visitors", { replace: true });
+        }
+    }, [location.pathname, navigate]);
 
     Modal.setAppElement("#root");
 
