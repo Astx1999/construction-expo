@@ -8,7 +8,7 @@ import styles from './CustomAppBar.module.scss'
 
 const CustomAppBar = (props) => {
     return (
-        <AppBar  style={{ backgroundColor: '#0D1B2C'}} {...props}>
+        <AppBar  style={{ backgroundColor: '#f4f4f4', color: '#032E42'}} {...props}>
             <Toolbar >
                 <div className={styles.logoWrapper}>
                     <div className={styles.logo}>

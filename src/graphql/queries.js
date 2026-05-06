@@ -19,7 +19,7 @@ const VISITOR_DETAILS_FRAGMENT = gql`
 
 export const GET_VISITOR_INTERESTS = gql`
  query GetVisitorInterests {
-   visitorInterests(where: {event: {_eq: ITF}}){
+   visitorInterests(where: {event: {_eq: CONSTRUCTION_2026}}){
     translations
     id
     event
@@ -104,7 +104,7 @@ export const ADD_VISITOR = gql`
     $companyName: String!,
     $interestsIds: json!,
     $phoneNumber: String,
-    $event: events_enum! = ITF
+    $event: events_enum! = CONSTRUCTION_2026
   ) {
     insertVisitors(
       objects: [{
@@ -210,7 +210,7 @@ export const ADD_EXHIBITOR = gql`
     $phoneNumber: String!,
     $website: String!,
     $zoneItems: [exhibitorZoneItems_insert_input!]!
-    $event: events_enum! = ITF
+    $event: events_enum! = CONSTRUCTION_2026
   ) {
     insertExhibitors(
       objects: {

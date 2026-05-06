@@ -35,14 +35,14 @@ html[lang='am'] .input {
 }
 
 .input {
-  height: 68px;
+  height: 50px;
   background: var(--background-color);
   color: var(--text-color);
   outline: none;
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: 16px;
   font-family: LexendLight;
-  border: 1px solid #4E5056;
+  border: 2px solid #E8EAEE;
   width: 100%;
   @media only screen and (max-width: $smallDisplay) {
     font-size: 14px;
@@ -71,4 +71,6 @@ input[type=number]::-webkit-outer-spin-button {
 .label {
   margin-bottom: 10px;
   font-size: 14px;
+  color: #0E2443;
+  font-weight: bold;
 }

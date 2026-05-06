@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useMutation, useLazyQuery, gql} from '@apollo/client';
-import {QrReader} from 'react-qr-reader';
+import { QrReader } from "@cmdnio/react-qr-reader";
 import {
     Dialog,
     DialogActions,
@@ -79,18 +79,6 @@ const ScanUserEntry = () => {
     const [selectedVisitor, setSelectedVisitor] = useState(null);
     const [isQRReaderOpen, setIsQRReaderOpen] = useState(false);
 
-    const handleScan = async (data) => {
-        if (data) {
-            try {
-                const result = await getVisitorById({variables: {id: data.text}});
-                handleVisitorData(result);
-                handleCloseQRReader()
-            } catch (err) {
-                notify('Error fetching visitor.');
-            }
-        }
-    };
-
     const handleShortCodeSubmit = async () => {
         try {
             const result = await getVisitorByShortCode({variables: {shortCode}});
@@ -136,7 +124,20 @@ const ScanUserEntry = () => {
     const isMobileDevice = () => {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     };
-    const constraints = isMobileDevice() ? {facingMode: {exact: "environment"}} : {facingMode: "user"};
+    const constraints = isMobileDevice() ? { facingMode: "environment" } : { facingMode: "user" };
+
+    const handleScanResult = async (result) => {
+        const text = result?.text;
+        if (!text) return;
+
+        try {
+            const queryResult = await getVisitorById({ variables: { id: text } });
+            handleVisitorData(queryResult);
+            handleCloseQRReader();
+        } catch (err) {
+            notify("Error fetching visitor.");
+        }
+    };
 
     return (
         <div>
@@ -184,11 +185,9 @@ const ScanUserEntry = () => {
                 <DialogTitle>Scan QR Code</DialogTitle>
                 <DialogContent>
                     <QrReader
-                        delay={300}
-                        onError={handleError}
-                        onResult={handleScan}
-                        style={{width: '100%'}}
                         constraints={constraints}
+                        onResult={handleScanResult}
+                        style={{ width: "100%" }}
                     />
                 </DialogContent>
                 <DialogActions>
@@ -211,7 +210,7 @@ const ScanUserEntry = () => {
                             <p><b>Phone Number:</b> {selectedVisitor.phoneNumber}</p>
                             <p><b>Type:</b> {selectedVisitor.type}</p>
                             <p><b>Short Code:</b> {selectedVisitor.shortCode}</p>
-                            {selectedVisitor.event === "ITF_FORUM" &&  <p className={styles.forum}><b>FORUM PARTICIPANT</b></p>}
+                            {selectedVisitor.event === "CONSTRUCTION_2026" &&  <p className={styles.forum}><b>VISITOR</b></p>}
 
                         </div>
                     )}

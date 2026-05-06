@@ -11,7 +11,8 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {ReactComponent as Logo} from "../../images/logo.svg";
 
 function BecomeAVisitor() {
-    const [formData, setFormData] = useState({
+
+    const initialFormData = {
         firstName: '',
         lastName: '',
         phoneNumber: '',
@@ -19,7 +20,8 @@ function BecomeAVisitor() {
         email: '',
         interestsIds: [],
         notes: '',
-    });
+    };
+    const [formData, setFormData] = useState(initialFormData);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -79,11 +81,6 @@ function BecomeAVisitor() {
 
     const handleInterestsChange = (selectedOptions) => {
         setFormData({...formData, interestsIds: selectedOptions});
-        const error = validateField('interestsIds', selectedOptions);
-        setErrors(prevErrors => ({
-            ...prevErrors,
-            interestsIds: error
-        }));
     };
 
     const handleSubmit = async (e) => {
@@ -112,6 +109,8 @@ function BecomeAVisitor() {
                     }
                     setLoading(false);
                     setSuccess(true);
+                    setFormData(initialFormData);
+                    setErrors({});
                 }, 1000);
             }
         } catch (err) {
@@ -127,7 +126,7 @@ function BecomeAVisitor() {
         }
     };
 
-    const options = visitorsInterestsData?.visitorInterests?.filter((item) => item.event === "ITF").map(item => {
+    const options = visitorsInterestsData?.visitorInterests?.filter((item) => item.event === "CONSTRUCTION_2026").map(item => {
         const {id, translations} = item;
         const name = i18n.language === "am" ? translations.am : translations.en;
         return {id, name};
@@ -142,11 +141,20 @@ function BecomeAVisitor() {
         }
     };
 
+    const requiredLabel = (text) => (
+        <>
+            <span className={styles.requiredMark}>*</span>
+            {text}
+        </>
+    );
+
     if (isSuccess) {
         return (
             <div className={styles.successModal}>
-                <div className={styles.close} onClick={closeModal}><Cross/></div>
+                {/* <div className={styles.close} onClick={closeModal}><Cross/></div> */}
                 <p className={styles.success}>{t("success_visitor")}</p>
+
+                <button className={styles.submit} onClick={()=>setSuccess(false)}>{t("become_a_visitor")}</button>
             </div>
         );
     }
@@ -154,7 +162,7 @@ function BecomeAVisitor() {
     return (
         <div className={styles.modal}>
 
-            <div className={styles.close} onClick={closeModal}><Cross/></div>
+            {/* <div className={styles.close} onClick={closeModal}><Cross/></div> */}
             <div className={styles.logo}>
                 <Logo/>
             </div>
@@ -168,7 +176,7 @@ function BecomeAVisitor() {
            <form onSubmit={handleSubmit}>
                 <div className={styles.row}>
                     <CustomInput
-                        label={`${t("name")}*`}
+                        label={requiredLabel(t("name"))}
                         name="firstName"
                         type="text"
                         value={formData.firstName}
@@ -176,7 +184,7 @@ function BecomeAVisitor() {
                         error={errors.firstName}
                     />
                     <CustomInput
-                        label={`${t("surname")}*`}
+                        label={requiredLabel(t("surname"))}
                         name="lastName"
                         type="text"
                         value={formData.lastName}
@@ -186,17 +194,17 @@ function BecomeAVisitor() {
                 </div>
                 <div className={styles.row}>
                     <CustomInput
-                        label={`${t("phone_number")}*`}
+                        label={requiredLabel(t("phone_number"))}
                         name="phoneNumber"
                         type="text"
                         value={formData.phoneNumber}
                         onChange={(e) => {
-                            if (/^\+?[0-9]*$/.test(e.currentTarget?.value)) {
-                                setFormData({
-                                    ...formData,
-                                    phoneNumber: e.currentTarget?.value,
-                                });
-                            }
+                            const value = e.currentTarget?.value ?? "";
+                            if (!/^\+?[0-9]*$/.test(value)) return;
+
+                            setFormData((prev) => ({ ...prev, phoneNumber: value }));
+                            const error = validateField("phoneNumber", value);
+                            setErrors((prev) => ({ ...prev, phoneNumber: error }));
                         }}
                         error={errors.phoneNumber}
                     />
@@ -209,7 +217,7 @@ function BecomeAVisitor() {
                     />
                 </div>
                 <CustomInput
-                    label={`${t("email")}*`}
+                    label={requiredLabel(t("email"))}
                     type="email"
                     name="email"
                     value={formData.email}
@@ -226,10 +234,10 @@ function BecomeAVisitor() {
                         error={errors.interestsIds}
                     />
                 </div>
-                <label className={styles.message}>
-                    {t("notes")}
+                <div className={styles.message}>
+                    <label className={styles.label}>{t("notes")}</label>
                     <textarea name="notes" value={formData.notes} onChange={handleChange} rows={5}/>
-                </label>
+                </div>
 
                 <p className={styles.submissionTerms}>
                     {t("submission_terms")}

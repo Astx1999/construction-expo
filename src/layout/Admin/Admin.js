@@ -24,7 +24,9 @@ const AdminPage = () => {
                 clientOptions: {uri: 'https://api.armauto.show/v1/graphql', headers},
             }, {
                 aggregateFieldName(resourceName) {
-                    return `${resourceName}Aggregate`
+                    // Some roles don't have access to *_aggregate fields in Hasura.
+                    // ra-data-hasura supports skipping count queries via NO_COUNT.
+                    return 'NO_COUNT';
                 }
             });
 
@@ -54,13 +56,7 @@ const AdminPage = () => {
                         create={VisitorCreate}
                         edit={VisitorEdit}
                         icon={PersonIcon}
-                        options={{ label: 'Attendees' }}
-                    />
-                    <Resource
-                        name="exhibitors"
-                        list={ExhibitorList}
-                        create={ExhibitorCreate}
-                        icon={WorkIcon}
+                        options={{ label: 'Visitors' }}
                     />
                     <Resource
                         name="ticket_qr_scan"

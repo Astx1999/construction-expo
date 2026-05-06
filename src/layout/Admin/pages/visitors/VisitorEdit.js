@@ -78,11 +78,10 @@ const VisitorEventBanner = ({type}) => {
     if (!record) return null;
 
     const EVENT_LABELS = {
-        ITF: "ITF VISITOR",
-        ITF_FORUM: "FORUM PARTICIPANT",
+        CONSTRUCTION_2026: "CONSTRUCTION 2026 VISITOR",
     };
 
-    if (record.event !== "ITF_FORUM") {
+    if (record.event !== "CONSTRUCTION_2026") {
         return null
     }
 

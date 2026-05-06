@@ -20,12 +20,19 @@
   }
 
   .css-sghohy-MuiButtonBase-root-MuiButton-root, .MuiButton-colorSecondary {
-    background: #12253d !important;
+    background: #FCA508 !important;
+    color: #032E42 !important;
+    box-shadow: none !important;
+    font-weight: bold !important;
   }
 
   button.Mui-disabled {
-      background: rgba(0, 0, 0, 0.12) !important;
-    }
+    background: rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .css-1lm524j-MuiInputBase-root-MuiFilledInput-root, .css-9tq3d4-MuiInputBase-root-MuiFilledInput-root, .css-81sbzg-MuiInputBase-root-MuiFilledInput-root{
+   background: transparent !important;
+  }
 }
 .forum{
   padding: 5px 10px;

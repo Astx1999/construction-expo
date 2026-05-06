@@ -1,14 +1,15 @@
 .root{
   position: relative;
 }
-.label{
+.label {
   margin-bottom: 10px;
   display: block;
   font-size: 14px;
-  color: var(--text-color);
+  color: #0E2443;
+  font-weight: bold;
 }
 .selectedOptions{
-  height: 68px;
+  height: 50px;
   background: var(--background-color);
   color: var(--text-color);
   display: flex;
@@ -17,7 +18,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border: 1px solid #4E5056;
+  border: 2px solid #E8EAEE;
   cursor: pointer;
 }
 .error{
@@ -55,8 +56,8 @@
   padding: 10px;
   position: absolute;
   width: 100%;
-  top: 95px;
-  border: 1px solid #4E5056;
+  top: 85px;
+  border: 2px solid #E8EAEE;
   z-index: 1;
   max-height: 260px;
   overflow: auto;
@@ -70,7 +71,7 @@
 }
 .arrow{
   position: absolute;
-  top: 53px;
+  top: 46px;
   right: 15px;
   pointer-events: none;
 }

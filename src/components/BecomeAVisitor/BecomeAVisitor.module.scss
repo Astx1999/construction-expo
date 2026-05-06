@@ -40,7 +40,7 @@
 }
 
 .success {
-  padding-top: 40px;
+  // padding-top: 40px;
   line-height: 1.5;
 }
 
@@ -122,8 +122,18 @@
     padding: 10px;
     font-size: 16px;
     resize: none;
-    border: 1px solid #4E5056;
+    border: 2px solid #E8EAEE;
   }
+}
+.label {
+  font-size: 14px;
+  color: #0E2443;
+  font-weight: bold;
+}
+
+.requiredMark {
+  color: #E9424F;
+  margin-right: 4px;
 }
 .submissionTerms{
   font-size: 11px;
@@ -133,18 +143,26 @@
 .submit {
   cursor: pointer;
   display: flex;
-  width: 200px;
-  height: 60px;
-  background: #FE5840;
-  color: white;
+  width: 100%;
+  height: 50px;
+  background: #FCA508;
+  color: #032E42;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   border: none;
   outline: none;
   margin: 10px auto 20px;
+  border-radius: 10px;
+  font-weight: bold;
 
   &:disabled {
-    background: #4E5056;
+    background: #E8EAEE;
+  }
+}
+.successModal{
+  .submit{
+    margin-bottom: 0;
+    margin-top: 20px;
   }
 }

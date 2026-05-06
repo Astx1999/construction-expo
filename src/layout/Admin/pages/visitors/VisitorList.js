@@ -16,7 +16,7 @@ import {
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {useNavigate} from 'react-router-dom';
 import PrintIcon from '@mui/icons-material/Print';
-import {QrReader} from 'react-qr-reader';
+import { QrReader } from "@cmdnio/react-qr-reader";
 
 // Define a filter component
 const VisitorFilter = ({setFilters, searched, ...props}) => {
@@ -53,7 +53,12 @@ const VisitorFilter = ({setFilters, searched, ...props}) => {
 
 
 export const VisitorList = (props) => {
-    const {data: visitorInterestsData} = useGetList('visitorInterests');
+    // Fetch a large page to effectively get "all" interests (typically small lookup table).
+    // Also scope interests to the current event.
+    const { data: visitorInterestsData } = useGetList("visitorInterests", {
+        pagination: { page: 1, perPage: 10000 },
+        sort: { field: "id", order: "ASC" },
+    });
     const [interestsTranslations, setInterestsTranslations] = useState({});
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [searched, setSearched] = useState(false); // State to track if search has been performed
@@ -66,32 +71,29 @@ export const VisitorList = (props) => {
         if (visitorInterestsData) {
             const translations = {};
             visitorInterestsData.forEach((interest) => {
-                translations[interest.id] = interest.translations;
+                // Normalize keys to string to avoid number/string mismatches
+                translations[String(interest.id)] = interest.translations;
             });
             setInterestsTranslations(translations);
+
+            console.log(translations);
+            console.log(visitorInterestsData);
         }
     }, [visitorInterestsData]);
 
     const renderInterests = (record) => {
-        if (!visitorInterestsData || !interestsTranslations) {
-            return null;
-        }
+        const ids = Array.isArray(record?.interestsIds) ? record.interestsIds : [];
+        if (!ids.length) return null; // don't show "0"
 
-        return record.interestsIds.length && record.interestsIds.map((interestId) => {
-            const translations = interestsTranslations[interestId];
-            if (translations) {
-                return translations['en'];
-            } else {
-                return interestId;
-            }
-        }).join(', ');
-    };
-
-    const handleScan = (data) => {
-        if (data) {
-            redirect(`/visitors/${data}`);
-            setIsDialogOpen(false);
-        }
+        return ids
+            .map((interestId) => {
+                const key = String(interestId);
+                const translations = interestsTranslations?.[key];
+                const name = translations?.en || translations?.am;
+                return name || key;
+            })
+            .filter(Boolean)
+            .join(", ");
     };
 
     const handleError = (err) => {
@@ -152,7 +154,14 @@ export const VisitorList = (props) => {
     const isMobileDevice = () => {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     };
-    const constraints = isMobileDevice() ? {facingMode: {exact: "environment"}} : {facingMode: "user"};
+    const constraints = isMobileDevice() ? { facingMode: "environment" } : { facingMode: "user" };
+
+    const handleScanResult = (result) => {
+        const text = result?.text;
+        if (!text) return;
+        redirect(`/visitors/${text}`);
+        setIsDialogOpen(false);
+    };
 
     return (
         <div>
@@ -176,11 +185,9 @@ export const VisitorList = (props) => {
                 <DialogTitle>Scan QR Code</DialogTitle>
                 <DialogContent>
                     <QrReader
-                        delay={300}
-                        onError={handleError}
-                        onResult={handleScan}
-                        style={{width: '100%'}}
                         constraints={constraints}
+                        onResult={handleScanResult}
+                        style={{ width: "100%" }}
                     />
                 </DialogContent>
                 <DialogActions>
@@ -212,6 +219,7 @@ export const VisitorList = (props) => {
 
                     <TextField source="notes" label="Notes"/>
                     <TextField source="type" label="Type"/>
+                    <TextField source="event" label="Event"/>
                     <DateField source="createdAt" label="Created At" showTime/>
                     <FunctionField
                         label=""
