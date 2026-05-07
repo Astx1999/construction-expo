@@ -13,7 +13,6 @@ const App = () => {
     const isAdminRoute = useMemo(() => {
         const p = location.pathname || "";
         return (
-    
             p.includes("visitors") ||
             p.includes("exhibitors") ||
             p.includes("login") ||

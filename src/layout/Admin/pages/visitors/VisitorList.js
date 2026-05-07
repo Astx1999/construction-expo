@@ -329,9 +329,9 @@ export const VisitorList = (props) => {
                                         e.stopPropagation();
                                         handlePrint(record.id);
                                     }}
-                                    style={{backgroundColor: 'transparent'}}
+                                    style={{backgroundColor: 'transparent', color: '#032e42'}}
                                 >
-                                    <PrintIcon color={'#0b1726'}/>
+                                    <PrintIcon color={'#032e42'}/>
                                 </Button>
                             )}
                         />
