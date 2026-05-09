@@ -1,8 +1,67 @@
 @import "src/variables";
 
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  gap: 12px;
+
+  @media only screen and (max-width: $smallDisplay) {
+    margin-bottom: 8px;
+  }
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+
+  &:focus-visible {
+    outline: 2px solid #FCA508;
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+}
+
+.backArrow {
+  width: 30px;
+  height: 30px;
+  display: block;
+  transform: rotate(270deg);
+}
+
+.langSwitch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.langBtn {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(3, 46, 66, 0.25);
+  background: transparent;
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.langBtnActive {
+  background: #FCA508;
+  border-color: #FCA508;
+  color: #032e42;
+}
+
 .modal {
   background: var(--background-color);
   padding: 30px 60px 0;
+  position: relative;
   @media only screen and (max-width: $smallDisplay) {
     padding: 90px 10px 0 10px
   }
@@ -15,7 +74,7 @@
   }
   @media only screen and (max-width: $smallDisplay) {
     position: absolute;
-    top: 70px;
+    top: 78px;
     svg{
       width: 100px;
     }
@@ -25,11 +84,20 @@
   padding: 30px;
   text-align: center;
   color: var(--text-color);
+  .topBar {
+    text-align: left;
+    margin-bottom: 24px;
+  }
   @media only screen and (max-width: $smallDisplay) {
     height: 95vh;
-    padding: 0;
+    padding: 16px 10px 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    .topBar {
+      margin-bottom: 16px;
+    }
   }
   .close{
     top: 30px;

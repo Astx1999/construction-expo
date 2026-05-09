@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import classNames from 'classnames';
 import CustomInput from "../CustomInput/CustomInput";
 import styles from './BecomeAVisitor.module.scss';
-import {ReactComponent as Cross} from "../../images/cross.svg";
+import {ReactComponent as PrevArrow} from "../../images/prevP.svg";
 import {useTranslation} from "react-i18next";
 import {useQuery, useMutation} from '@apollo/client';
 import {ADD_VISITOR, GET_VISITOR_INTERESTS} from '../../graphql/queries';
@@ -9,6 +10,19 @@ import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 import {useModal} from "../ModalContext/ModalContext";
 import {useLocation, useNavigate} from "react-router-dom";
 import {ReactComponent as Logo} from "../../images/logo.svg";
+
+const EXPO_PAGE_URL = 'https://promexpo.am/expo/18th-construction-and-interior-expo-2026/';
+const UI_LANGS = [
+    {code: 'en', label: 'EN'},
+    {code: 'ru', label: 'RU'},
+    {code: 'am', label: 'AM'},
+];
+
+function pickInterestTranslation(translations, langCode) {
+    if (!translations || typeof translations !== 'object') return '';
+    const base = (langCode || 'en').split('-')[0];
+    return translations[base] || translations.ru || translations.en || translations.am || '';
+}
 
 function BecomeAVisitor() {
 
@@ -126,9 +140,11 @@ function BecomeAVisitor() {
         }
     };
 
+    const langCode = (i18n.language || 'en').split('-')[0];
+
     const options = visitorsInterestsData?.visitorInterests?.filter((item) => item.event === "CONSTRUCTION_2026").map(item => {
         const {id, translations} = item;
-        const name = i18n.language === "am" ? translations.am : translations.en;
+        const name = pickInterestTranslation(translations, langCode);
         return {id, name};
     }) || [];
 
@@ -148,9 +164,40 @@ function BecomeAVisitor() {
         </>
     );
 
+    const langSwitch = (
+        <div className={styles.langSwitch} role="group" aria-label={t('language')}>
+            {UI_LANGS.map(({code, label}) => (
+                <button
+                    key={code}
+                    type="button"
+                    className={classNames(styles.langBtn, langCode === code && styles.langBtnActive)}
+                    onClick={() => i18n.changeLanguage(code)}
+                >
+                    {label}
+                </button>
+            ))}
+        </div>
+    );
+
+    const topBar = (
+        <div className={styles.topBar}>
+            <a
+                className={styles.backLink}
+                href={EXPO_PAGE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('back_to_expo')}
+            >
+                <PrevArrow className={styles.backArrow} aria-hidden/>
+            </a>
+            {langSwitch}
+        </div>
+    );
+
     if (isSuccess) {
         return (
             <div className={styles.successModal}>
+                {topBar}
                 {/* <div className={styles.close} onClick={closeModal}><Cross/></div> */}
                 <p className={styles.success}>{t("success_visitor")}</p>
 
@@ -161,6 +208,7 @@ function BecomeAVisitor() {
 
     return (
         <div className={styles.modal}>
+            {topBar}
 
             {/* <div className={styles.close} onClick={closeModal}><Cross/></div> */}
             <div className={styles.logo}>

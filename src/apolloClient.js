@@ -1,7 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
-import {resetSession} from "./layout/Admin/utils/authProvider";
 
 // Replace with your GraphQL endpoint URL
 const graphqlEndpoint = 'https://api.armauto.show/v1/graphql';
@@ -27,9 +26,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
         graphQLErrors.forEach(({ message, extensions }) => {
             if (extensions.code === 'invalid-jwt') {
-                // Handle JWT expiration by logging out and redirecting
-                resetSession()
-                window.location.href = '/login';
+                // Main app doesn't use admin session; just clear any stale tokens.
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+                localStorage.removeItem("userId");
+                localStorage.removeItem("userRole");
             }
         });
     }

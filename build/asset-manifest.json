@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f47f041e.css",
-    "main.js": "/static/js/main.efd2f366.js",
+    "main.css": "/static/css/main.646369d7.css",
+    "main.js": "/static/js/main.236328a3.js",
     "static/media/DejaVuSans.ttf": "/static/media/DejaVuSans.67ed0b9aeb82e75288aa.ttf",
     "static/media/Lexend-Light.ttf": "/static/media/Lexend-Light.acffbebac7970a00220c.ttf",
     "static/media/Lexend-Bold.ttf": "/static/media/Lexend-Bold.6708dbd284b5ced4d2b8.ttf",
@@ -9,12 +9,13 @@
     "static/media/ArmguardU.ttf": "/static/media/ArmguardU.75a3694738cdfd65100d.ttf",
     "static/media/logo.svg": "/static/media/logo.5b62fe81160066a6ccefac09c1099a17.svg",
     "index.html": "/index.html",
+    "static/media/prev.svg": "/static/media/prev.3f55263e348dcc71589588a5010012c7.svg",
     "static/media/cross.svg": "/static/media/cross.1e09ee2aee9449b85484f1eb77cdca83.svg",
-    "main.f47f041e.css.map": "/static/css/main.f47f041e.css.map",
-    "main.efd2f366.js.map": "/static/js/main.efd2f366.js.map"
+    "main.646369d7.css.map": "/static/css/main.646369d7.css.map",
+    "main.236328a3.js.map": "/static/js/main.236328a3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f47f041e.css",
-    "static/js/main.efd2f366.js"
+    "static/css/main.646369d7.css",
+    "static/js/main.236328a3.js"
   ]
 }
